@@ -1,0 +1,485 @@
+---
+title: "STEM_Anova"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+#Load Libraries
+
+```{r}
+library(MASS)
+library(DataExplorer)
+library(skimr)
+library(corrplot)
+library(rms)
+library(olsrr)
+library(tidyverse)
+library(magrittr)
+library(stringr)
+library(ggplot2)
+library(ggforce)
+library(ggpubr)
+library(glue)
+library(mice)
+library(stats)
+library(forcats)
+library(janitor)
+
+
+
+```
+
+Load csv file of tidy data 
+
+```{r}
+stm123<-read_csv("051421_stm123.csv")
+
+
+
+length(unique(stm123$UnitID))
+
+```
+
+Remove schools with 100 and 0 percent female graduates and NA in Urban
+
+```{r}
+stm123%<>%
+    filter(Percent_W_STEM_Grad>0)%>%
+    filter(!Urban %in% "NA")
+length(unique(stm123$UnitID)) 
+```
+
+Subset for Female Grads and Evaluate missing data 
+
+```{r}
+
+#subset
+
+wstm<-stm123%>%select(Percent_W_STEM_Grad, Total_W_STEM_Grad, Academic_Year, Degree, Sector, Size, UnitID)
+
+glue("There are {n_missing(wstm)} missing data points in this dataset.") #---->38790
+
+# Use mice package to visualize any missing data 
+
+md.pattern(wstm, plot=TRUE, rotate.names = TRUE)
+
+glue("There are {length(unique(stm123$UnitID))} unique institutions in the dataset.") # 1646 
+
+```
+Set column types and factor levels that will be relevant to ANOVA. Save results to csv. 
+
+```{r}
+
+wstm$Degree<-factor(stm123$Degree,ordered=TRUE, levels=c("Bachelors", "Masters", "Doctorate"))
+
+wstm$Academic_Year<-factor(stm123$Academic_Year, ordered=TRUE, levels=c("2001", "2009", "2018"))
+
+wstm$Sector<-factor(stm123$Sector, levels=c("Public_4Yr_Above", "Private_NFP_4Yr_Above"))
+
+wstm$Size<-factor(stm123$Size, ordered=TRUE, levels=c("<1000", "1000-4999", "5000-9999", "10000-19999", "20000+"))
+
+write_csv(wstm, "women_stem_reg_051521.csv")
+
+glimpse(wstm)
+```
+
+
+Data exploration
+
+```{r}
+wstm%>%
+    ggplot(aes(x=Academic_Year, y=Percent_W_STEM_Grad))+
+    geom_boxplot(outlier.colour = "red")+
+    facet_grid_paginate(Degree~Sector, ncol= 3, page= 1, space="free_y")+
+    labs(x="Academic Year\n", y="\nPercent STEM Graduates", title="Percent Women STEM Graduates by Year, Sector, and Degree", subtitle="\nWithin STEM Programs\n")+
+    theme_bw()
+
+wstm%>%
+    ggplot(aes(x=Academic_Year, y=Percent_W_STEM_Grad))+
+    geom_boxplot(outlier.colour = "red")+
+    facet_grid_paginate(Degree~Size, ncol= 3, page= 1, space="free_y")+
+    labs(x="\nAcademic Year\n", y="\nPercent STEM Graduates", title="Percent Women STEM Graduates by Year, Insitution Size, and Degree", subtitle="\nWithin STEM Programs\n")+
+    theme_bw()
+```
+
+Evaluate assumptions in batch categories prior to running ANOVA
+
+```{r}
+glimpse(wstm)
+
+#check normality for Percent_Grad
+
+qqnorm(wstm$Percent_W_STEM_Grad)  
+
+# slice data categories and boxplot
+
+ggplot(wstm, aes(x=Academic_Year, y=Percent_W_STEM_Grad)) + 
+    geom_boxplot(outlier.color ="red")+
+    labs(x="\nAcademic Year", y="Percent of STEM Graduates", title ="Percentage of Women Graduating in STEM Programs by Academic Level", subtitle="Public 4yr+ and Private Not-for-Profit 4 yr.")+
+    facet_wrap(~ Degree)+
+    theme_bw()
+
+ggplot(wstm, aes(x=Academic_Year, y=log(Total_W_STEM_Grad))) + 
+    geom_boxplot(outlier.color ="red")+
+    labs(x="\nAcademic Year", y="Log Total", title ="Log Total Women Graduating in STEM Programs by Academic Year", subtitle="Public 4yr+ and Private Not-for-Profit 4 yr.")+
+    theme_bw()
+
+ggplot(wstm, aes(x=Size, y=Percent_W_STEM_Grad)) + 
+    geom_boxplot(outlier.color ="red")+
+    labs(x="\nInstitution Size", y="\nPercent of Graduates", title ="Percent of Women Graduating in STEM Programs by Institution Size", subtitle="Public 4yr+ and Private Not-for-Profit 4 yr.")+
+    facet_wrap(~ Degree)+
+    coord_flip()+
+    theme_bw()
+
+ggplot(wstm, aes(x=Sector, y=Percent_W_STEM_Grad)) + 
+    geom_boxplot(outlier.color ="red")+
+    labs(x="\nSector", y="\nPercent of Graduates", title ="Percent of Women Graduating in STEM Programs by Sector", subtitle="Public 4yr+     and Private Not-for-Profit 4 yr.")+
+    facet_wrap(~ Degree)+
+    coord_flip()+
+    theme_bw()
+    theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+
+View(wstm)
+
+```
+Evaluate assumptions within predictor categories
+
+```{r}
+#Check normal distribution on all percent female grad years - note stm123
+
+wstm%>%
+    filter(Academic_Year %in% 2001)%>%
+    ggplot(aes(x=Percent_W_STEM_Grad))+
+    geom_bar()+
+    labs(y="Frequency", x="Percentage", title =  "Percent Women STEM Graduates: Year 2001")+
+    theme_bw()
+
+wstm%>%
+    filter(Academic_Year %in% 2009)%>%
+    ggplot(aes(x=Percent_W_STEM_Grad))+
+    geom_bar()+
+    labs(y="Frequency", x="Percentage", title =  "Percent Women STEM Graduates: Year 2009")+
+    theme_bw()
+wstm%>%
+    filter(Academic_Year %in% 2018)%>%
+    ggplot(aes(x=Percent_W_STEM_Grad))+
+    geom_bar()+
+    labs(y="Frequency", x="Percentage", title =  "Percent Women STEM Graduates: Year 2018")+
+    theme_bw()
+
+# derive count data and assess duplication
+
+#Size
+
+
+size_cnt<-wstm%>%
+    group_by(UnitID, Size)%>%
+    count()
+
+sz<-size_cnt[!duplicated(size_cnt$UnitID), ]
+
+summary(sz$Size)
+
+#Sector
+
+sect_cnt<-wstm%>%
+    group_by(UnitID, Sector)%>% 
+    count()
+
+st<-sect_cnt[!duplicated(sect_cnt$UnitID), ]
+
+summary(st$Sector)
+
+#Degree
+
+deg_cnt<-wstm%>%
+    group_by(UnitID, Degree)%>%
+    count()
+
+
+
+summary(deg_cnt$Degree)
+
+
+
+```
+# ANOVA Model for Percent Women STEM Grads
+
+```{r}
+
+
+# 1. Anova Compare means for perc grad by degree and year without interaction
+
+anov1 <- aov(Percent_W_STEM_Grad~ Academic_Year+Degree+Size+Size*Degree, data = wstm)
+summary(anov1)
+
+#check for homogeneity of variance & Normality
+
+plot(anov1, 1)
+plot(anov1, 2)
+
+#Perform Tukey Test for Pairwise Comparison
+
+(pairtest<-TukeyHSD(anov1, which = "Degree", conf.level = 0.95))
+plot(pairtest) #note CI's dont overlap 0 on graph, can reject null
+
+(pairtest<-TukeyHSD(anov1, which = "Academic_Year", conf.level = 0.95))
+plot(pairtest) #note CI's dont overlap 0 on graph, can reject null
+
+(pairtest<-TukeyHSD(anov1, which = "Size", conf.level = 0.95))
+plot(pairtest) #note CI's dont overlap 0 on graph, can reject null
+
+
+# 2. Anova on Academic_Year alone recoding the values for Tukey to avoid error
+
+yr<-wstm%>%mutate(Academic_Year = case_when(Academic_Year == "2001"~"A",
+                                               Academic_Year=="2009"~"B",
+                                               Academic_Year=="2018"~"C"))
+
+yr_anov <- aov(Percent_W_STEM_Grad~ Academic_Year, data = yr)
+summary(yr_anov)
+
+(yr_test<-TukeyHSD(yr_anov, which = "Academic_Year", conf.level = 0.95))
+plot(yr_test)
+
+#3 two-way ANOVA testing for interactions
+
+anov3 <- aov(Percent_W_STEM_Grad~ Academic_Year*Degree, data = wstm)
+
+summary(anov3)
+
+
+#Compare with Bonferonni
+    
+p.adjust(.05, method = "bonferroni", n = 3)
+
+pairwise.t.test(wstm$Percent_W_STEM_Grad, wstm$Degree, p.adjust = "bonferroni")
+pairwise.t.test(wstm$Percent_W_STEM_Grad, wstm$Academic_Year, p.adjust = "bonferroni")
+```
+#Evaluate percent minority grads
+
+```{r}
+
+#subset data and save to csv
+
+minstm<-stm123%>%select(UnitID, Sector, Size, Degree, Academic_Year, Total_Min_STEM_Grad, Percent_Min_STEM_Grad)
+
+glimpse(minstm)
+
+#filter out institions with 100 minority grads
+
+t<-minstm%>%filter(Percent_Min_STEM_Grad < 100)
+t<-t%>%filter(Percent_Min_STEM_Grad > 0)
+
+length(unique(t$UnitID))  #1134 institutions
+
+minstm<-t
+
+head(minstm, 10) 
+
+write_csv(minstm, "minstm_051621")
+
+```
+Evaluate missing data
+```{r}
+
+glue("There are {n_missing(minstm)} missing data points in this dataset.") #---->38790
+
+# visualize any missing data 
+
+md.pattern(minstm, plot=TRUE, rotate.names = TRUE)
+
+
+```
+Set column types 
+
+```{r}
+
+minstm$Degree<-factor(minstm$Degree,ordered=TRUE, levels=c("Bachelors", "Masters", "Doctorate"))
+
+minstm$Academic_Year<-factor(minstm$Academic_Year, ordered=TRUE, levels=c("2001", "2009", "2018"))
+
+minstm$Sector<-factor(minstm$Sector, levels=c("Public_4Yr_Above", "Private_NFP_4Yr_Above"))
+
+minstm$Size<-factor(minstm$Size, ordered=TRUE, levels=c("<1000", "1000-4999", "5000-9999", "10000-19999", "20000+"))
+
+```
+
+Explore minority grad data
+
+```{r}
+
+#Distribution of Total minority grads 
+
+ggplot(data=minstm, aes(x=Total_Min_STEM_Grad))+
+    geom_bar()+
+    labs(x="Total Graduates", y="Frequency", title="Distribution of STEM Graduates - 2001, 2009, 2018", subtitle=
+             "Traditionally Under-represented Populations")+theme_bw()
+
+#Distribution of Percent minority grads 
+
+ggplot(data=minstm, aes(x=Percent_Min_STEM_Grad))+
+    geom_bar()+
+    labs(x="Percent of STEM Graduates", y="Frequency", title="STEM Graduates - 2001, 2009, 2018", subtitle =
+             "Traditionally Under-represented Populations")+theme_bw()
+
+ggplot(data=minstm, aes(x=log(Percent_Min_STEM_Grad)))+
+    geom_bar()+
+    labs(x="Log Percent of STEM Graduates", y="Frequency", title="Percent STEM Graduates - 2001, 2009, 2018", subtitle = "Traditionally Under-represented Populations")+theme_bw()
+
+#Percent minority grads by year and degree
+
+ggplot(data = minstm, aes(Academic_Year, log(Percent_Min_STEM_Grad))) +
+  geom_boxplot(outlier.colour = "red") + 
+  labs(title = "Log Percent of STEM Graduates" , subtitle = "Traditionally Under-represented Populations",
+       y = "STEM Graduates\n", x = "\nAcademic Year")+
+    facet_wrap(~ Degree)+
+    theme_bw()
+
+ggplot(data = minstm, aes(Degree, log(Percent_Min_STEM_Grad))) +
+  geom_boxplot(outlier.colour = "red") + 
+  labs(title = "Log Percent of STEM Graduates" , subtitle = "Traditionally Under-represented Populations",
+       y = "STEM Graduates\n", x = "\nAcademic Year")+
+    facet_wrap(~ Academic_Year)+
+    theme_bw()
+
+ggplot(data = minstm, aes(Academic_Year, log(Percent_Min_STEM_Grad))) +
+  geom_boxplot(outlier.colour = "red") + 
+  labs(title = "Log Percent of STEM Graduates" , subtitle = "Traditionally Under-represented Populations",
+       y = "STEM Graduates\n", x = "\nAcademic Year")+
+    facet_wrap(~ Size)+
+    theme_bw()
+
+ggplot(data = minstm, aes(Degree, log(Percent_Min_STEM_Grad))) +
+  geom_boxplot(outlier.colour = "red") + 
+  labs(title = "Log Percent of STEM Graduates" , subtitle = "Traditionally Under-represented Populations",
+       y = "STEM Graduates\n", x = "\nDegree")+
+    facet_wrap(~ Size)+
+    theme_bw()
+
+```
+Evaluate assumptions for ANOVA based on log transform
+
+```{r}
+
+
+#check normality for Percent_Grad
+
+qqnorm(log(minstm$Percent_Min_STEM_Grad))  # not great in terms of normality
+    
+#check constant variability across groups by using side by side box plots
+
+boxplot(log(minstm$Percent_Min_STEM_Grad) ~ minstm$Academic_Year, main="Distribution of Underrepresented STEM Grads", ylab="Percent of STEM Grads", xlab="Academic Year")
+
+boxplot(log(minstm$Percent_Min_STEM_Grad)~minstm$Degree, main="Distribution of Underrepresented STEM Grads", ylab="Percent of STEM Grads", xlab="Academic Degree")
+
+```
+Double check - possible error 
+```{r}
+
+minstm%>%
+    group_by(Degree, Academic_Year)%>%
+    summarise(mean=mean(Total_Min_STEM_Grad, na.rm=T), Count=n(),
+              median=median(Total_Min_STEM_Grad, na.rm=T), 
+              maximum=max(Total_Min_STEM_Grad, na.rm=T), 
+              minimum=min(Total_Min_STEM_Grad, na.rm=T),
+              stdev= sd(Total_Min_STEM_Grad, na.rm=T))
+
+minstm%>%
+    group_by(Degree, Academic_Year)%>%
+    summarise(mean=mean(Percent_Min_STEM_Grad, na.rm=T), Count=n(),
+              median=median(Percent_Min_STEM_Grad, na.rm=T), 
+              maximum=max(Percent_Min_STEM_Grad, na.rm=T), 
+              minimum=min(Percent_Min_STEM_Grad, na.rm=T),
+              stdev= sd(Percent_Min_STEM_Grad, na.rm=T))
+```
+
+Additional distribution plots of Percent Minority Grad rates over time 
+
+```{r}
+#Check normal distribution on all percent female grad years - note stm123
+
+minstm%>%
+    filter(Academic_Year %in% 2001)%>%
+    ggplot(aes(x=log(Percent_Min_STEM_Grad)))+
+    geom_bar()+
+    ggtitle("Log Percent Underrepresented STEM Grad for Year 2001")
+minstm%>%
+    filter(Academic_Year %in% 2009)%>%
+    ggplot(aes(x=log(Percent_Min_STEM_Grad)))+
+    geom_bar()+
+    ggtitle("Log Percent Underrepresented STEM Grad for Year 2009")
+minstm%>%
+    filter(Academic_Year %in% 2018)%>%
+    ggplot(aes(x=log(Percent_Min_STEM_Grad)))+
+    geom_bar()+
+    ggtitle("Log Percent Underrepresented STEM Grad Grad for Year 2018")
+
+minstm%>%
+    ggplot(aes(x=Academic_Year, y=log(Total_Min_STEM_Grad)))+
+    geom_boxplot()+
+    ggtitle("Log Percent Underrepresented STEM Grad vs. Year of Record")
+
+minstm%>%
+    ggplot(aes(x=Academic_Year, y=log(Percent_Min_STEM_Grad)))+
+    geom_boxplot()+
+    ggtitle("Log Percent Underrepresented STEM Grad vs. Year of Record")
+
+minstm%>%
+    ggplot(aes(x=Degree, y=log(Percent_Min_STEM_Grad)))+
+    geom_boxplot()+
+    ggtitle("Log Percent Underrepresented STEM Grad vs. Degree")
+
+minstm%>%
+    ggplot(aes(x=Size, y=log(Percent_Min_STEM_Grad)))+
+    geom_boxplot()+
+    ggtitle("Log Percent Underrepresented STEM Grad vs. Institution Size")
+```
+ANOVA
+
+```{r}
+
+# 1. Anova Compare means for perc grad by degree and year
+
+anov1 <- aov(log(Percent_Min_STEM_Grad)~ Degree, data = minstm)
+summary(anov1)
+
+#check for homogeneity of variance & Normality
+
+plot(anov1, 1)
+plot(anov1, 2)
+
+#Perform Tukey Test for Pairwise Comparison
+
+pairtest<-TukeyHSD(anov1, which = "Degree", conf.level = 0.95)
+plot(pairtest) #note CI's dont overlap 0 on graph, can reject null
+
+
+# 2. Anova on Academic_Year alone recoding the values for Tukey to avoid error
+
+yr_min<-minstm%>%mutate(Academic_Year = case_when(Academic_Year == "2001"~"A",
+                                               Academic_Year=="2009"~"B",
+                                               Academic_Year=="2018"~"C"))
+
+yr_anov <- aov(log(Percent_Min_STEM_Grad)~ Academic_Year, data = yr_min)
+summary(yr_anov)
+
+
+#3
+
+anov3 <- aov(log(Percent_Min_STEM_Grad)~ Size*Degree, data = minstm)
+summary(anov3)
+
+#check for homogeneity of variance & Normality
+
+plot(anov3, 1)
+plot(anov3, 2)
+
+(pairtest3<-TukeyHSD(anov3, which = c("Size", "Degree"), conf.level = 0.95))
+plot(pairtest3)
+
+
+```
+

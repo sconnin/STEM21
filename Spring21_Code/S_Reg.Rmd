@@ -1,0 +1,560 @@
+---
+title: "S_regression"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Build our libraries 
+
+```{r}
+library(MASS)
+library(skimr)
+library(DataExplorer)
+library(corrplot)
+library(faraway)
+library(rms)
+library(olsrr)
+library(tidyverse)
+library(magrittr)
+library(stringr)
+library(ggplot2)
+library(ggforce) #facet_grid_paginate
+library(ggpubr)
+library(glue)
+library(mice)
+library(stats)
+library(forcats)
+library(janitor)
+```
+-Build dataset for multiple regression - Women STEM graduates
+
+```{r}
+wmn<-read_csv("women_stem_reg_051521.csv")  #-- dim 6724, 11
+glimpse(wmn)
+
+wmn%<>%arrange(desc(UnitID))%>%
+    filter(Degree %in% "Bachelors")%>%
+    filter(Academic_Year %in% "2018")%>%
+    select(!c(Total_W_STEM_Grad))
+
+#Evaluate and treat wmn for missing data
+
+glue("There are {n_missing(wmn)} missing data points in this dataset.")  # 356
+glue("There are {length(unique(wmn$UnitID))} unique institutions in the dataset.") #1480
+
+md.pattern(wmn, plot=TRUE, rotate.names = TRUE)
+
+wmn<-wmn[complete.cases(wmn),] #drop na rows across all cols
+
+glue("There are {n_missing(wmn)} missing data points in this dataset.")  # 0
+glue("There are {length(unique(wmn$UnitID))} unique institutions in the dataset.") # ---> 1126
+
+#put together inst measurements as a combined df
+
+w1<-read_csv("avg_bach_4yrgrad_rate.csv")
+w2<-read_csv("avg_instate_cost_1518.csv")
+w3<-read_csv("avg_instruct_student_exp.csv")
+w4<-read_csv("avg_library_expend_collect.csv")
+w5<-read_csv("avg_nstudents_receiving_degrees.csv")
+w6<-read_csv("avg_wm_admit_yield.csv")
+w7<-read_csv("avg_ft_retention_rate.csv")
+w8<-read_csv("avg_sf_ratio.csv")
+w9<-read_csv("STEM2001_totidy.csv")%>%select(UnitID, Region, Urban)
+
+w1%<>%select(c(UnitID, avg_grad_rate_bach_4yrs))%>%arrange(desc(UnitID))
+w2%<>%select(c(UnitID, avg_instate_cost))%>%arrange(desc(UnitID))
+w3%<>%select(c(UnitID, avg_instruct_exp, avg_student_serv_exp))%>%arrange(desc(UnitID))
+w4%<>%select(c(UnitID, avg_total_collections, avg_lib_expenditures))%>%arrange(desc(UnitID))
+w5%<>%select(c(UnitID, avg_nstudents_receiving_degrees))%>%arrange(desc(UnitID))
+w6%<>%select(c(UnitID, avg_wms_admit_yield))%>%arrange(desc(UnitID))
+w7%<>%select(c(UnitID, avg_fulltime_retention_rate))%>%arrange(desc(UnitID))
+w8%<>%select(c(UnitID, avg_sf_ratio))%>%arrange(desc(UnitID))
+w9%<>%select(c(UnitID, Urban, Region))%>%arrange(desc(UnitID))
+
+w2%<>%select(!UnitID)
+w3%<>%select(!UnitID)
+w4%<>%select(!UnitID)
+w5%<>%select(!UnitID)
+w6%<>%select(!UnitID)
+w7%<>%select(!UnitID)
+w8%<>%select(!UnitID)
+w9%<>%select(!UnitID)
+
+wt<-cbind(w1,w2,w3,w4,w5,w6, w7, w8, w9)
+
+
+#combine the two dataframes by ID
+
+wmrg<-inner_join(wmn,wt, by="UnitID")%>%arrange(desc(UnitID))
+
+View(wmrg)
+```
+Rename values for urban gradient and region
+
+```{r}
+wmrg%<>%
+    mutate(Urban = case_when(Urban == "11"~"Large_City", 
+                             Urban == "12"~"Midsize_City",
+                             Urban == "13"~"Small_City", 
+                             Urban == "14"~"Suburb",
+                             Urban == "21"~"Suburb", 
+                             Urban == "22"~"Suburb",
+                             Urban == "23"~"Suburb",
+                             Urban == "31"~"Town", 
+                             Urban == "32"~"Town",
+                             Urban == "33"~"Town", 
+                             Urban == "41"~"Rural",
+                             Urban == "42"~"Rural", 
+                             Urban == "43"~"Rural"))
+
+wmrg%<>%
+    mutate(Region = case_when(Region == "1"~"New_England", 
+                              Region == "2"~"Mid_East",
+                              Region == "3"~"Great_Lakes", 
+                              Region == "4"~"Plains",
+                              Region == "5"~"Southeast", 
+                              Region == "6"~"Southwest", 
+                              Region == "7"~"Rocky_Mountains", 
+                              Region == "8"~"Far_West",
+                              Region == "9"~"Other_US_Jurisdictions"))
+
+wmrg%<>%mutate(Size = case_when(Size == "<1000"~"0-4999",
+                                Size == "1000-4999"~"0-4999",
+                                Size =="5000-9999"~"5000-9999",
+                                  Size =="10000-19999"~"10000-19999",
+                                  Size =="20000+"~"20000+"))
+                              
+
+```
+Remove obs with missing values
+
+```{r}
+#subset dataset so that there are no missing values
+
+wmreg<-wmrg
+wmreg%>%arrange(desc(UnitID))
+
+View(wmreg)
+wmreg[wmreg==0] <- NA  # changes all 0 to NA
+wmreg<-wmreg[complete.cases(wmreg),]  # removes all rows with NA
+
+glue("There are {n_missing(wmreg)} missing data points in this dataset.")  # 0
+glue("There are {length(unique(wmreg$UnitID))} unique institutions in the dataset.") # ---> 472
+
+md.pattern(wmreg, plot=TRUE, rotate.names = TRUE) # just a confirmation 
+
+
+length(unique(wmreg$UnitID))  #--->472
+```
+Count Categoricals
+
+```{r}
+# derive count data and beware of duplication
+
+#Size
+
+(wmreg%>%
+    group_by(Size)%>%
+    count(Size))
+
+
+#Sector
+
+(wmreg%>%
+    group_by(Sector)%>% 
+    count())
+
+
+#Region
+
+(wmreg%>%
+    group_by(Region)%>% 
+    count())
+
+
+#Degree
+
+(deg_cnt<-wmreg%>%
+    group_by(Degree)%>%
+    count())
+
+
+
+#urban
+
+
+(wmreg%>%
+    group_by( Urban)%>%
+    count())
+
+
+```
+
+EDA
+
+```{r}
+#check parameters
+
+w<-wmreg%>%select(!c("Academic_Year", "UnitID", "Degree"))
+
+
+introduce(w)
+
+plot_missing(w)  #46.28% and 67.87% missing in total_grad and Percent_grad respectively
+
+plot_bar(w) #discrete data
+
+plot_histogram(w) # continuous data
+
+plot_correlation(na.omit(w), maxcat = 5L, type = "c") #also type D
+
+plot_scatterplot(w, by = "Percent_W_STEM_Grad")
+
+plot_str(w)
+```
+
+Final feature selection, factor and relevel potential predictor variables
+
+```{r}
+
+#refactor while saving out df
+
+mod<-wmreg
+
+mod$Urban<-as.factor(mod$Urban)
+mod$Urban <-relevel(mod$Urban, ref = "Town" )
+
+mod$Region<-as.factor(mod$Region)
+mod$Region <-relevel(mod$Region, ref = "Southeast" )
+
+mod$Sector<-as.factor(mod$Sector)
+mod$Sector <-relevel(mod$Sector, ref = "Private_NFP_4Yr_Above" )
+
+mod$Size<-as.factor(mod$Size)
+mod$Size <-relevel(mod$Size, ref = "20000+" )
+```
+
+Check for Linearity
+
+```{r}
+
+ggplot(data = mod, aes(avg_instate_cost, Percent_W_STEM_Grad)) +
+  geom_point() + 
+  labs(title = "Percent of Women STEM Graduates vs. Instate Cost" , subtitle = "2001, 2009, 2018",
+       y = "STEM Graduates\n", x = "\nCost($)")+
+    #facet_wrap(~ Degree)+
+    theme_bw()
+
+ggplot(data = mod, aes(avg_fulltime_retention_rate, Percent_W_STEM_Grad)) +
+  geom_point() +
+  labs(title = "Percent of Women STEM Graduates vs. Avg. Full Time Retention Rate" , subtitle = "2001, 2009, 2018",
+       y = "STEM Graduates\n", x = "\nRetention Rate")+
+    #facet_wrap(~ Degree)+
+    theme_bw()
+
+ggplot(data = mod, aes(avg_wms_admit_yield, Percent_W_STEM_Grad)) +
+  geom_point() + 
+  labs(title = "Percent of Women STEM Graduates vs. Avg. Womens Admittance Yield" , subtitle = "2001, 2009, 2018",
+       y = "STEM Graduates\n", x = "\nAvg. Admittance Yield")+
+    #facet_wrap(~ Degree)+
+    theme_bw()
+
+ggplot(data = mod, aes(avg_sf_ratio, Percent_W_STEM_Grad)) +
+  geom_point() + 
+  labs(title = "Percent of Women STEM Graduates vs. Avg. Student Faculty Ratio" , subtitle = "2001, 2009, 2018",
+       y = "STEM Graduates\n", x = "\nAvg. S:F Ratio")+
+    #facet_wrap(~ Degree)+
+    theme_bw()
+
+ggplot(data = mod, aes(avg_instruct_exp, log(Percent_W_STEM_Grad))) +
+  geom_point() + 
+  labs(title = "Percent of Women STEM Graduates vs. Avg. Instructional Expense" , subtitle = "2001, 2009, 2018",
+       y = "STEM Graduates\n", x = "\nAvg. Expense")+
+    #facet_wrap(~ Degree)+
+    theme_bw()
+
+ggplot(data = mod, aes(avg_student_serv_exp, Percent_W_STEM_Grad)) +
+  geom_point() + 
+  labs(title = "Percent of Women STEM Graduates vs. Avg. Student Service Expense" , subtitle = "2001, 2009, 2018",
+       y = "STEM Graduates\n", x = "\nAvg. Expense")+
+    #facet_wrap(~ Degree)+
+    theme_bw()
+
+ggplot(data = mod, aes(avg_total_collections, Percent_W_STEM_Grad)) +
+  geom_point() + 
+  labs(title = "Percent of Women STEM Graduates vs. Avg. Total Library Collections" , subtitle = "2001, 2009, 2018",
+       y = "STEM Graduates\n", x = "\nAvg. Collections")+
+    #facet_wrap(~ Degree)+
+    theme_bw()
+
+ggplot(data = mod, aes(avg_lib_expenditures, Percent_W_STEM_Grad)) +
+  geom_point() + 
+  labs(title = "Percent of Women STEM Graduates vs. Avg. Library Expenditures" , subtitle = "2001, 2009, 2018",
+       y = "STEM Graduates\n", x = "\nAvg. Expenditures")+
+    #facet_wrap(~ Degree)+
+    theme_bw()
+
+ggplot(data = mod, aes(avg_grad_rate_bach_4yrs, Percent_W_STEM_Grad)) +
+  geom_point() + 
+  labs(title = "Percent of Women STEM Graduates vs. Avg. 4yr Graduation Rate" , subtitle = "2001, 2009, 2018",
+       y = "STEM Graduates\n", x = "\nAvg. Graduation Rate")+
+    #facet_wrap(~ Degree)+
+    theme_bw()
+
+
+
+
+```
+
+#Evaluate a full model without concern for multicollinearity. 
+
+Options for future correction: principal component regression and partial least square regression
+
+```{r}
+
+colnames(mod)
+
+full<-lm(Percent_W_STEM_Grad ~ Sector+Size+avg_grad_rate_bach_4yrs+avg_instate_cost+avg_instruct_exp+avg_student_serv_exp+avg_total_collections+avg_lib_expenditures+avg_nstudents_receiving_degrees+avg_wms_admit_yield+avg_fulltime_retention_rate+avg_sf_ratio+Urban+Region, data=mod)
+
+#Use AIC for full
+
+summary(stepAIC(full, direction="backward"))
+
+# Evaluate VIF)
+
+vif(full)
+
+```
+
+Build OLS Model
+
+```{r}
+
+#Use AIC for reduced model based on VIF -- , +avg_nstudents_receiving_degrees
+
+mod2<-mod%>%select(!c("avg_nstudents_receiving_degrees", "Academic_Year"))
+
+partial<-lm(Percent_W_STEM_Grad ~ Sector+Size+avg_instate_cost+avg_instruct_exp+avg_grad_rate_bach_4yrs+avg_student_serv_exp+avg_total_collections+avg_lib_expenditures+avg_wms_admit_yield+avg_fulltime_retention_rate+avg_sf_ratio+Urban+Region, data=mod2)
+
+summary(stepAIC(partial, direction="backward"))
+
+vif(partial)
+
+plot_correlation(na.omit(mod2), maxcat = 5L, type = "c")
+
+
+mod2$resid<-residuals(partial)
+mod2$predict<-predict(partial)
+
+#check for linearity and constant variability
+
+ggplot(data=mod2, aes(x=predict, y=resid))+
+    geom_point()+
+    geom_hline(yintercept=0, lintype="dashed") +
+    xlab("Predicted Values")+
+    ylab("Residuals")+
+    ggtitle("Model Residuals vs. Predicted Values")
+
+#check for nearly normal distribution of residuals
+
+ggplot(data=mod2, aes(x=resid))+
+    geom_histogram(binwidth=0.25)+
+    xlab("Residuals")+
+    ggtitle("Distribution of Model Residuals")
+
+
+summary(ols<-ols_step_backward_p(modfit, prem=0.05, details=TRUE))
+
+
+
+```
+
+#Repeat for Underrepresented Students
+
+```{r}
+minstm<-read_csv("minstm_051621")
+ 
+#remove schools with 0 or 100% minority graduates
+
+minstm%<>%
+    filter(Percent_Min_STEM_Grad>0)%>%
+    filter(Percent_Min_STEM_Grad<100)#%>%
+    #filter(!Urban %in% "NA")
+
+#extract sector from wmreg
+
+region<-wmrg%>%select(UnitID, Region, Urban)
+
+#combine the three dataframes by ID
+
+minrg<-inner_join(minstm,wt, by="UnitID")
+mrg<-inner_join(minrg, region, by="UnitID")
+
+glimpse(mrg)
+
+mrg%<>%select(!c(Urban.x, Region.x))%>%rename(Region=Region.y, Urban=Urban.y)
+
+#subset dataset so that there are no missing values
+
+mrg%<>%
+    filter(Percent_Min_STEM_Grad<100)
+
+glue("There are {n_missing(mrg)} missing data points in this dataset.")  # 1121
+glue("There are {length(unique(mrg$UnitID))} unique institutions in the dataset.") # ---> 1084
+
+mrg<-mrg[complete.cases(mrg),]  # removes all rows with NA
+
+md.pattern(mrg, plot=TRUE, rotate.names = TRUE) # just a confirmation 
+
+glue("There are {n_missing(mrg)} missing data points in this dataset.")  # 0
+glue("There are {length(unique(mrg$UnitID))} unique institutions in the dataset.") # ---> 827
+
+glimpse(mrg)
+
+
+```
+Factor and Select
+
+```{r}
+
+mrg$Urban<-as.factor(mrg$Urban)
+mrg$Urban <-relevel(mrg$Urban, ref = "Large_City" )
+
+mrg$Region<-as.factor(mrg$Region)
+mrg$Region <-relevel(mrg$Region, ref = "Southeast" )
+
+mrg$Sector<-as.factor(mrg$Sector)
+mrg$Sector <-relevel(mrg$Sector, ref = "Private_NFP_4Yr_Above" )
+
+mrg$Size<-as.factor(mrg$Size)
+mrg$Size <-relevel(mrg$Size, ref = "20000+" )
+
+glimpse(mrg)
+```
+
+
+
+EDA
+
+```{r}
+#check parameters
+
+m<-mrg%>%select(!c("Academic_Year", "UnitID", "Degree"))
+
+
+introduce(m)
+
+#length(unique(stm123$UnitID)) #2492 unique institutions
+
+plot_missing(m)  #46.28% and 67.87% missing in total_grad and Percent_grad respectively
+
+plot_bar(m) #discrete data
+
+plot_histogram(m) # continuous data
+
+plot_correlation(na.omit(m), maxcat = 5L, type = "c") #also type D
+
+#plot_boxplot(w, by = "Percent_W_STEM_Grad")
+
+plot_scatterplot(m, by = "Percent_Min_STEM_Grad")
+```
+Linearity
+
+```{r}
+
+ggplot(data = mrg, aes(avg_instate_cost, log(Percent_Min_STEM_Grad))) +
+  geom_point() + 
+  labs(title = "Log Percent of STEM Graduates vs. Instate Cost" , subtitle = "Traditionally Under-represented Populations",
+       y = "STEM Graduates\n", x = "\nCost($)")+
+    #facet_wrap(~ Degree)+
+    theme_bw()
+
+ggplot(data = mrg, aes(avg_fulltime_retention_rate, log(Percent_Min_STEM_Grad))) +
+  geom_point() + 
+  labs(title = "Log Percent of STEM Graduates vs. Avg. Full Time Retention Rate" , subtitle = "Traditionally Under-represented Populations",
+       y = "STEM Graduates\n", x = "\nRetention Rate")+
+    #facet_wrap(~ Degree)+
+    theme_bw()
+
+ggplot(data = mrg, aes(avg_nstudents_receiving_degrees, log(Percent_Min_STEM_Grad))) +
+  geom_point() + 
+  labs(title = "Log Percent of STEM Graduates vs. Avg. Number of Students Receiving Degrees" , subtitle = "Traditionally Under-represented Populations",
+       y = "STEM Graduates\n", x = "\nStudents Receiving Degrees($)")+
+    #facet_wrap(~ Degree)+
+    theme_bw()
+
+
+
+
+```
+
+
+
+Select final features for model
+
+```{r}
+
+#mod2<-mrg%>%select(!c(avg_total_collections, avg_lib_expenditures, avg_grad_rate_bach_4yrs, Academic_Year, UnitID, Degree, avg_nstudents_receiving_degrees, avg_wms_admit_yield, avg_student_serv_exp, avg_instruct_exp, avg_sf_ratio))
+
+mod2<-mrg%>%select(!c(avg_total_collections, avg_lib_expenditures, Academic_Year, UnitID, Degree, avg_wms_admit_yield, avg_grad_rate_bach_4yrs, avg_student_serv_exp, avg_instruct_exp, avg_sf_ratio))
+
+plot_correlation(na.omit(mod2), maxcat = 5L, type = "c") #also type D
+
+
+
+
+```
+
+
+Model underrepresented graduates
+
+```{r}
+
+modfit2<-lm(log(Percent_Min_STEM_Grad)~Region+Urban+Size+Sector+avg_instate_cost+avg_fulltime_retention_rate+avg_nstudents_receiving_degrees, data=mod2)
+
+summary(stepAIC(modfit2, direction="backward"))
+
+#step$anova
+
+mod2$resid<-residuals(modfit2)
+mod2$predict<-predict(modfit2)
+
+#check for linearity and constant variability
+
+ggplot(data=mod2, aes(x=predict, y=resid))+
+    geom_point()+
+    geom_hline(yintercept=0, lintype="dashed") +
+    xlab("Predicted Values")+
+    ylab("Residuals")+
+    ggtitle("Model Residuals vs. Predicted Values")
+
+#check for nearly normal distribution of residuals
+
+ggplot(data=mod2, aes(x=resid))+
+    geom_histogram(binwidth=0.25)+
+    xlab("Residuals")+
+    ggtitle("Distribution of Model Residuals")
+
+
+summary(ols<-ols_step_backward_p(modfit2, prem=0.05, details=TRUE))
+
+
+# Other useful functions
+
+#coefficients(mod2) # model coefficients
+
+
+#confint(mod2, level=0.95) # CIs for model parameters
+
+#anova(mod2) # anova table
+
+#vcov(modfit2) # covariance matrix for model parameters
+
+
+#influence(mod2) # regression diagnostics
+```
+
+
+

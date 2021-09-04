@@ -1,0 +1,341 @@
+---
+title: "Preprocessing"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(MASS)
+library(DataExplorer)
+library(tidyverse)
+library(magrittr)
+library(stringr)
+library(ggplot2)
+library(ggforce) #facet_grid_paginate
+library(skimr)
+library(glue)
+library(mice)
+library(stats)
+library(forcats)
+library(janitor)
+library(corrplot)
+library(rms)
+library(olsrr)
+library(ggpubr)
+
+```
+## Initial cleaning and dataset construction
+
+```{r}
+
+tot18<-read_csv("tot18.csv")
+f18<-read_csv("f2018.csv")
+m18<-read_csv("m2018.csv")
+
+
+tot18%<>%rename(Sector = `Sector of institution (HD2019)`  )
+sect<-tot18%>%select(Sector)
+
+tot18%<>%rename(Institution = `Institution Name`   )
+
+tot18%<>%select(UnitID, Sector, Institution, total_bachelors, total_masters, total_doctorate)
+
+f18%<>%select(!starts_with(c("Imputation", "X26")))
+f18[,4:24] <- sapply(f18[,4:24],as.numeric)
+f18%<>%
+    mutate(f_b_s = rowSums(f18[, c(4,7,10,13,16,19,22)], na.rm=TRUE))%>%
+    mutate(f_m_s = rowSums(f18[, c(5,8,11, 14,17,20,23)], na.rm=TRUE))%>%
+    mutate(f_d_s = rowSums(f18[, c(6,9,12,15,18,21,24)], na.rm=TRUE))
+
+f18%<>%rename(Institution=`Institution Name`)%>%select("UnitID", "Institution", "f_b_s","f_m_s","f_d_s")
+
+
+m18%<>%select(!starts_with(c("Imputation", "X26")))
+m18[,4:24] <- sapply(m18[,4:24],as.numeric)
+m18%<>%
+    mutate(m_b_s = rowSums(m18[, c(4,7,10,13,16,19,22)], na.rm=TRUE))%>%
+    mutate(m_m_s = rowSums(m18[, c(5,8,11, 14,17,20,23)], na.rm=TRUE))%>%
+    mutate(m_d_s = rowSums(m18[, c(6,9,12,15,18,21,24)], na.rm=TRUE))
+
+m18%<>%rename(Institution=`Institution Name`)%>%select("UnitID", "Institution", "m_b_s","m_m_s","m_d_s")
+
+
+a<- merge(tot18, f18, by=c("UnitID", "Institution"))
+b<-merge(a, m18, by=c("UnitID", "Institution"))
+
+glimpse(b)
+
+b<-as.data.frame(b)
+
+glimpse(b)
+
+b%<>%mutate(pfbs = as.integer(f_b_s/(m_b_s+f_b_s)*100))%>%
+    mutate(pfms= as.integer(f_m_s/(m_m_s+f_m_s)*100))%>%
+    mutate(pfds= as.integer(f_d_s/(m_d_s+f_d_s)*100))
+
+b%<>%mutate(pmbs = as.integer(m_b_s/(m_b_s+f_b_s)*100))%>%
+    mutate(pmms= as.integer(m_m_s/(m_m_s+f_m_s)*100))%>%
+    mutate(pmds= as.integer(m_d_s/(m_d_s+f_d_s)*100))
+
+b%<>%mutate(across(.cols = everything(),~str_squish(.)))
+
+
+write_csv(b, "STEM2018_totidy.csv")
+
+```
+#Create Tidy STEM files
+
+```{r}
+s01<-read_csv("STEM2001_totidy.csv")
+s02<-read_csv("STEM2009_totidy.csv")
+s03<-read_csv("STEM2018_totidy.csv")
+
+
+s01%<>%rename(m_b_s = "tot_m_b", f_b_s="tot_w_b", m_m_s="tot_m_m", f_m_s ="tot_w_m", m_d_s="tot_m_d",f_d_s="tot_w_d")
+s02%<>%rename(m_b_s = "tot_m_b", f_b_s="tot_w_b", m_m_s="tot_m_m", f_m_s ="tot_w_m", m_d_s="tot_m_d",f_d_s="tot_w_d")
+
+s1<-s01
+s2<-s02
+s3<-s03
+
+#Process s1 - 2001
+
+
+s1%<>%mutate(pfbs = as.integer(f_b_s/(m_b_s+f_b_s)*100))%>%
+    mutate(pfms= as.integer(f_m_s/(m_m_s+f_m_s)*100))%>%
+    mutate(pfds= as.integer(f_d_s/(m_d_s+f_d_s)*100))%>%
+    mutate(pmbs = as.integer(m_b_s/(m_b_s+f_b_s)*100))%>%
+    mutate(pmms= as.integer(m_m_s/(m_m_s+f_m_s)*100))%>%
+    mutate(pmds= as.integer(m_d_s/(m_d_s+f_d_s)*100))%>%
+    relocate(f_b_s, .after=STEM)%>%relocate(f_m_s, .after=f_b_s)%>%relocate(f_d_s, .after=f_m_s)%>%
+    relocate(m_b_s, .after=f_d_s)%>%relocate(m_m_s, .after=m_b_s)%>%relocate(m_d_s, .after=m_m_s)%>%
+    relocate(pfbs, .after=m_d_s)%>%relocate(pfms, .after = pfbs)%>%relocate(pfds, .after = pfms)%>%
+    relocate(pmbs, .after=pfds)%>%relocate(pmms, .after=pmbs)%>%relocate(pmds, .after=pmms)%>%
+    select(!c("STEM", "Level", "pmbs", "pmms", "pmds"))
+
+s1$Academic_Year<-as.character(s1$Academic_Year)
+
+#process s2 2009
+
+s2%<>%mutate(pfbs = as.integer(f_b_s/(m_b_s+f_b_s)*100))%>%
+    mutate(pfms= as.integer(f_m_s/(m_m_s+f_m_s)*100))%>%
+    mutate(pfds= as.integer(f_d_s/(m_d_s+f_d_s)*100))%>%
+    mutate(pmbs = as.integer(m_b_s/(m_b_s+f_b_s)*100))%>%
+    mutate(pmms= as.integer(m_m_s/(m_m_s+f_m_s)*100))%>%
+    mutate(pmds= as.integer(m_d_s/(m_d_s+f_d_s)*100))%>%
+    relocate(f_b_s, .after=STEM)%>%relocate(f_m_s, .after=f_b_s)%>%relocate(f_d_s, .after=f_m_s)%>%
+    relocate(m_b_s, .after=f_d_s)%>%relocate(m_m_s, .after=m_b_s)%>%relocate(m_d_s, .after=m_m_s)%>%
+    relocate(pfbs, .after=m_d_s)%>%relocate(pfms, .after = pfbs)%>%relocate(pfds, .after = pfms)%>%
+    relocate(pmbs, .after=pfds)%>%relocate(pmms, .after=pmbs)%>%relocate(pmds, .after=pmms)%>%
+    select(!c("STEM", "Level", "pmbs", "pmms", "pmds"))
+s2$Academic_Year<-as.character(s2$Academic_Year)
+
+# process s3 2018
+
+s3$Academic_Year<-"2018"
+
+s3%<>%
+    relocate(Academic_Year, .before=f_b_s)%>%
+    select(!c("total_bachelors", "total_masters", "total_doctorate"))
+
+s3<-s3%>%mutate_at(c(12:14), as.integer)
+s3<-s3%>%mutate_at(c(18:20), as.integer)
+
+
+tmp<-s1%>%select(c("Region", "Urban"))
+s3<-cbind(s3, tmp)
+s3%<>%relocate(c("Region", "Size", "Urban"), .after=Sector)
+
+#Three data frames for years 2001, 2009, 2018
+
+glimpse(s1)
+glimpse(s2)
+glimpse(s3)
+
+```
+
+#Create a df for Female Percent Stem Grad
+
+```{r}
+
+#2001 select and reshape long
+
+stm1<-s1%>%select(Academic_Year, pfbs, pfms, pfds, f_b_s, f_m_s, f_d_s, Sector, Size, UnitID, Region, Urban)
+glimpse(stm1)
+
+stm1a<-stm1%>%pivot_longer(cols=(2:4), names_to = 'Degree', values_to = 'Percent_W_STEM_Grad')%>%
+    mutate(Degree = case_when(Degree == "pfbs" ~ "Bachelors",
+                               Degree == "pfms" ~ "Masters",
+                               Degree == "pfds" ~ "Doctorate"))%>%select(!starts_with("f"))
+
+stm1b<-stm1%>%pivot_longer(cols=(5:7), names_to = 'Degree', values_to = 'Total_W_STEM_Grad')%>%
+    mutate(Degree = case_when(Degree == "f_b_s" ~ "Bachelors",
+                               Degree == "f_m_s" ~ "Masters",
+                               Degree == "f_d_s" ~ "Doctorate"))%>%select(!starts_with("p"))
+
+stm1c<-left_join(stm1a, stm1b)
+View(stm1c)
+
+
+#2010 select and reshape long
+
+stm2<-s2%>%select(Academic_Year, pfbs, pfms, pfds, f_b_s, f_m_s, f_d_s, Sector, Size, UnitID, Region, Urban)
+
+stm2a<-stm2%>%pivot_longer(cols=(2:4), names_to = 'Degree', values_to = 'Percent_W_STEM_Grad')%>%
+    mutate(Degree = case_when(Degree == "pfbs" ~ "Bachelors",
+                               Degree == "pfms" ~ "Masters",
+                               Degree == "pfds" ~ "Doctorate"))%>%select(!starts_with("f"))
+
+stm2b<-stm2%>%pivot_longer(cols=(5:7), names_to = 'Degree', values_to = 'Total_W_STEM_Grad')%>%
+    mutate(Degree = case_when(Degree == "f_b_s" ~ "Bachelors",
+                               Degree == "f_m_s" ~ "Masters",
+                               Degree == "f_d_s" ~ "Doctorate"))%>%select(!starts_with("p"))
+
+stm2c<-left_join(stm2a, stm2b)
+
+
+#2018 select and reshape long
+
+stm3<-s3%>%select(Academic_Year, pfbs, pfms, pfds, f_b_s, f_m_s, f_d_s, Sector, Size, UnitID, Region, Urban)
+
+stm3a<-stm3%>%pivot_longer(cols=(2:4), names_to = 'Degree', values_to = 'Percent_W_STEM_Grad')%>%
+    mutate(Degree = case_when(Degree == "pfbs" ~ "Bachelors",
+                               Degree == "pfms" ~ "Masters",
+                               Degree == "pfds" ~ "Doctorate"))%>%select(!starts_with("f"))
+
+stm3b<-stm3%>%pivot_longer(cols=(5:7), names_to = 'Degree', values_to = 'Total_W_STEM_Grad')%>%
+    mutate(Degree = case_when(Degree == "f_b_s" ~ "Bachelors",
+                               Degree == "f_m_s" ~ "Masters",
+                               Degree == "f_d_s" ~ "Doctorate"))%>%select(!starts_with("p"))
+
+stm3c<-left_join(stm3a, stm3b)
+
+#Create single dataframe
+
+stm123<-rbind(stm1c,stm2c,stm3c)
+
+stm123%>%mutate(across(.cols = everything(),~str_squish(.)))
+
+# Lets recode the columns
+
+
+stm123%<>%mutate(Size = case_when(Size == "1"~"<1000",
+                                  Size == "2"~"1000-4999",
+                                  Size =="3"~"5000-9999",
+                                  Size =="4"~"10000-19999",
+                                  Size =="5"~"20000+"))
+
+stm123%<>%
+    mutate(Sector = case_when(Sector == "1"~"Public_4Yr_Above",
+                              Sector=="2"~"Private_NFP_4Yr_Above"))
+
+stm123%<>%
+    mutate(Region = case_when(Region == "1"~"New_England", 
+                              Region == "2"~"Mid_East",
+                              Region == "3"~"Great_Lakes", 
+                              Region == "4"~"Plains",
+                              Region == "5"~"Southeast", 
+                              Region == "6"~"Southwest", 
+                              Region == "7"~"Rocky_Mountains", 
+                              Region == "8"~"Far_West",
+                              Region == "9"~"Other_US_Jurisdictions"))
+
+stm123%<>%
+    mutate(Urban = case_when(Urban == "11"~"Large_City", 
+                             Urban == "12"~"Midsize_City",
+                             Urban == "13"~"Small_City", 
+                             Urban == "14"~"Large_Suburb",
+                             Urban == "15"~"Midsize_Suburb", 
+                             Urban == "16"~"Small_Suburb",
+                             Urban == "31"~"Town_Fringe", 
+                             Urban == "32"~"Town_Distant",
+                             Urban == "33"~"Town_Remote", 
+                             Urban == "41"~"Rural_Fringe",
+                             Urban == "42"~"Rural_Distant", 
+                             Urban == "43"~"Rural_Remote",
+                             Urban == "-3" ~ "NA"))
+
+# Build the minority stem columns
+
+sm1<-s1%>%select(Academic_Year, Sector, Size, UnitID, tmsb, tmsm, tmsd, pmsb, pmsm, pmsd, Urban, Region)
+
+
+m1<-sm1%>%pivot_longer(cols=(5:7), names_to = 'Degree', values_to = 'Total_Min_STEM_Grad')%>%
+    mutate(Degree = case_when(Degree == "tmsb" ~ "Bachelors", Degree == "tmsm" ~ "Masters",
+    Degree == "tmsd" ~ "Doctorate"))%>%
+    select(!starts_with("p"))
+
+
+m2<-sm1%>%pivot_longer(cols=(8:10), names_to = 'Degree', values_to = 'Percent_Min_STEM_Grad')%>%
+    mutate(Degree = case_when(Degree == "pmsb" ~ "Bachelors", Degree == "pmsm" ~ "Masters",
+    Degree == "pmsd" ~ "Doctorate"))%>%
+    select(!starts_with("t"))
+
+m12<-left_join(m1,m2)%>%select(c('Total_Min_STEM_Grad',  'Percent_Min_STEM_Grad'))
+
+m12$Percent_Min_STEM_Grad[is.na(m12$Percent_Min_STEM_Grad)] <- 0
+
+m12$Percent_Min_STEM_Grad<-round(m12$Percent_Min_STEM_Grad, 1)
+
+#Join Minority and Female Grad dfs
+
+stm123<-cbind(stm123, m12)
+
+
+write_csv(stm123, "051421_stm123.csv")
+
+```
+
+Remove schools with 100 and 0 percent female grad institutions
+
+```{r}
+
+stm123<-read_csv("051321_stm123.csv")
+
+
+
+stm123%<>%
+    filter(Percent_Grad>0)%>%
+    filter(Percent_Grad<100)
+
+```
+
+Evaluate missing data 
+
+```{r}
+"Evaluate missing data"
+
+glue("There are {n_missing(stm123)} missing data points in this dataset.") #---->4316
+
+# Use mice package to visualize any missing data 
+
+md.pattern(stm123, plot=TRUE, rotate.names = TRUE)
+
+#get col & row names if still missing data 
+
+colnames(stm123)[colSums(is.na(stm123)) > 0] # the columns with missing data
+
+#rownames(stm123)[rowSums(is.na(stm123)) > 0] #row indices for missing data
+
+
+```
+
+Remove missing data - Tot_Grad col.
+
+```{r}
+#NOTE - all of the missing data are in the total grad column. I am going to remove this var since it isnt one that I plan to use in ANOVA
+
+stm123%>%
+    select(!c("Total_Grad"))  # filter(complete.cases(stm123)) # if all NA are removed, need to revisit not consistent with later work
+
+# recheck to insure no missing values and to determine number of uniquq obs
+
+glue("There are {n_missing(stm123)} missing data points in this dataset.") 
+
+glue("There are {length(unique(stm123$UnitID))} unique institutions in the dataset after removing missing values.") # 1069 unique
+
+```
