@@ -1,0 +1,372 @@
+---
+title: "Ipeds STEM Study"
+author: Sean Connin
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r echo=FALSE warning = FALSE}
+library(tidyverse)
+library(magrittr)
+library(janitor)
+library(kutils) #enables use of mgsub
+library(dlookr)
+library(flextable)
+```
+Read data into base dataframe (data) 
+
+```{r}
+data <- read.csv("C:/Users/seanc/Documents/Data_Projects/STEM_Completion_Study/Data/IPED_Bach_Res/10_11.csv")%>%as.data.frame()
+
+#create working df
+
+df<-data
+
+```
+
+Initial cleaning and review of the data prior to wrangling
+
+Results:
+
+1. No duplicates found
+2. Dim 2045, 272 - no empty rows or cells
+3. There are 241 columns of integer type and 31 columns of character type
+4. There are 30 columns allocated for imputation flags. These can be stored in a separate dataframe. 
+
+```{r}
+
+# clean names for consistency and lower case
+
+df%<>%clean_names
+
+# remove any empty rows and cols
+
+df%<>%remove_empty(c("rows", "cols"))
+
+# assess presence of duplicates
+
+get_dupes(df)
+
+
+# assess initial variable types and data dimensions
+
+dim(df)
+
+colnames(df)
+
+str(df)
+
+# sum column types with function
+
+ncol_type <- function(df, ty){
+  sum(sapply(df, function(x) class(x)==ty))
+}
+
+ncol_type(df, "integer")
+
+ncol_type(df, "character")
+
+# assess number of columns allocated imputation flags
+
+length(grep(pattern = "imp", x = colnames(df)))  #grep searches for patterns
+ 
+
+```
+
+
+Create working dataframe (df) and rename columns to shorten
+
+```{r}
+
+#change col names for easier reading 
+
+pattern<-c('unit_id', 'institution_name', 'grand_total','imputation_status_flag_for_', 'nonresident_alien', 'race_ethnicity_unknown', 'two_or_more_races', 'native_hawaiian_or_other_pacific_islander', 'hispanic_or_latino', 'black_or_african_american',  'american_indian_or_alaska_native', 'c2011_a_rv_first_major_', '_bachelor_s_degree', 'engineering', 'eng_technologies_and_eng_related_fields', 'computer_and_information_sciences_and_support_services','mathematics_and_statistics', 'physical_sciences','science_technologies_technicians','biological_and_biomedical_sciences', 'gran_tot_gran_tot', 'gran_tot_men_gran_tot', 'gran_tot_women_gran_tot')
+ 
+abbrev<-c('id', 'name', 'gran_tot','imp_', 'nonres', 'unk', 'two', 'pacific', 'latino', 'black',  'native', '', '', 'eng', 'eng_tech', 'comp', 'math', 'phys', 'sci_tech', 'bio', 'gran_tot', 'gran_tot_men', 'gran_tot_women') 
+
+name<-c(colnames(df))
+
+subs <- mgsub(pattern, abbrev, name)  #note accomplished in order
+
+colnames(df)<-subs
+
+
+
+```
+
+
+
+Assess Missing Data
+
+1.98% of the schools are missing data for tech 
+2.75% of the schools are missing data for engineering 
+3.44% of the schools are missing data for physics
+4.40% of the schools are missing data for math
+5.38% of the schools are missing data for comp
+6. 35% of the shools are missing data for biol
+7. 9% of the schools are missing data for STEM completion grand totals
+
+We will remove 60 cols for tech completion data 
+We will remove 220 schools for that are missing STEM completion grand totals
+
+Our dataframe dimensions are now 1825/212
+
+
+```{r}
+
+
+# assess missing by column (total and percentage)
+
+df%>%
+  diagnose()%>%
+  select(-unique_count, -unique_rate)%>%
+  filter(missing_count>0)%>%
+  arrange(desc(missing_count))%>%
+  flextable()
+
+
+```
+
+Remove data will high missingness as well as 0|NA grand totals for STEM completion
+
+```{r}
+
+
+# remove columns for tech programs due to high level of missingness
+
+df%<>%select(!ends_with('tech'))
+
+# remove schools that are missing STEM completion grand totals
+
+df%<>%
+    filter(gran_tot != 0 | gran_tot != NA )
+
+```
+
+Subset working dataframe for further manipulation and qaqc.
+
+This will leave us with a data frame that tracks imputation flags(imputed_df)  and another 
+that contains variable values (data_df)
+
+```{r}
+
+# subset imputed columns for later use if necessary
+
+imputed_df<-df%>%
+    dplyr::select(starts_with('imp'))
+
+imputed_df<-cbind(imputed_df, df$id)%>%
+  rename(id = 'df$id')
+
+# subset data columns for feature engineering, EDA, and analyses - remove imputation, unk, nonres columns
+
+data_df<-df%>%
+    select(!starts_with(c('imp', 'unk', 'nonres')))
+
+colnames(data_df)
+```
+
+Initial data description
+
+```{r}
+
+#trying to write a function to split dataframe up by major, perform function on it, then recombine and save
+
+major<-c('bio')
+
+sub_df <- NULL
+
+perc_func <- function(df, maj){
+  for(field in seq_along(maj)){
+    field<-df%>%select(ends_with(maj[[field]]))
+    field%<>%mutate(!!paste('perc_men_', maj) := round((field[[2]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_women_', maj) := round((field[[3]]/field[[1]])*100))
+    
+    field%<>%mutate(!!paste('perc_native_', maj) := round((field[[4]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_native_men_', maj) := round((field[[5]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_native_women_', maj) := round((field[[6]]/field[[1]])*100))
+    
+    field%<>%mutate(!!paste('perc_asian_', maj) := round((field[[7]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_asian_men_', maj) := round((field[[8]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_asian_women_', maj) := round((field[[9]]/field[[1]])*100))    
+    
+    field%<>%mutate(!!paste('perc_black_', maj) := round((field[[10]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_black_men_', maj) := round((field[[11]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_black_women_', maj) := round((field[[12]]/field[[1]])*100))
+    
+    field%<>%mutate(!!paste('perc_latino_', maj) := round((field[[13]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_latino_men_', maj) := round((field[[14]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_latino_women_', maj) := round((field[[15]]/field[[1]])*100))
+    
+    field%<>%mutate(!!paste('perc_pacific_', maj) := round((field[[16]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_pacific_men_', maj) := round((field[[17]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_pacific_women_', maj) := round((field[[18]]/field[[1]])*100))
+    
+    field%<>%mutate(!!paste('perc_white_', maj) := round((field[[19]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_white_men_', maj) := round((field[[20]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_white_women_', maj) := round((field[[21]]/field[[1]])*100))
+    
+    field%<>%mutate(!!paste('perc_two_total_', maj) := round((field[[22]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_two_men_', maj) := round((field[[23]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_two_women_', maj) := round((field[[24]]/field[[1]])*100))
+    
+    field%<>%mutate_all(~replace(., is.nan(.), 0))%>%
+      select(c(1,25:47))
+    
+
+    }
+  
+  sub_df<- field
+
+  }
+
+
+perc_func(data_df, major)
+
+
+
+
+```
+```{r}
+
+
+sub_df <- list()
+
+perc_func <- function(df, maj){
+    field<-df%>%select(ends_with(maj[[field]]))
+    field%<>%mutate(!!paste('perc_men_', maj) := round((field[[2]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_women_', maj) := round((field[[3]]/field[[1]])*100))
+    
+    field%<>%mutate(!!paste('perc_native_', maj) := round((field[[4]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_native_men_', maj) := round((field[[5]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_native_women_', maj) := round((field[[6]]/field[[1]])*100))
+    
+    field%<>%mutate(!!paste('perc_asian_', maj) := round((field[[7]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_asian_men_', maj) := round((field[[8]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_asian_women_', maj) := round((field[[9]]/field[[1]])*100))    
+    
+    field%<>%mutate(!!paste('perc_black_', maj) := round((field[[10]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_black_men_', maj) := round((field[[11]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_black_women_', maj) := round((field[[12]]/field[[1]])*100))
+    
+    field%<>%mutate(!!paste('perc_latino_', maj) := round((field[[13]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_latino_men_', maj) := round((field[[14]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_latino_women_', maj) := round((field[[15]]/field[[1]])*100))
+    
+    field%<>%mutate(!!paste('perc_pacific_', maj) := round((field[[16]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_pacific_men_', maj) := round((field[[17]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_pacific_women_', maj) := round((field[[18]]/field[[1]])*100))
+    
+    field%<>%mutate(!!paste('perc_white_', maj) := round((field[[19]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_white_men_', maj) := round((field[[20]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_white_women_', maj) := round((field[[21]]/field[[1]])*100))
+    
+    field%<>%mutate(!!paste('perc_two_total_', maj) := round((field[[22]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_two_men_', maj) := round((field[[23]]/field[[1]])*100))
+    field%<>%mutate(!!paste('perc_two_women_', maj) := round((field[[24]]/field[[1]])*100))
+    
+    field%<>%mutate_all(~replace(., is.nan(.), 0))%>%
+      select(c(1,25:47))
+    
+    return(field)
+    
+
+}
+
+maj<-c('bio')
+for(field in seq_along(maj)){
+  sub<-list(perc_func(df, maj))
+  sub_df<-append(sub_df, sub)
+}
+  
+sub_df
+```
+
+
+
+
+
+
+```{r}
+
+
+
+#g<-data%>%select(starts_with('grand'))
+#indian<-data%>%select(starts_with('american'))
+#asian<-data%>%select(starts_with('asian'))
+#black<-data%>%select(starts_with('black'))
+#latino<-data%>%select(starts_with('hispanic'))
+#pacific<-data%>%select(starts_with('native'))
+#white<-data%>%select(starts_with('white'))
+#two<-data%>%select(starts_with('two'))
+#unk<-data%>%select(starts_with('race'))
+#nonres<-data%>%select(starts_with('nonresident'))
+
+
+#colnames(g)
+
+
+g%>%rename_all(funs(str_replace(., c('_c2011_a_rv_first_major', '_bachelor_s_degree'), '')))%>%
+    rename_at(vars(contains('_c2011_a_rv_first_major')), funs(str_replace(., '_c2011_a_rv_first_major', '')))%>%
+    rename_at(vars(contains('_bachelor_s_degree')), funs(str_replace(., '_bachelor_s_degree', '')))%>%
+    rename_at(vars(ends_with('_grand_total')), funs(str_replace(., '_grand_total', '')))%>%
+    rename_all(funs(str_replace(., 'grand_total', 'gran_tot')))%>%
+    rename_at(vars(contains('women')), funs(str_replace(., 'women', 'w')))%>%
+    rename_at(vars(contains('men')), funs(str_replace(., 'men', 'm')))%>%
+    rename_at(vars(contains('engineering')), funs(str_replace(., 'engineering', 'eng')))%>%
+    rename_at(vars(contains('eng_technologies_and_engineering_related_fields')), 
+              funs(str_replace(., 'eng_technologies_and_engineering_related_fields', 'eng_tech')))%>%
+    rename_at(vars(contains('computer')), funs(str_replace(., 'computer_and_information_sciences_and_support_services', 'comp')))%>%
+    rename_at(vars(contains('mathematics_and_statistics')), funs(str_replace(., 'mathematics_and_statistics', 'math')))%>%
+    rename_at(vars(contains('physical_sciences')), funs(str_replace(., 'physical_sciences', 'phys')))%>%
+    rename_at(vars(contains('science_technologies_technicians')), funs(str_replace(., 'science_technologies_technicians', 'sci_tech')))%>%
+    rename_at(vars(contains('biological_and_biomedical_sciences')), funs(str_replace(., 'biological_and_biomedical_sciences', 'bio')))
+
+
+t<
+
+#QAQC check on Grand Totals
+
+equals(sum(t$gran_tot, na.rm=TRUE), sum(t$gran_tot_m + t$gran_tot_w, na.rm=TRUE))
+equals(sum(t$gran_tot_eng, na.rm=TRUE), sum(t$gran_tot_m_eng + t$gran_tot_w_eng, na.rm=TRUE))
+equals(sum(t$gran_tot_comp, na.rm=TRUE), sum(t$gran_tot_m_comp + t$gran_tot_w_comp, na.rm=TRUE))
+equals(sum(t$gran_tot_eng_tech, na.rm=TRUE), sum(t$gran_tot_m_eng_tech + t$gran_tot_w_eng_tech, na.rm=TRUE))
+equals(sum(t$gran_tot_bio, na.rm=TRUE), sum(t$gran_tot_m_bio + t$gran_tot_w_bio, na.rm=TRUE))
+equals(sum(t$gran_tot_math, na.rm=TRUE), sum(t$gran_tot_m_math + t$gran_tot_w_math, na.rm=TRUE))
+equals(sum(t$gran_tot_phys, na.rm=TRUE), sum(t$gran_tot_m_phys + t$gran_tot_w_phys, na.rm=TRUE))
+equals(sum(t$gran_tot_sci_tech, na.rm=TRUE), sum(t$gran_tot_m_sci_tech + t$gran_tot_w_sci_tech, na.rm=TRUE))
+
+colnames(t)
+
+nat<-head(indian, 4)%>%select(1:3)
+
+pattern<- list('_c2011_a_rv_first_major','bachelor_s_degree')
+abbrev<-list('','')
+
+
+
+
+strip <- function(df, pattern){
+    for(x in pattern){
+        for(y in abbrev){
+            df%<>%rename_at(vars(contains(x)), ~(str_replace(., x, '')))
+            
+        }
+        
+        print(df)
+
+    }
+    
+
+}
+
+strip(nat, pattern)
+
+
+```
+
