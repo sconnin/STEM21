@@ -168,10 +168,136 @@ imputed_df<-cbind(imputed_df, df$id)%>%
 data_df<-df%>%
     select(!starts_with(c('imp', 'unk', 'nonres')))
 
-colnames(data_df)
+```
+Calc percentages for total by ethnicity and update col names
+
+```{r}
+
+ethnic<-data_df[3:26]
+
+
+ethnic%<>%mutate(perc_men = (ethnic[[2]]/ethnic[[1]])*100, .after=gran_tot)%>%select(!(3))
+ethnic%<>%mutate(perc_women = (ethnic[[3]]/ethnic[[1]])*100, .after=(2))%>%select(!(4))
+
+ethnic%>%mutate(perc_native = (ethnic[[4]]/ethnic[[1]])*100, .after=(3))%>%select(!(5))
+ethnic%<>%mutate(perc_native_men = (ethnic[[5]]/ethnic[[1]])*100, .after=(4))%>%select(!(6))
+ethnic%<>%mutate(perc_native_women = (ethnic[[6]]/ethnic[[1]])*100, .after=(5))%>%select(!(7))
+
+ethnic%<>%mutate(perc_asian = (ethnic[[7]]/ethnic[[1]])*100, .after=(6))%>%select(!(8))
+ethnic%<>%mutate(perc_asian_men = (ethnic[[8]]/ethnic[[1]])*100, .after=(7))%>%select(!(9))
+ethnic%<>%mutate(perc_asian_women = (ethnic[[9]]/ethnic[[1]])*100, .after=(8))%>%select(!(10))
+
+ethnic%<>%mutate(perc_black = (ethnic[[10]]/ethnic[[1]])*100, .after=(9))%>%select(!(11))
+ethnic%<>%mutate(perc_black_men = (ethnic[[11]]/ethnic[[1]])*100, .after=(10))%>%select(!(12))
+ethnic%<>%mutate(perc_black_women = (ethnic[[12]]/ethnic[[1]])*100, .after=(11))%>%select(!(13))
+
+ethnic%<>%mutate(perc_latino = (ethnic[[13]]/ethnic[[1]])*100, .after=(12))%>%select(!(14))
+ethnic%<>%mutate(perc_latino_men = (ethnic[[14]]/ethnic[[1]])*100, .after=(13))%>%select(!(15))
+ethnic%<>%mutate(perc_latino_women = (ethnic[[15]]/ethnic[[1]])*100, .after=(14))%>%select(!(16))
+
+ethnic%<>%mutate(perc_pacific = (ethnic[[16]]/ethnic[[1]])*100, .after=(15))%>%select(!(17))
+ethnic%<>%mutate(perc_pacific_men = (ethnic[[17]]/ethnic[[1]])*100, .after=(16))%>%select(!(18))
+ethnic%<>%mutate(perc_pacific_women = (ethnic[[18]]/ethnic[[1]])*100, .after=(17))%>%select(!(19))
+
+ethnic%<>%mutate(perc_white = (ethnic[[19]]/ethnic[[1]])*100, .after=(18))%>%select(!(20))
+ethnic%<>%mutate(perc_white_men = (ethnic[[20]]/ethnic[[1]])*100, .after=(19))%>%select(!(21))
+ethnic%<>%mutate(perc_white_women = (ethnic[[21]]/ethnic[[1]])*100, .after=(20))%>%select(!(22))
+
+ethnic%<>%mutate(perc_two = (ethnic[[22]]/ethnic[[1]])*100, .after=(21))%>%select(!(23))
+ethnic%<>%mutate(perc_two_men = (ethnic[[23]]/ethnic[[1]])*100, .after=(22))%>%select(!(24))
+ethnic%<>%mutate(perc_two_women = (ethnic[[24]]/ethnic[[1]])*100, .after=(23))%>%select(!(25))
+
+ethnic
+
+
+
 ```
 
-Initial data description
+
+
+Calculate percentages and change col names for major fields of study
+
+```{r}
+
+
+#create a list of dataframes based on field of study
+
+fields_df<-c()
+
+maj<-c("bio", "eng", "comp", "phys", "math")
+
+for(i in seq_along(maj)){
+    
+    field<-data_df%>%select(c(gran_tot, ends_with(maj[[i]])))
+    fields_df[[i]]<-field
+    
+}
+
+
+# create function to calculate percentages for vars and rename col names
+
+
+transform<-function(field, maj){
+    
+    new<-field
+
+    new%<>%mutate(!!paste('perc_tot_', maj) := (field[[2]]/field[[1]])*100)
+    new%<>%mutate(!!paste('perc_men_', maj) := (field[[3]]/field[[1]])*100)
+    new%<>%mutate(!!paste('perc_women_', maj) := (field[[4]]/field[[1]])*100)
+    
+    new%<>%mutate(!!paste('perc_native_', maj) := (field[[5]]/field[[1]])*100)
+    new%<>%mutate(!!paste('perc_native_men_', maj) := (field[[6]]/field[[1]])*100)
+    new%<>%mutate(!!paste('perc_native_women_', maj) := (field[[7]]/field[[1]])*100)
+    
+    new%<>%mutate(!!paste('perc_asian_', maj) := (field[[8]]/field[[1]])*100)
+    new%<>%mutate(!!paste('perc_asian_men_', maj) := (field[[9]]/field[[1]])*100)
+    new%<>%mutate(!!paste('perc_asian_women_', maj) := (field[[10]]/field[[1]])*100)   
+    
+    new%<>%mutate(!!paste('perc_black_', maj) := (field[[11]]/field[[1]])*100)
+    new%<>%mutate(!!paste('perc_black_men_', maj) := (field[[12]]/field[[1]])*100)
+    new%<>%mutate(!!paste('perc_black_women_', maj) := (field[[13]]/field[[1]])*100)
+    
+    new%<>%mutate(!!paste('perc_latino_', maj) := (field[[14]]/field[[1]])*100)
+    new%<>%mutate(!!paste('perc_latino_men_', maj) := (field[[15]]/field[[1]])*100)
+    new%<>%mutate(!!paste('perc_latino_women_', maj) := (field[[16]]/field[[1]])*100)
+    
+    new%<>%mutate(!!paste('perc_pacific_', maj) := (field[[17]]/field[[1]])*100)
+    new%<>%mutate(!!paste('perc_pacific_men_', maj) := (field[[18]]/field[[1]])*100)
+    new%<>%mutate(!!paste('perc_pacific_women_', maj) := (field[[19]]/field[[1]])*100)
+    
+    new%<>%mutate(!!paste('perc_white_', maj) := (field[[20]]/field[[1]])*100)
+    new%<>%mutate(!!paste('perc_white_men_', maj) := (field[[21]]/field[[1]])*100)
+    new%<>%mutate(!!paste('perc_white_women_', maj) := (field[[22]]/field[[1]])*100)
+    
+    new%<>%mutate(!!paste('perc_two_total_', maj) := (field[[23]]/field[[1]])*100)
+    new%<>%mutate(!!paste('perc_two_men_', maj) := (field[[24]]/field[[1]])*100)
+    new%<>%mutate(!!paste('perc_two_women_', maj) := (field[[25]]/field[[1]])*100)
+    
+
+    new%<>%mutate_all(~replace(., is.nan(.), 0))%>%
+        select(c(26:49))
+    
+    print(new)
+   
+    return(new)
+    
+}
+
+# execute function to update field dfs
+
+df1<-transform(data.frame(fields_df[1]), 'bio')
+df2<-transform(data.frame(fields_df[2]), 'eng')
+df3<-transform(data.frame(fields_df[3]), 'comp')
+df4<-transform(data.frame(fields_df[4]), 'phys')
+df5<-transform(data.frame(fields_df[5]), 'math')
+
+#create combined df
+
+data_df2<-cbind(df1,df2,df3,df4,df5)
+
+
+```
+
 
 ```{r}
 
@@ -179,11 +305,14 @@ Initial data description
 
 major<-c('bio')
 
-sub_df <- NULL
+sub_df <- c()
 
 perc_func <- function(df, maj){
-  for(field in seq_along(maj)){
+    
+  for(field in maj){
+      
     field<-df%>%select(ends_with(maj[[field]]))
+    
     field%<>%mutate(!!paste('perc_men_', maj) := round((field[[2]]/field[[1]])*100))
     field%<>%mutate(!!paste('perc_women_', maj) := round((field[[3]]/field[[1]])*100))
     
@@ -215,79 +344,22 @@ perc_func <- function(df, maj){
     field%<>%mutate(!!paste('perc_two_men_', maj) := round((field[[23]]/field[[1]])*100))
     field%<>%mutate(!!paste('perc_two_women_', maj) := round((field[[24]]/field[[1]])*100))
     
-    field%<>%mutate_all(~replace(., is.nan(.), 0))%>%
-      select(c(1,25:47))
+    #field%<>%mutate_all(~replace(., is.nan(.), 0))#%>%
+      #select(c(25:48))
     
 
     }
-  
-  sub_df<- field
+
+    
 
   }
 
 
 perc_func(data_df, major)
 
-
-
+colnames(data_df)
 
 ```
-```{r}
-
-
-sub_df <- list()
-
-perc_func <- function(df, maj){
-    field<-df%>%select(ends_with(maj[[field]]))
-    field%<>%mutate(!!paste('perc_men_', maj) := round((field[[2]]/field[[1]])*100))
-    field%<>%mutate(!!paste('perc_women_', maj) := round((field[[3]]/field[[1]])*100))
-    
-    field%<>%mutate(!!paste('perc_native_', maj) := round((field[[4]]/field[[1]])*100))
-    field%<>%mutate(!!paste('perc_native_men_', maj) := round((field[[5]]/field[[1]])*100))
-    field%<>%mutate(!!paste('perc_native_women_', maj) := round((field[[6]]/field[[1]])*100))
-    
-    field%<>%mutate(!!paste('perc_asian_', maj) := round((field[[7]]/field[[1]])*100))
-    field%<>%mutate(!!paste('perc_asian_men_', maj) := round((field[[8]]/field[[1]])*100))
-    field%<>%mutate(!!paste('perc_asian_women_', maj) := round((field[[9]]/field[[1]])*100))    
-    
-    field%<>%mutate(!!paste('perc_black_', maj) := round((field[[10]]/field[[1]])*100))
-    field%<>%mutate(!!paste('perc_black_men_', maj) := round((field[[11]]/field[[1]])*100))
-    field%<>%mutate(!!paste('perc_black_women_', maj) := round((field[[12]]/field[[1]])*100))
-    
-    field%<>%mutate(!!paste('perc_latino_', maj) := round((field[[13]]/field[[1]])*100))
-    field%<>%mutate(!!paste('perc_latino_men_', maj) := round((field[[14]]/field[[1]])*100))
-    field%<>%mutate(!!paste('perc_latino_women_', maj) := round((field[[15]]/field[[1]])*100))
-    
-    field%<>%mutate(!!paste('perc_pacific_', maj) := round((field[[16]]/field[[1]])*100))
-    field%<>%mutate(!!paste('perc_pacific_men_', maj) := round((field[[17]]/field[[1]])*100))
-    field%<>%mutate(!!paste('perc_pacific_women_', maj) := round((field[[18]]/field[[1]])*100))
-    
-    field%<>%mutate(!!paste('perc_white_', maj) := round((field[[19]]/field[[1]])*100))
-    field%<>%mutate(!!paste('perc_white_men_', maj) := round((field[[20]]/field[[1]])*100))
-    field%<>%mutate(!!paste('perc_white_women_', maj) := round((field[[21]]/field[[1]])*100))
-    
-    field%<>%mutate(!!paste('perc_two_total_', maj) := round((field[[22]]/field[[1]])*100))
-    field%<>%mutate(!!paste('perc_two_men_', maj) := round((field[[23]]/field[[1]])*100))
-    field%<>%mutate(!!paste('perc_two_women_', maj) := round((field[[24]]/field[[1]])*100))
-    
-    field%<>%mutate_all(~replace(., is.nan(.), 0))%>%
-      select(c(1,25:47))
-    
-    return(field)
-    
-
-}
-
-maj<-c('bio')
-for(field in seq_along(maj)){
-  sub<-list(perc_func(df, maj))
-  sub_df<-append(sub_df, sub)
-}
-  
-sub_df
-```
-
-
 
 
 
