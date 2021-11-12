@@ -18,11 +18,13 @@ library(dlookr)
 library(flextable) 
 library(vegan) # diversity measures
 
+
 ```
 Read data into base dataframe (data) 
 
 ```{r}
 data <- read.csv("C:/Users/seanc/Documents/Data_Projects/STEM_Completion_Study/Data/IPED_Bach_Res/10_11.csv")%>%as.data.frame()
+
 ```
 
 create working df
@@ -260,8 +262,6 @@ transform<-function(field, maj){
     
     new%<>%mutate_all(~replace(., is.nan(.), 0))%>%
         select(c(32:61))
-    
-    print(new)
    
     return(new)
     
@@ -279,7 +279,12 @@ df5<-transform(data.frame(fields_df[5]), 'math')
 
 identifier<-data_df%>%select(1:2)
 
-percent_df<-cbind(identifier, ethnic, df1,df2,df3,df4,df5)
+percent_df<-cbind(identifier, ethnic, df1,df2,df3,df4,df5)%>%
+    mutate( across(.cols = everything(),~str_squish(.)))%>%
+    mutate_at(c(3), as.integer)%>%
+    mutate_at(c(4:182), as.numeric)%>%
+    mutate_at(c(4:182), ~(round(., 2)))%>%
+    add_column(year = "2010-2011", .after = "name")
 
 ```
 
@@ -290,27 +295,57 @@ Simpson - The measure equals the probability that two entities taken at random f
 
 ```{r}
 
-#subset dataframe to collect ethnic totals
+#subset dataframe to collect ethnic totals from total completions
 
 totals_df<-data_df%>%select(c(ends_with('total_gran_tot')))%>%
     select(!c(unk_total_gran_tot, nonres_total_gran_tot))
 
+# calculate diversity metrics for total completions
+
 shannon_df<-data.frame(diversity(totals_df, index = "shannon", MARGIN = 1, base = exp(1)))%>%
-    rename(shannon_h = 'diversity.totals_df..index....shannon...MARGIN...1..base...exp.1..')%>%
-    mutate(shannon_e = shannon_h/log(ncol(totals_df)))%>%
+    rename(inst_shannon_h = 'diversity.totals_df..index....shannon...MARGIN...1..base...exp.1..')%>%
+    mutate(inst_shannon_e = inst_shannon_h/log(ncol(totals_df)))%>%
     mutate_if(is.numeric, round, digits = 2)
 
 simpson_df<-data.frame(diversity(totals_df, index = "simpson", MARGIN = 1, base = exp(1)))%>%
-    rename(simpson = 'diversity.totals_df..index....simpson...MARGIN...1..base...exp.1..')%>%
+    rename(inst_simpson = 'diversity.totals_df..index....simpson...MARGIN...1..base...exp.1..')%>%
     mutate_if(is.numeric, round, digits = 2)
 
 inv_simpson_df<-data.frame(diversity(totals_df, index = "inv", MARGIN = 1, base = exp(1)))%>%
-    rename(inv_simpson = 'diversity.totals_df..index....inv...MARGIN...1..base...exp.1..')%>%
+    rename(Inst_inv_simpson = 'diversity.totals_df..index....inv...MARGIN...1..base...exp.1..')%>%
     mutate_if(is.numeric, round, digits = 2)
 
-stemdiv_df<-cbind(identifier,shannon_df, simpson_df, inv_simpson_df)
+instdiv_df<-cbind(identifier,shannon_df, simpson_df, inv_simpson_df)%>%
+    mutate(across(.cols = everything(),~str_squish(.)))%>%
+    add_column(year = "2010-2011", .after = "name")
 
+#subset data for stem completions - drops to 433 institutions
 
+stems_df<-data_df%>%select(c(1:2) | c(33:182))%>%
+    drop_na()
+
+tmp<-stems_df%>%select(!c(1:2))
+
+# calculate diversity metrics across stem completion
+
+shannon2_df<-data.frame(diversity(tmp, index = "shannon", MARGIN = 1, base = exp(1)))%>%
+    rename(stem_shannon_h = 'diversity.tmp..index....shannon...MARGIN...1..base...exp.1..')%>%
+    mutate(stem_shannon_e = stem_shannon_h/log(ncol(tmp)))%>%
+    mutate_if(is.numeric, round, digits = 2)
+
+simpson2_df<-data.frame(diversity(tmp, index = "simpson", MARGIN = 1, base = exp(1)))%>%
+    rename(stem_simpson = 'diversity.tmp..index....simpson...MARGIN...1..base...exp.1..')%>%
+    mutate_if(is.numeric, round, digits = 2)
+
+inv_simpson2_df<-data.frame(diversity(tmp, index = "inv", MARGIN = 1, base = exp(1)))%>%
+    rename(stem_inv_simpson = 'diversity.tmp..index....inv...MARGIN...1..base...exp.1..')%>%
+    mutate_if(is.numeric, round, digits = 2)
+
+stemsdiv_df<-cbind(shannon2_df, simpson2_df, inv_simpson2_df)%>%
+    mutate(across(.cols = everything(),~str_squish(.)))%>%
+    add_column(year = "2010-2011", .before = "stem_shannon_h")
+
+stemsdiv_df<-cbind(stems_df[1:2], stemsdiv_df)
 
 ```
 
