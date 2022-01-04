@@ -16,4 +16,6 @@ Project status:
 * Designed and deployed an interactive web application to facilitate monitoring of STEM diversity scores within/across institutions. See: (https://stem-div.herokuapp.com/) 
 * Currently developing/testing explantory models for longitudinal data to address key research questions. 
 * updates to github respository are ongoing. 
+
+Results of this work will be relevant to campus officers and executive administrators, STEM faculty, industry recruiters, prospective students. 
  
