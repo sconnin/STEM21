@@ -1,0 +1,429 @@
+---
+title: 'STEM Gender Study'
+author: 'Sean Connin'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The purpose of this project is to estimate the average percentage of women completing undergraduate degrees in STEM programs for public and private 4-YR+ institutions in the United States based on extrinsic factors. The latter include such covariates as institution size, location, sector, student:faculty ratio, etc. 
+
+Data Source: Integrated Postsecondary Education Database System
+
+The full dataset includes variables for 1803 post-secondary institutions (Public 4 Year +, Private non_profit) and comprises the period from 2010-2020, excluding 2011-12 and 2016-17. The latter are currently omitted due to data quality concerns. 
+
+Included are the following disciplines: Computer Science, Biological Science, Engineering, Mathematics, and Physcial Science. 
+
+```{r}
+library(tidyverse)
+library(magrittr)
+library(flextable)
+library(tidymodels)
+library(skimr)
+library(xgboost)
+library(vip) # variable importance plots
+library(rpart.plot)
+```
+
+Load datasets, set initial col names, combine inst characteristics files
+
+```{r}
+
+data.stm<-read_csv('https://raw.githubusercontent.com/sconnin/STEM_Completion_Study/main/gender_tree_data.csv')
+
+```
+
+
+```{r}
+
+# remove selected covariates for gender model
+
+data.stm%<>%
+    select(!c(name, state, tot_men, perc_mn_admit, perc_mn_stem, tot_women, perc_wm_comp, perc_mn_comp))
+
+```
+
+Review univariate statistics for model
+
+```{r}
+skim(data.stm)
+```
+
+Establish modeling split
+
+```{r}
+
+set.seed(45780)
+
+# create random data split
+
+wm.split <- initial_split(data.stm, strata = perc_wm_stem, prop = 0.75)
+
+# create train and test sets from split
+
+wm.train <- training(wm.split)
+
+wm.test  <- testing(wm.split)
+
+# create resamples for model tuning
+
+set.seed(0851)
+
+cv_folds<-
+  vfold_cv(wm.train, 
+           v=10,
+           strata= perc_wm_stem)
+
+
+```
+
+Build recipe for tree regression
+
+```{r}
+
+# pre-model processing using recipes
+
+wm_recipe<-
+    recipe(perc_wm_stem ~., data=wm.train)%>%
+    update_role(contains("id"), new_role = "id vars") %>%
+    step_dummy(c(sector, region, location, size))%>% #convert factor cols to nominal
+    step_nzv(all_predictors(), freq_cut = 0, unique_cut = 0) %>% # remove zero variance
+    step_normalize(all_numeric()) # center and scale numerical vars
+
+  
+# review type, roles, source
+  
+summary(wm_recipe)
+
+```
+
+Build models with tuning parameters
+
+```{r}
+
+# specify decision tree
+
+set.seed(340)
+
+wm.dec <-decision_tree(
+  tree_depth = tune(), # creating tuneable parameters
+  min_n = tune(),
+  cost_complexity = tune()
+)%>%
+    set_engine("rpart")%>% # ctree - tree_depth, min_n
+    set_mode("regression")
+  
+
+#set up tuning grid for dec tree, levels default = 3
+
+dec.grid<-grid_regular(tree_depth(), min_n(), cost_complexity(), levels=4) 
+
+# specify boosted tree
+
+set.seed(01099)
+
+wm.boost<-boost_tree(
+  mtry =  NULL, # .preds() all predictors is actually the default, use this for bagging
+  trees = 1000,
+  min_n = tune(),
+  tree_depth = tune(),
+  learn_rate = tune(),
+  loss_reduction = NULL,
+  sample_size = NULL,
+  stop_iter = NULL
+)%>%
+    set_engine("xgboost")%>%
+    set_mode("regression")
+
+#set up tuning grid for dec tree, levels default = 3
+
+boost.grid<-grid_regular(tree_depth(), min_n(), learn_rate(), levels=4)
+
+# specify random forest
+
+set.seed(01007)
+
+wm.rf <-rand_forest(
+    mtry = tune(),
+    trees = 1000,
+    min_n = tune()
+) %>%
+    set_engine("ranger", importance='impurity')%>%
+    set_mode("regression") 
+
+
+
+
+```
+
+Build workflow
+
+```{r}
+
+# initiate a workflow for decision tree
+
+wm.dec.wf<- workflow()%>%
+    add_recipe(wm_recipe)%>%
+    add_model(wm.dec)
+
+# workflow for boosted tree
+
+wm.boost.wf <- workflow() %>% 
+  add_recipe(wm_recipe) %>% 
+  add_model(wm.boost)
+
+# workflow for random forest
+
+wm.rf.wf <- workflow() %>% 
+  add_recipe(wm_recipe) %>% 
+  add_model(wm.rf)
+
+# select metrics for model evaluation
+
+wm.metrics <- metric_set(rmse, rsq, mae, mape)
+```
+
+train models
+
+```{r}
+
+doParallel::registerDoParallel()
+
+set.seed(56701)
+
+# fit decision tree
+
+wm.dec.fit <- 
+    wm.dec.wf %>%
+    tune_grid(
+    resamples = cv_folds,
+    grid = dec.grid,
+    metrics = wm.metrics
+) 
+
+
+# fit boosted tree
+
+set.seed(80876)
+
+wm.boost.fit<-
+    wm.boost.wf%>%
+    tune_grid(
+    resamples = cv_folds,
+    grid = boost.grid,
+    metrics = wm.metrics
+)
+
+# fit random forest
+
+set.seed(86053)
+
+wm.rf.fit<-
+    tune_grid(
+    wm.rf.wf,
+    resamples = cv_folds,
+    grid=20
+)
+    
+
+save(wm.dec.fit, wm.boost.fit, wm.rf.fit, file="gender_trees.Rdata")
+```
+
+load saved models
+
+```{r}
+
+load("gender_trees.Rdata")
+
+```
+
+review cross-validation results for training data
+
+```{r}
+
+# Decision Tree
+
+collect_metrics(wm.dec.fit)
+
+autoplot(wm.dec.fit)+theme_light()
+
+show_best(wm.dec.fit)
+
+best.dec<-select_best(wm.dec.fit, 'rmse')
+
+# Boosted Tree
+
+wm.boost.fit%>% 
+    collect_metrics()
+
+autoplot(wm.boost.fit)+theme_light()
+
+show_best(wm.boost.fit)
+
+best.boost<-select_best(wm.boost.fit, 'rmse')
+
+
+# Random Forests
+
+wm.rf.fit%>% 
+    collect_metrics()
+
+autoplot(wm.rf.fit)+theme_light()
+
+show_best(wm.dec.fit)
+
+best.rf<-select_best(wm.rf.fit, 'rmse')
+
+```
+
+Review variable importance scores
+
+```{r}
+
+#vip for decision tree
+
+vip.dec<-finalize_workflow(wm.dec.wf, best.dec)
+
+vip.dec%>%
+    fit(data=wm.train)%>%
+    extract_fit_parsnip()%>%
+    vip(geom = 'col',  aesthetics=list(fill='midnightblue', alpha=0.7))+
+    labs(title='Variable Importance: Decision Tree Model')+
+    theme_light()
+
+# vip for XGboost
+
+vip.boost<-finalize_workflow(wm.boost.wf, best.boost)
+
+vip.boost%>%
+    fit(data=wm.train)%>%
+    extract_fit_parsnip()%>%
+    vip(geom = 'col',  aesthetics=list(fill='midnightblue', alpha=0.7))+
+    labs(title='Variable Importance: XGBoost Model')+
+    theme_light()
+
+# vip for XGboost
+
+vip.rf<-finalize_workflow(wm.rf.wf, best.rf)
+
+vip.rf%>%
+    fit(data=wm.train)%>%
+    extract_fit_parsnip()%>%
+    vip(geom = 'col',  aesthetics=list(fill='midnightblue', alpha=0.7))+
+    labs(title='Variable Importance: Random Forest Model')+
+    theme_light()
+
+
+```
+
+Finalize models with CV selected model for each algorithm
+
+(model specifications, model fit, metric)
+
+```{r}
+
+# Decision Tree
+
+final.dec<-finalize_model(wm.dec, select_best(wm.dec.fit, 'rmse')) #with tuning specs
+
+# Boosted Tree
+
+final.boost<-finalize_model(wm.boost, select_best(wm.boost.fit, 'rmse'))
+
+# Random Forest
+
+final.rf<-finalize_model(wm.rf, select_best(wm.rf.fit, 'rmse'))
+
+```
+
+Last fit and evaluation on test data
+
+```{r}
+
+#Fit to training and eval on testing - last fit is a convenience function to save code
+
+# Decision Tree
+
+final.fit.dec<-last_fit(final.dec,  perc_wm_stem ~., split = wm.split)
+
+# XGoost Tree
+
+final.fit.boost<-last_fit(final.boost,  perc_wm_stem ~., split = wm.split)
+
+# Random Forest
+
+final.fit.rf<-last_fit(final.rf,  perc_wm_stem ~., split = wm.split)
+
+```
+
+Compare model fit using RMSE
+
+```{r}
+
+
+collect_metrics(final.fit.dec) %>% 
+    bind_rows(collect_metrics(final.fit.boost)) %>%
+    bind_rows(collect_metrics(final.fit.rf)) %>% 
+    filter(.metric == "rmse") %>% 
+    mutate(model = c("Tree", "XGboost", "Random Forest")) %>% 
+    select(model, .metric, .estimator, .estimate) %>% 
+    flextable()%>%
+    set_caption('Goodness of Fit (RMSE) for Final Models')
+
+```
+Compare observed vs. predicted outcomes across models
+
+```{r}
+
+# plot decision tree as scatterplot
+
+final.fit.dec%>%
+    collect_predictions() %>%
+    ggplot(aes(perc_wm_stem, .pred)) +
+    geom_abline(slope = 1, lty = 2, color = "gray50", alpha = 0.5) +
+    geom_point(alpha = 0.6, color = "midnightblue") +
+    labs(title='Decision Tree Model: Observed vs. Predicted')+
+    coord_fixed()+
+    theme_light()
+
+# plot XGboost as scatterplot
+
+final.fit.boost%>%
+    collect_predictions() %>%
+    ggplot(aes(perc_wm_stem, .pred)) +
+    geom_abline(slope = 1, lty = 2, color = "gray50", alpha = 0.5) +
+    geom_point(alpha = 0.6, color = "midnightblue") +
+    labs(title='XGboost Model: Observed vs. Predicted')+
+    coord_fixed()+
+    theme_light()
+
+# plot decision tree as scatterplot
+
+final.fit.rf%>%
+    collect_predictions() %>%
+    ggplot(aes(perc_wm_stem, .pred)) +
+    geom_abline(slope = 1, lty = 2, color = "gray50", alpha = 0.5) +
+    geom_point(alpha = 0.6, color = "midnightblue") +
+    labs(title='Random Forest Model: Observed vs. Predicted')+
+    coord_fixed()+
+    theme_light()
+    
+```
+Plot rpart tree structure for decision tree model
+
+```{r}
+
+#Plot Decision Tree
+
+rpart.dec<-final.fit.dec %>%
+  extract_fit_engine() %>%
+  rpart.plot(snip=TRUE)
+
+
+
+```
+
+
+
