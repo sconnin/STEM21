@@ -1,0 +1,128 @@
+---
+title: 'STEM Gender Study - Data Cleaning'
+date: "03/24/22"
+author: "Sean Connin"
+output:
+  html_document: 
+    toc: TRUE
+    toc-title: ""
+    toc_depth: 3
+    toc_float: 
+      collapsed: TRUE
+      smooth_scroll: FALSE
+    number_sections: true
+    df_print: paged
+    code_folding: hide
+    theme: sandstone
+    highlight: tango
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The purpose of this project is to estimate the average percentage of women completing undergraduate degrees in STEM programs for public and private 4-YR+ institutions in the United States based on extrinsic factors. The latter include such covariates as institution size, location, sector, student:faculty ratio, etc. 
+
+Data Source: Integrated Postsecondary Education Database System
+
+The full dataset includes variables for 1803 post-secondary institutions (Public 4 Year +, Private non_profit) and comprises the period from 2010-2020, excluding 2011-12 and 2016-17. The latter are currently omitted due to data quality concerns. 
+
+Included are the following disciplines: Computer Science, Biological Science, Engineering, Mathematics, and Physcial Science. 
+
+This rmd files includes code for initial data cleaning and wrangling.
+
+```{r}
+library(tidyverse)
+library(magrittr)
+```
+
+Load datasets, set initial col names, combine inst characteristics files
+
+```{r}
+
+gender<-read_csv("C:\\Users\\seanc\\OneDrive\\Documents\\Data_Projects\\STEM_Completion_Study\\Data\\IPED_Bach_Res\\Output\\totals.csv") # this dataset has issues with nonunique rows need to clean
+
+gender%>%
+    arrange(id, year)
+
+sf.ratio.1920<-read_csv('C:\\Users\\seanc\\OneDrive\\Documents\\Data_Projects\\STEM_Completion_Study\\Data\\IPED_Bach_Res\\raw_data\\predictors_1920\\student_faculty_ratio_1920.csv')%>%
+    select(c(UnitID, 'Student-to-faculty ratio (EF2019D_RV)'))%>%
+    rename(sf_ratio = 'Student-to-faculty ratio (EF2019D_RV)')
+
+ret.rate.1920<-read_csv("C:\\Users\\seanc\\OneDrive\\Documents\\Data_Projects\\STEM_Completion_Study\\Data\\IPED_Bach_Res\\raw_data\\predictors_1920\\full_time_retention_rate_1920.csv")%>%
+    select(c(UnitID, 3))
+
+colnames(ret.rate.1920)[2] <- 'ret_rate'  # could not get rename to work properly
+  
+perc.admit1920<-read_csv("C:\\Users\\seanc\\OneDrive\\Documents\\Data_Projects\\STEM_Completion_Study\\Data\\IPED_Bach_Res\\raw_data\\predictors_1920\\percent_admitted_1920.csv")%>%
+    select(c(UnitID, 3:5))
+
+colnames(perc.admit1920)[2] <- 'perc_wm_admit'  # could not get rename to work properly
+colnames(perc.admit1920)[3] <- 'perc_mn_admit'  # could not get rename to work properly
+colnames(perc.admit1920)[4] <- 'perc_admit'  # could not get rename to work properly
+
+perc.enroll.1920<-read_csv("C:\\Users\\seanc\\OneDrive\\Documents\\Data_Projects\\STEM_Completion_Study\\Data\\IPED_Bach_Res\\raw_data\\predictors_1920\\percent_undergrad_enrollment_1920.csv")%>%
+    select(c(UnitID, 12))
+           
+colnames(perc.enroll.1920)[2] <- 'perc_wm_enroll'  # could not get rename to work properly
+
+inst1920<-left_join(sf.ratio.1920, ret.rate.1920, by = 'UnitID')
+inst1920<-left_join(inst1920, perc.admit1920, by = 'UnitID')
+inst1920<-left_join(inst1920, perc.enroll.1920, by = 'UnitID')
+
+inst1920%<>%
+    rename(id = 'UnitID')%>%
+    relocate(c(ret_rate, sf_ratio), .after = perc_wm_enroll)%>%
+    relocate(perc_admit, .after = id)%>%
+    arrange(id)
+    
+```
+subset data for analysis and join with inst1920 vars
+
+```{r}
+
+c.gender<-gender%>%
+    select(c(1:14, ends_with('comp')))%>%
+    select(!c(latitude, longitude, city))%>%
+    mutate(perc_wm_comp = (gran_tot_women_comp/gran_tot_comp)*100)%>%
+    mutate(perc_mn_comp = (gran_tot_men_comp/gran_tot_comp)*100)%>%
+    mutate(perc_wm_stem = (tot_women/gran_tot)*100)%>%
+    mutate(perc_mn_stem=(tot_men/gran_tot)*100)%>%
+    select(c(1:11, 36:39))%>%
+    relocate(c(perc_wm_stem, perc_mn_stem), .after = tot_women )%>%
+    arrange(id, year)%>%
+    distinct(.)%>%
+    drop_na(4:6) 
+
+stm.gender<-c.gender%>%    
+    group_by(id)%>%
+    select(c(9:15))%>%
+    summarise(across(where(is.numeric), mean, na.rm= TRUE))%>%
+    summarise(across(where(is.numeric),round))%>%
+    arrange(id)
+    
+inst<-c.gender%>%
+    select(1:8)%>%
+    select(!year)%>%
+    distinct()%>%
+    arrange(id)
+    
+data.stm<-inner_join(inst, stm.gender, by = 'id')%>%arrange(id)
+
+data.stm<-left_join(data.stm, inst1920)
+
+# convert NaN to NA, 
+
+d<-map(data.stm, ~ifelse(is.nan(.), NA, .))
+data.stm<-data.frame(d)
+
+# change char to factor
+
+data.stm%<>%
+    mutate_at(2:5, as.factor)%>%
+    na.omit()
+
+#write cleaned data to file 
+
+write_csv(data.stm, 'gender_tree_data.csv')
+```
