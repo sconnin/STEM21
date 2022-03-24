@@ -1,0 +1,890 @@
+id,name,state,sector,region,location,size,gran_tot,tot_men,tot_women,perc_wm_stem,perc_mn_stem,perc_wm_comp,perc_mn_comp,perc_admit,perc_wm_admit,perc_mn_admit,perc_wm_enroll,ret_rate,sf_ratio
+100654,Alabama A & M University,AL,public,Southeast,City,"5,000 - 9,999",450,218,307,58,42,45,55,92,93,89,60,57,20
+100663,University of Alabama at Birmingham,AL,public,Southeast,City,"20,000 +",1910,887,1400,61,39,14,86,74,72,77,61,83,19
+100706,University of Alabama in Huntsville,AL,public,Southeast,City,"5,000 - 9,999",1032,599,574,49,51,18,82,83,78,86,42,83,19
+100724,Alabama State University,AL,public,Southeast,City,"1,000 - 4,999",481,196,374,65,35,37,63,97,98,96,63,61,15
+100751,The University of Alabama,AL,public,Southeast,City,"20,000 +",4967,2609,3388,56,44,14,86,83,82,83,56,87,20
+100830,Auburn University at Montgomery,AL,public,Southeast,City,"5,000 - 9,999",528,216,423,66,34,30,70,90,90,91,65,66,16
+100858,Auburn University,AL,public,Southeast,City,"20,000 +",4000,2274,2408,51,49,13,87,81,80,82,48,91,20
+100937,Birmingham-Southern College,AL,private_nonprofit,Southeast,City,"1,000 - 4,999",241,140,144,50,50,4,96,54,50,59,53,80,11
+101189,Faulkner University,AL,private_nonprofit,Southeast,City,"1,000 - 4,999",414,172,341,66,34,24,76,78,71,86,58,61,13
+101693,University of Mobile,AL,private_nonprofit,Southeast,Rural,"1,000 - 4,999",225,90,187,67,33,19,81,46,47,44,64,75,13
+101879,University of North Alabama,AL,public,Southeast,City,"5,000 - 9,999",835,387,639,62,38,14,86,89,88,90,61,75,16
+101912,Oakwood University,AL,private_nonprofit,Southeast,City,"1,000 - 4,999",266,121,197,62,38,17,83,65,66,62,58,71,11
+102094,University of South Alabama,AL,public,Southeast,City,"10,000 - 19,999",1605,756,1152,60,40,17,83,79,80,76,60,74,17
+102368,Troy University,AL,public,Southeast,Town,"10,000 - 19,999",1995,978,1456,60,40,22,78,88,88,87,63,75,15
+102377,Tuskegee University,AL,private_nonprofit,Southeast,Town,"1,000 - 4,999",344,159,239,60,40,52,48,52,53,49,64,74,10
+102553,University of Alaska Anchorage,AK,public,Far_West,City,"10,000 - 19,999",930,449,668,60,40,11,89,83,82,84,59,66,14
+104151,Arizona State University Campus Immersion,AZ,public,Southwest,City,"20,000 +",8874,5411,5082,48,52,17,83,86,88,85,45,88,20
+104179,University of Arizona,AZ,public,Southwest,City,"20,000 +",5755,3132,3687,54,46,17,83,85,86,83,53,83,15
+104586,Embry-Riddle Aeronautical University-Prescott,AZ,private_nonprofit,Southwest,Rural,"1,000 - 4,999",349,306,89,22,78,0,100,66,64,66,26,83,17
+105330,Northern Arizona University,AZ,public,Southwest,City,"20,000 +",4332,1995,3215,62,38,12,88,85,86,82,61,78,19
+106245,University of Arkansas at Little Rock,AR,public,Southeast,City,"5,000 - 9,999",1110,514,819,61,39,17,83,66,66,66,63,66,13
+106342,Lyon College,AR,private_nonprofit,Southeast,Town,"< 1,000",101,56,62,53,47,26,74,44,44,45,44,68,10
+106397,University of Arkansas,AR,public,Southeast,City,"20,000 +",3515,1970,2243,53,47,10,90,77,78,76,54,84,18
+106412,University of Arkansas at Pine Bluff,AR,public,Southeast,City,"1,000 - 4,999",339,159,240,60,40,31,69,44,45,43,59,72,14
+106458,Arkansas State University,AR,public,Southeast,City,"10,000 - 19,999",1440,678,1069,61,39,11,89,80,81,79,60,75,18
+106704,University of Central Arkansas,AR,public,Southeast,City,"10,000 - 19,999",1286,618,949,60,40,14,86,90,92,88,60,75,16
+106713,Central Baptist College,AR,private_nonprofit,Southeast,City,"< 1,000",101,64,60,48,52,23,77,40,41,39,47,62,11
+107044,Harding University,AR,private_nonprofit,Southeast,Town,"1,000 - 4,999",721,375,495,57,43,17,83,61,60,63,55,85,15
+107071,Henderson State University,AR,public,Southeast,Town,"1,000 - 4,999",410,204,298,59,41,5,95,76,76,75,58,62,14
+107080,Hendrix College,AR,private_nonprofit,Southeast,City,"1,000 - 4,999",250,126,163,56,44,24,76,70,72,68,52,89,11
+107512,Ouachita Baptist University,AR,private_nonprofit,Southeast,Town,"1,000 - 4,999",262,139,175,56,44,2,98,61,63,60,57,79,12
+107877,Williams Baptist University,AR,private_nonprofit,Southeast,Rural,"< 1,000",76,40,52,56,44,10,90,59,61,56,47,49,12
+107983,Southern Arkansas University Main Campus,AR,public,Southeast,Town,"1,000 - 4,999",379,184,272,60,40,16,84,65,66,64,56,67,16
+109651,Art Center College of Design,CA,private_nonprofit,Far_West,City,"1,000 - 4,999",362,196,201,50,50,54,46,71,76,62,57,81,8
+110361,California Baptist University,CA,private_nonprofit,Far_West,City,"10,000 - 19,999",1056,450,836,65,35,10,90,78,79,78,62,78,16
+110404,California Institute of Technology,CA,private_nonprofit,Far_West,City,"1,000 - 4,999",232,138,92,40,60,27,73,6,11,5,45,98,3
+110413,California Lutheran University,CA,private_nonprofit,Far_West,City,"1,000 - 4,999",618,312,435,58,42,17,83,71,73,69,56,84,15
+110486,California State University-Bakersfield,CA,public,Far_West,City,"10,000 - 19,999",1415,615,1106,64,36,11,89,81,83,77,62,77,24
+110510,California State University-San Bernardino,CA,public,Far_West,City,"10,000 - 19,999",2966,1381,2254,62,38,11,89,69,71,65,61,86,29
+110538,California State University-Chico,CA,public,Far_West,City,"10,000 - 19,999",3121,1706,2042,54,46,15,85,72,77,67,53,84,24
+110547,California State University-Dominguez Hills,CA,public,Far_West,City,"10,000 - 19,999",2258,947,1834,66,34,16,84,77,81,71,62,77,26
+110556,California State University-Fresno,CA,public,Far_West,City,"20,000 +",3527,1762,2541,59,41,9,91,58,60,55,59,83,23
+110583,California State University-Long Beach,CA,public,Far_West,City,"20,000 +",6380,3189,4533,59,41,12,88,39,41,37,56,87,24
+110592,California State University-Los Angeles,CA,public,Far_West,City,"20,000 +",3790,1809,2792,61,39,16,84,48,50,45,58,81,24
+110608,California State University-Northridge,CA,public,Far_West,City,"20,000 +",6391,3254,4532,58,42,12,88,59,63,55,55,81,27
+110617,California State University-Sacramento,CA,public,Far_West,City,"20,000 +",5084,2522,3638,59,41,10,90,82,84,79,56,83,26
+110635,University of California-Berkeley,CA,public,Far_West,City,"20,000 +",6925,3776,4217,53,47,23,77,16,18,14,54,97,19
+110653,University of California-Irvine,CA,public,Far_West,City,"20,000 +",5984,3102,3839,55,45,18,82,27,28,25,52,94,18
+110662,University of California-Los Angeles,CA,public,Far_West,City,"20,000 +",7009,3490,4625,57,43,16,84,12,13,12,58,97,18
+110671,University of California-Riverside,CA,public,Far_West,City,"20,000 +",3841,2110,2411,53,47,12,88,57,58,55,54,90,22
+110680,University of California-San Diego,CA,public,Far_West,City,"20,000 +",6036,3298,3393,51,49,18,82,31,31,32,50,93,19
+110714,University of California-Santa Cruz,CA,public,Far_West,City,"10,000 - 19,999",3564,1966,2176,53,47,15,85,51,51,51,48,89,25
+111948,Chapman University,CA,private_nonprofit,Far_West,City,"5,000 - 9,999",1211,586,906,61,39,16,84,56,57,54,60,91,13
+112075,Concordia University-Irvine,CA,private_nonprofit,Far_West,City,"1,000 - 4,999",382,156,314,67,33,0,100,71,73,67,61,73,16
+113698,Dominican University of California,CA,private_nonprofit,Far_West,City,"1,000 - 4,999",287,87,262,75,25,17,83,91,92,91,69,90,9
+115728,Holy Names University,CA,private_nonprofit,Far_West,City,"1,000 - 4,999",119,46,101,68,32,0,100,63,67,57,64,67,8
+115755,Humboldt State University,CA,public,Far_West,Town,"5,000 - 9,999",1411,756,934,55,45,16,84,92,92,92,57,75,19
+117627,La Sierra University,CA,private_nonprofit,Far_West,City,"1,000 - 4,999",224,115,153,57,43,14,86,55,57,52,60,78,13
+117946,Loyola Marymount University,CA,private_nonprofit,Far_West,City,"5,000 - 9,999",1274,644,905,59,41,18,82,44,43,45,55,89,10
+118888,Mills College,CA,private_nonprofit,Far_West,City,"< 1,000",181,0,218,100,0,100,0,76,78,4,100,77,10
+119605,National University,CA,private_nonprofit,Far_West,City,"10,000 - 19,999",1434,710,1051,60,40,12,88,89,87,91,56,50,16
+120254,Occidental College,CA,private_nonprofit,Far_West,City,"1,000 - 4,999",413,210,282,57,43,30,70,37,37,36,57,93,9
+120865,Pacific Union College,CA,private_nonprofit,Far_West,Rural,"< 1,000",184,93,129,58,42,0,100,53,52,55,60,80,11
+120883,University of the Pacific,CA,private_nonprofit,Far_West,City,"5,000 - 9,999",697,351,466,57,43,17,83,66,66,66,52,83,14
+121309,Point Loma Nazarene University,CA,private_nonprofit,Far_West,City,"1,000 - 4,999",571,240,455,65,35,17,83,74,68,86,65,88,14
+121691,University of Redlands,CA,private_nonprofit,Far_West,City,"1,000 - 4,999",617,317,436,58,42,27,73,76,78,74,61,85,12
+122409,San Diego State University,CA,public,Far_West,City,"20,000 +",5811,3046,4000,57,43,11,89,34,35,33,55,89,27
+122436,University of San Diego,CA,private_nonprofit,Far_West,City,"5,000 - 9,999",1128,608,745,55,45,19,81,49,51,45,56,92,14
+122597,San Francisco State University,CA,public,Far_West,City,"20,000 +",5004,2603,3486,57,43,13,87,67,67,68,55,80,22
+122612,University of San Francisco,CA,private_nonprofit,Far_West,City,"10,000 - 19,999",1271,578,979,63,37,23,77,64,64,65,63,85,13
+122728,William Jessup University,CA,private_nonprofit,Far_West,Rural,"1,000 - 4,999",228,100,154,60,40,10,90,65,64,67,59,78,10
+122755,San Jose State University,CA,public,Far_West,City,"20,000 +",4902,2822,3065,52,48,15,85,64,70,57,50,87,25
+122931,Santa Clara University,CA,private_nonprofit,Far_West,City,"5,000 - 9,999",1127,644,683,51,49,51,49,49,51,47,50,94,10
+123651,Vanguard University of Southern California,CA,private_nonprofit,Far_West,City,"1,000 - 4,999",383,168,308,64,36,0,100,49,49,50,68,76,15
+123961,University of Southern California,CA,private_nonprofit,Far_West,City,"20,000 +",4241,2455,2619,52,48,23,77,11,11,12,52,96,9
+125897,Woodbury University,CA,private_nonprofit,Far_West,City,"1,000 - 4,999",236,124,141,53,47,50,50,66,66,67,51,84,9
+126562,University of Colorado Denver/Anschutz Medical Campus,CO,public,Rocky_Mountains,City,"20,000 +",1945,991,1339,57,43,12,88,67,68,67,55,70,17
+126580,University of Colorado Colorado Springs,CO,public,Rocky_Mountains,City,"10,000 - 19,999",1377,709,925,57,43,12,88,87,88,86,52,70,15
+126614,University of Colorado Boulder,CO,public,Rocky_Mountains,City,"20,000 +",5008,3048,2777,48,52,15,85,78,80,76,45,87,18
+126678,Colorado College,CO,private_nonprofit,Rocky_Mountains,City,"1,000 - 4,999",445,236,287,55,45,24,76,14,13,14,55,96,10
+126818,Colorado State University-Fort Collins,CO,public,Rocky_Mountains,City,"20,000 +",4141,2269,2599,53,47,10,90,81,83,80,53,84,14
+127060,University of Denver,CO,private_nonprofit,Rocky_Mountains,City,"10,000 - 19,999",1070,556,732,57,43,34,66,59,59,58,54,85,12
+127185,Fort Lewis College,CO,public,Rocky_Mountains,Town,"1,000 - 4,999",563,321,353,52,48,18,82,91,92,91,54,62,15
+127556,Colorado Mesa University,CO,public,Rocky_Mountains,City,"5,000 - 9,999",792,403,557,58,42,12,88,78,78,79,54,74,20
+127565,Metropolitan State University of Denver,CO,public,Rocky_Mountains,City,"10,000 - 19,999",2581,1316,1809,58,42,10,90,61,60,63,54,67,18
+127918,Regis University,CO,private_nonprofit,Rocky_Mountains,City,"5,000 - 9,999",954,360,796,69,31,15,85,71,72,69,61,78,12
+128106,Colorado State University Pueblo,CO,public,Rocky_Mountains,City,"5,000 - 9,999",643,326,449,58,42,14,86,93,94,92,54,63,15
+128391,Western Colorado University,CO,public,Rocky_Mountains,Town,"1,000 - 4,999",323,219,168,43,57,17,83,84,85,83,47,65,18
+128744,University of Bridgeport,CT,private_nonprofit,New_England,City,"1,000 - 4,999",439,172,366,68,32,15,85,55,59,47,67,69,16
+128902,Connecticut College,CT,private_nonprofit,New_England,City,"1,000 - 4,999",371,164,269,62,38,19,81,37,42,31,62,90,9
+129215,Eastern Connecticut State University,CT,public,New_England,Town,"1,000 - 4,999",894,456,625,58,42,15,85,64,68,58,58,77,15
+129525,University of Hartford,CT,private_nonprofit,New_England,City,"5,000 - 9,999",860,484,533,52,48,23,77,76,76,77,52,75,9
+130493,Southern Connecticut State University,CT,public,New_England,City,"5,000 - 9,999",1333,552,1086,66,34,12,88,69,74,63,61,73,13
+130590,Trinity College,CT,private_nonprofit,New_England,City,"1,000 - 4,999",447,265,267,50,50,23,77,33,35,31,50,91,9
+130697,Wesleyan University,CT,private_nonprofit,New_England,City,"1,000 - 4,999",632,352,404,53,47,30,70,16,14,20,54,97,8
+130776,Western Connecticut State University,CT,public,New_England,City,"5,000 - 9,999",803,428,560,57,43,6,94,76,81,69,53,74,12
+130794,Yale University,CT,private_nonprofit,New_England,City,"10,000 - 19,999",1149,678,668,50,50,22,78,6,6,7,51,99,6
+130934,Delaware State University,DE,public,Mid_East,City,"1,000 - 4,999",482,205,385,65,35,27,73,53,55,49,66,70,16
+131159,American University,DC,private_nonprofit,Mid_East,City,"10,000 - 19,999",1396,658,1064,62,38,31,69,36,37,34,61,87,11
+131283,The Catholic University of America,DC,private_nonprofit,Mid_East,City,"5,000 - 9,999",640,344,425,55,45,45,55,85,88,81,55,88,10
+131450,Gallaudet University,DC,private_nonprofit,Mid_East,City,"1,000 - 4,999",179,93,126,58,42,18,82,61,62,60,54,75,6
+131469,George Washington University,DC,private_nonprofit,Mid_East,City,"20,000 +",2133,1066,1510,58,42,29,71,41,41,41,62,92,13
+131496,Georgetown University,DC,private_nonprofit,Mid_East,City,"10,000 - 19,999",1474,793,1009,56,44,32,68,14,14,15,56,97,11
+131520,Howard University,DC,private_nonprofit,Mid_East,City,"10,000 - 19,999",993,357,822,70,30,27,73,36,37,34,71,86,10
+131876,Trinity Washington University,DC,private_nonprofit,Mid_East,City,"1,000 - 4,999",185,8,220,96,4,100,0,97,97,100,97,74,12
+132602,Bethune-Cookman University,FL,private_nonprofit,Southeast,City,"1,000 - 4,999",411,191,314,62,38,22,78,84,85,83,63,54,14
+133492,Eckerd College,FL,private_nonprofit,Southeast,City,"1,000 - 4,999",413,182,310,63,37,16,84,67,70,62,67,81,12
+133526,Edward Waters College,FL,private_nonprofit,Southeast,City,"1,000 - 4,999",91,47,62,57,43,0,100,61,63,58,52,53,23
+133553,Embry-Riddle Aeronautical University-Daytona Beach,FL,private_nonprofit,Southeast,City,"5,000 - 9,999",823,763,185,19,81,34,66,61,59,62,23,78,17
+133650,Florida Agricultural and Mechanical University,FL,public,Southeast,City,"5,000 - 9,999",1210,527,941,64,36,32,68,36,36,35,65,80,15
+133669,Florida Atlantic University,FL,public,Southeast,City,"20,000 +",4493,2174,3254,60,40,12,88,63,65,61,57,81,21
+133881,Florida Institute of Technology,FL,private_nonprofit,Southeast,City,"5,000 - 9,999",617,452,211,32,68,14,86,66,63,67,29,79,14
+134079,Florida Southern College,FL,private_nonprofit,Southeast,City,"1,000 - 4,999",446,196,343,64,36,27,73,52,51,55,63,82,14
+134097,Florida State University,FL,public,Southeast,City,"20,000 +",6983,3646,4763,57,43,26,74,36,36,35,57,93,21
+134130,University of Florida,FL,public,Southeast,City,"20,000 +",7440,3726,4979,57,43,14,86,35,36,33,56,97,17
+134945,Jacksonville University,FL,private_nonprofit,Southeast,City,"1,000 - 4,999",673,254,573,69,31,16,84,92,92,90,59,74,11
+135726,University of Miami,FL,private_nonprofit,Southeast,City,"10,000 - 19,999",2220,1183,1418,55,45,21,79,27,25,29,54,93,12
+136172,University of North Florida,FL,public,Southeast,City,"10,000 - 19,999",2672,1321,1910,59,41,15,85,72,74,69,57,83,19
+136330,Palm Beach Atlantic University,FL,private_nonprofit,Southeast,City,"1,000 - 4,999",400,162,327,67,33,21,79,95,96,95,63,76,12
+137351,University of South Florida,FL,public,Southeast,City,"20,000 +",6875,3315,4864,59,41,14,86,48,48,48,55,91,23
+137546,Stetson University,FL,private_nonprofit,Southeast,City,"1,000 - 4,999",481,240,346,59,41,17,83,72,74,70,57,77,13
+137847,The University of Tampa,FL,private_nonprofit,Southeast,City,"5,000 - 9,999",1206,629,842,57,43,24,76,45,41,52,58,77,17
+138293,Webber International University,FL,private_nonprofit,Southeast,Town,"< 1,000",92,71,43,38,62,24,76,42,38,44,31,55,24
+138354,The University of West Florida,FL,public,Southeast,City,"10,000 - 19,999",1760,788,1330,63,37,18,82,31,29,33,57,81,21
+138716,Albany State University,GA,public,Southeast,City,"5,000 - 9,999",423,149,364,71,29,27,73,66,66,67,72,61,19
+138868,Point University,GA,private_nonprofit,Southeast,Town,"1,000 - 4,999",179,78,122,60,40,50,50,29,26,33,58,63,17
+138947,Clark Atlanta University,GA,private_nonprofit,Southeast,City,"1,000 - 4,999",411,120,380,76,24,34,66,55,55,55,76,74,19
+139205,Brewton-Parker College,GA,private_nonprofit,Southeast,Rural,"< 1,000",57,30,39,57,43,7,93,96,100,94,44,42,18
+139366,Columbus State University,GA,public,Southeast,City,"5,000 - 9,999",827,351,658,65,35,16,84,79,73,92,61,72,16
+139393,Covenant College,GA,private_nonprofit,Southeast,Rural,"< 1,000",194,96,139,59,41,11,89,98,99,98,53,84,12
+139630,Emmanuel College,GA,private_nonprofit,Southeast,Town,"< 1,000",100,57,63,52,48,55,45,46,35,56,47,67,15
+139658,Emory University,GA,private_nonprofit,Southeast,City,"10,000 - 19,999",1618,773,1137,59,41,21,79,16,15,17,60,95,9
+139719,Fort Valley State University,GA,public,Southeast,Town,"1,000 - 4,999",324,140,246,64,36,33,67,52,51,54,61,73,23
+139755,Georgia Institute of Technology-Main Campus,GA,public,Southeast,City,"20,000 +",3239,2264,1149,33,67,16,84,21,28,17,39,97,19
+139764,Georgia Southwestern State University,GA,public,Southeast,Town,"1,000 - 4,999",389,148,330,69,31,20,80,58,57,62,62,68,16
+139861,Georgia College & State University,GA,public,Southeast,Town,"5,000 - 9,999",986,440,753,63,37,15,85,80,80,78,64,86,17
+139931,Georgia Southern University,GA,public,Southeast,Town,"20,000 +",2926,1549,1952,55,45,14,86,74,72,77,56,78,20
+139940,Georgia State University,GA,public,Southeast,City,"20,000 +",3988,1872,2935,61,39,25,75,76,76,76,59,82,26
+139959,University of Georgia,GA,public,Southeast,City,"20,000 +",5916,2993,4151,58,42,17,83,45,47,42,57,96,17
+140234,LaGrange College,GA,private_nonprofit,Southeast,Town,"< 1,000",148,70,110,61,39,6,94,49,47,50,49,70,11
+140252,Life University,GA,private_nonprofit,Southeast,City,"1,000 - 4,999",103,54,62,53,47,35,65,96,94,98,53,65,13
+140340,Herzing University-Atlanta,GA,private_nonprofit,Southeast,City,"< 1,000",74,32,58,64,36,19,81,90,94,79,79,29,14
+140447,Mercer University,GA,private_nonprofit,Southeast,City,"5,000 - 9,999",862,342,687,67,33,25,75,74,74,74,63,86,13
+140960,Savannah State University,GA,public,Southeast,City,"1,000 - 4,999",417,186,301,62,38,41,59,33,34,32,61,61,17
+140988,Shorter University,GA,private_nonprofit,Southeast,City,"1,000 - 4,999",234,109,178,62,38,19,81,60,59,62,56,59,12
+141264,Valdosta State University,GA,public,Southeast,City,"10,000 - 19,999",1313,585,1014,63,37,12,88,57,56,60,64,70,20
+141334,University of West Georgia,GA,public,Southeast,Town,"10,000 - 19,999",1383,567,1114,66,34,13,87,59,61,57,64,69,18
+141486,Chaminade University of Honolulu,HI,private_nonprofit,Far_West,City,"1,000 - 4,999",284,117,232,66,34,23,77,95,95,94,72,86,11
+141565,University of Hawaii at Hilo,HI,public,Far_West,Town,"1,000 - 4,999",584,265,437,62,38,18,82,52,49,56,63,73,13
+141574,University of Hawaii at Manoa,HI,public,Far_West,City,"10,000 - 19,999",2720,1408,1863,57,43,16,84,58,58,63,58,81,12
+141644,Hawaii Pacific University,HI,private_nonprofit,Far_West,City,"1,000 - 4,999",649,309,476,61,39,17,83,75,76,70,60,58,17
+142115,Boise State University,ID,public,Rocky_Mountains,City,"20,000 +",2490,1278,1728,57,43,14,86,77,80,75,57,79,18
+142285,University of Idaho,ID,public,Rocky_Mountains,Town,"10,000 - 19,999",1516,916,888,49,51,14,86,78,81,74,51,77,16
+142328,Lewis-Clark State College,ID,public,Rocky_Mountains,City,"1,000 - 4,999",430,177,348,66,34,23,77,100,100,100,63,60,12
+142522,Brigham Young University-Idaho,ID,private_nonprofit,Rocky_Mountains,Town,"20,000 +",3562,1880,2395,56,44,16,84,96,97,95,57,70,19
+143084,Augustana College,IL,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",491,232,347,60,40,18,82,57,58,54,56,83,11
+143288,Blackburn College,IL,private_nonprofit,Great_Lakes,Town,"< 1,000",87,44,58,57,43,19,81,57,58,55,56,57,11
+143358,Bradley University,IL,private_nonprofit,Great_Lakes,City,"5,000 - 9,999",926,511,576,53,47,10,90,70,70,70,51,85,12
+144005,Chicago State University,IL,public,Great_Lakes,City,"1,000 - 4,999",482,162,425,72,28,26,74,63,65,59,70,52,10
+144050,University of Chicago,IL,private_nonprofit,Great_Lakes,City,"10,000 - 19,999",1198,720,679,49,51,27,73,6,6,7,49,99,5
+144281,Columbia College Chicago,IL,private_nonprofit,Great_Lakes,City,"5,000 - 9,999",1629,796,1034,57,43,21,79,90,92,86,58,71,14
+144740,DePaul University,IL,private_nonprofit,Great_Lakes,City,"20,000 +",2961,1648,1966,54,46,15,85,68,71,65,53,85,16
+144892,Eastern Illinois University,IL,public,Great_Lakes,Town,"5,000 - 9,999",1456,721,1051,60,40,17,83,53,54,50,57,73,14
+144971,Eureka College,IL,private_nonprofit,Great_Lakes,Town,"< 1,000",129,66,90,57,43,28,72,62,68,58,48,59,11
+145336,Governors State University,IL,public,Great_Lakes,Rural,"1,000 - 4,999",740,307,601,66,34,14,86,46,47,43,63,52,12
+145372,Greenville University,IL,private_nonprofit,Great_Lakes,Town,"< 1,000",225,117,156,57,43,0,100,56,59,54,44,62,11
+145600,University of Illinois Chicago,IL,public,Great_Lakes,City,"20,000 +",3403,1862,2094,53,47,16,84,73,75,70,52,79,18
+145637,University of Illinois Urbana-Champaign,IL,public,Great_Lakes,City,"20,000 +",6894,4271,3671,46,54,16,84,59,65,54,46,93,20
+145646,Illinois Wesleyan University,IL,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",363,185,250,57,43,21,79,61,62,60,52,84,11
+145691,Illinois College,IL,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",181,103,109,51,49,14,86,78,82,72,52,78,13
+145725,Illinois Institute of Technology,IL,private_nonprofit,Great_Lakes,City,"5,000 - 9,999",565,422,177,29,71,18,82,60,64,59,32,88,12
+146427,Knox College,IL,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",258,122,182,60,40,25,75,68,73,62,57,81,10
+146719,Loyola University Chicago,IL,private_nonprofit,Great_Lakes,City,"10,000 - 19,999",2088,846,1648,66,34,24,76,67,69,64,67,85,14
+147244,Millikin University,IL,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",365,170,277,62,38,0,100,71,77,65,55,75,10
+147341,Monmouth College,IL,private_nonprofit,Great_Lakes,Town,"< 1,000",205,112,135,54,46,13,87,67,71,63,50,79,10
+147536,National Louis University,IL,private_nonprofit,Great_Lakes,City,"5,000 - 9,999",480,134,406,75,25,68,32,98,98,98,73,58,15
+147660,North Central College,IL,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",546,278,388,58,42,10,90,54,54,53,54,78,14
+147767,Northwestern University,IL,private_nonprofit,Great_Lakes,City,"20,000 +",1893,1078,1132,51,49,20,80,9,9,9,51,98,6
+147776,Northeastern Illinois University,IL,public,Great_Lakes,City,"5,000 - 9,999",1305,660,918,58,42,14,86,58,61,55,57,59,13
+148016,Principia College,IL,private_nonprofit,Great_Lakes,Rural,"< 1,000",90,50,57,53,47,19,81,91,92,90,48,94,7
+148131,Quincy University,IL,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",196,94,143,60,40,12,88,62,64,60,52,67,14
+148405,Rockford University,IL,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",202,83,164,66,34,15,85,54,59,50,57,66,10
+148487,Roosevelt University,IL,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",710,309,555,64,36,16,84,67,66,70,66,73,10
+148627,Saint Xavier University,IL,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",559,214,466,69,31,21,79,73,75,69,62,76,16
+148654,University of Illinois Springfield,IL,public,Great_Lakes,City,"1,000 - 4,999",582,330,362,52,48,13,87,77,75,79,51,79,12
+149222,Southern Illinois University-Carbondale,IL,public,Great_Lakes,City,"10,000 - 19,999",2815,1912,1415,43,57,11,89,66,65,69,46,75,12
+149772,Western Illinois University,IL,public,Great_Lakes,Town,"5,000 - 9,999",1708,1064,1021,49,51,10,90,57,56,57,53,67,13
+150066,Anderson University,IN,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",303,141,230,62,38,16,84,63,63,62,58,69,11
+150136,Ball State University,IN,public,Great_Lakes,City,"20,000 +",2732,1378,1975,59,41,12,88,77,78,74,60,75,14
+150145,Bethel University,IN,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",296,127,240,65,35,0,100,94,95,92,62,64,11
+150163,Butler University,IN,private_nonprofit,Great_Lakes,City,"5,000 - 9,999",659,312,485,61,39,18,82,73,73,73,60,88,11
+150400,DePauw University,IN,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",438,233,285,55,45,25,75,64,67,61,52,86,8
+150455,Earlham College,IN,private_nonprofit,Great_Lakes,Town,"< 1,000",189,94,126,57,43,10,90,63,68,57,57,80,7
+150534,University of Evansville,IN,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",422,207,298,59,41,10,90,71,71,71,59,84,11
+150668,Goshen College,IN,private_nonprofit,Great_Lakes,City,"< 1,000",180,79,140,64,36,15,85,63,63,63,62,76,10
+150677,Grace College and Theological Seminary,IN,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",267,134,196,59,41,46,54,80,81,78,61,84,20
+150756,Hanover College,IN,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",193,98,130,57,43,9,91,65,67,61,56,79,12
+150941,Huntington University,IN,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",179,95,127,57,43,7,93,75,75,76,57,82,12
+151102,Purdue University Fort Wayne,IN,public,Great_Lakes,City,"5,000 - 9,999",1118,580,755,57,43,11,89,81,80,83,54,57,15
+151111,Indiana University-Purdue University-Indianapolis,IN,public,Great_Lakes,City,"20,000 +",3374,1644,2391,59,41,16,84,81,83,78,58,73,15
+151263,University of Indianapolis,IN,private_nonprofit,Great_Lakes,City,"5,000 - 9,999",672,269,558,68,32,13,87,93,93,93,63,73,12
+151290,Indiana Institute of Technology,IN,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",374,217,227,47,53,18,82,60,56,63,36,68,11
+151324,Indiana State University,IN,public,Great_Lakes,City,"10,000 - 19,999",1446,784,954,55,45,12,88,90,91,87,56,65,18
+151333,Indiana University-Kokomo,IN,public,Great_Lakes,City,"1,000 - 4,999",404,143,358,72,28,12,88,74,74,73,65,64,15
+151342,Indiana University-South Bend,IN,public,Great_Lakes,City,"1,000 - 4,999",633,275,500,64,36,11,89,78,78,77,64,68,13
+151351,Indiana University-Bloomington,IN,public,Great_Lakes,City,"20,000 +",6127,3642,3735,51,49,20,80,78,77,78,49,90,16
+151360,Indiana University-Northwest,IN,public,Great_Lakes,City,"1,000 - 4,999",442,151,392,72,28,37,63,75,75,73,72,64,14
+151388,Indiana University-East,IN,public,Great_Lakes,Rural,"1,000 - 4,999",517,200,433,69,31,20,80,63,65,57,64,63,15
+151777,Manchester University,IN,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",194,109,127,54,46,10,90,56,57,55,54,67,15
+151786,Marian University,IN,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",424,162,362,69,31,0,100,62,64,58,63,83,13
+151801,Indiana Wesleyan University-Marion,IN,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",1366,535,1157,68,32,47,53,85,84,85,64,79,13
+152099,Oakland City University,IN,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",120,63,74,54,46,36,64,55,52,59,56,67,12
+152318,Rose-Hulman Institute of Technology,IN,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",460,357,107,23,77,14,86,74,79,73,24,90,11
+152336,University of Saint Francis-Fort Wayne,IN,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",248,92,214,70,30,50,50,96,97,94,70,69,11
+152381,Saint Mary-of-the-Woods College,IN,private_nonprofit,Great_Lakes,Rural,"1,000 - 4,999",117,8,137,94,6,86,14,67,69,59,86,66,8
+152530,Taylor University,IN,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",354,188,240,56,44,9,91,68,69,68,55,85,12
+152567,Trine University,IN,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",293,224,100,31,69,9,91,82,77,85,47,76,15
+153001,Buena Vista University,IA,private_nonprofit,Plains,Town,"1,000 - 4,999",502,187,432,70,30,7,93,57,59,55,64,70,7
+153108,Central College,IA,private_nonprofit,Plains,Town,"1,000 - 4,999",256,140,162,54,46,19,81,65,64,66,48,82,13
+153126,Clarke University,IA,private_nonprofit,Plains,City,"< 1,000",162,63,136,68,32,14,86,94,92,95,54,72,8
+153144,Coe College,IA,private_nonprofit,Plains,City,"1,000 - 4,999",238,126,156,55,45,9,91,63,65,61,55,80,10
+153162,Cornell College,IA,private_nonprofit,Plains,Town,"1,000 - 4,999",208,114,132,53,47,14,86,62,64,59,47,76,12
+153250,Dordt University,IA,private_nonprofit,Plains,Town,"1,000 - 4,999",240,144,142,50,50,0,100,75,80,73,46,81,14
+153269,Drake University,IA,private_nonprofit,Plains,City,"1,000 - 4,999",655,332,463,58,42,24,76,68,70,65,59,84,10
+153278,University of Dubuque,IA,private_nonprofit,Plains,City,"1,000 - 4,999",284,182,163,47,53,20,80,73,74,72,45,65,13
+153366,Graceland University-Lamoni,IA,private_nonprofit,Plains,Rural,"1,000 - 4,999",281,116,229,66,34,17,83,58,62,53,56,76,12
+153375,Grand View University,IA,private_nonprofit,Plains,City,"1,000 - 4,999",383,182,281,61,39,12,88,96,96,96,54,68,12
+153384,Grinnell College,IA,private_nonprofit,Plains,Town,"1,000 - 4,999",331,169,209,55,45,30,70,23,24,22,53,94,9
+153603,Iowa State University,IA,public,Plains,City,"20,000 +",5062,3180,2725,46,54,11,89,92,92,92,43,87,18
+153621,Iowa Wesleyan University,IA,private_nonprofit,Plains,Town,"< 1,000",102,43,81,66,34,50,50,58,58,59,52,55,10
+153658,University of Iowa,IA,public,Plains,City,"20,000 +",4044,2264,2609,54,46,15,85,83,85,80,54,86,15
+153825,Loras College,IA,private_nonprofit,Plains,City,"1,000 - 4,999",262,155,163,51,49,12,88,75,74,77,43,76,12
+153834,Luther College,IA,private_nonprofit,Plains,Town,"1,000 - 4,999",433,220,295,57,43,16,84,62,66,58,57,84,11
+153861,Maharishi International University,IA,private_nonprofit,Plains,Town,"1,000 - 4,999",79,42,53,55,45,40,60,81,86,64,70,56,11
+154004,Morningside College,IA,private_nonprofit,Plains,City,"1,000 - 4,999",223,123,146,54,46,2,98,63,61,65,50,68,13
+154013,Mount Mercy University,IA,private_nonprofit,Plains,City,"1,000 - 4,999",325,121,279,70,30,17,83,66,66,65,68,75,15
+154095,University of Northern Iowa,IA,public,Plains,City,"5,000 - 9,999",1855,937,1309,58,42,9,91,79,81,76,59,83,17
+154101,Northwestern College,IA,private_nonprofit,Plains,Town,"1,000 - 4,999",202,95,149,61,39,7,93,70,77,65,55,76,10
+154235,Saint Ambrose University,IA,private_nonprofit,Plains,City,"1,000 - 4,999",490,238,358,60,40,15,85,77,65,94,55,76,11
+154350,Simpson College,IA,private_nonprofit,Plains,Town,"1,000 - 4,999",322,168,216,56,44,17,83,80,84,77,53,78,11
+154493,Upper Iowa University,IA,private_nonprofit,Plains,Rural,"1,000 - 4,999",1005,453,793,64,36,17,83,51,46,55,62,64,12
+154527,Wartburg College,IA,private_nonprofit,Plains,Town,"1,000 - 4,999",307,165,193,54,46,12,88,75,78,72,55,78,11
+154590,William Penn University,IA,private_nonprofit,Plains,Town,"1,000 - 4,999",238,128,160,55,45,23,77,58,56,60,46,56,13
+154688,Baker University,KS,private_nonprofit,Plains,Town,"1,000 - 4,999",349,174,256,60,40,12,88,88,88,87,57,75,11
+154712,Benedictine College,KS,private_nonprofit,Plains,Town,"1,000 - 4,999",301,157,209,57,43,27,73,97,98,95,52,77,14
+154749,Bethel College-North Newton,KS,private_nonprofit,Plains,Town,"< 1,000",87,41,64,60,40,0,100,57,58,57,48,67,9
+155025,Emporia State University,KS,public,Plains,Town,"5,000 - 9,999",603,263,468,64,36,19,81,85,85,85,63,77,17
+155061,Fort Hays State University,KS,public,Plains,Town,"10,000 - 19,999",2156,1050,1603,60,40,21,79,91,92,91,60,74,18
+155089,Friends University,KS,private_nonprofit,Plains,City,"1,000 - 4,999",323,161,228,59,41,21,79,46,46,46,55,69,12
+155317,University of Kansas,KS,public,Plains,City,"20,000 +",3463,1967,2176,53,47,13,87,93,95,91,52,86,17
+155335,Newman University,KS,private_nonprofit,Plains,City,"1,000 - 4,999",212,82,172,68,32,30,70,67,68,66,62,72,11
+155399,Kansas State University,KS,public,Plains,City,"20,000 +",3173,1862,1903,51,49,10,90,95,95,95,48,86,18
+155414,Kansas Wesleyan University,KS,private_nonprofit,Plains,Town,"< 1,000",115,62,78,55,45,27,73,61,63,58,42,68,11
+155627,Ottawa University-Ottawa,KS,private_nonprofit,Plains,Town,"< 1,000",84,54,49,48,52,42,58,15,12,16,39,50,11
+155681,Pittsburg State University,KS,public,Plains,Town,"5,000 - 9,999",964,555,584,51,49,13,87,96,96,95,50,74,16
+155812,University of Saint Mary,KS,private_nonprofit,Plains,Town,"1,000 - 4,999",152,59,127,68,32,36,64,84,87,81,50,63,11
+155900,Southwestern College,KS,private_nonprofit,Plains,Town,"1,000 - 4,999",344,249,163,39,61,13,87,52,50,53,36,66,10
+156125,Wichita State University,KS,public,Plains,City,"10,000 - 19,999",1766,902,1214,57,43,20,80,92,91,93,54,69,19
+156286,Bellarmine University,KY,private_nonprofit,Southeast,City,"1,000 - 4,999",466,185,382,67,33,20,80,66,66,66,64,80,12
+156295,Berea College,KY,private_nonprofit,Southeast,Town,"1,000 - 4,999",266,122,190,61,39,17,83,30,30,31,58,84,10
+156356,Brescia University,KY,private_nonprofit,Southeast,City,"< 1,000",108,31,101,76,24,20,80,42,43,41,69,68,13
+156365,Campbellsville University,KY,private_nonprofit,Southeast,Town,"10,000 - 19,999",285,137,213,61,39,24,76,70,71,69,61,68,14
+156408,Centre College,KY,private_nonprofit,Southeast,Town,"1,000 - 4,999",267,149,168,53,47,18,82,76,81,72,52,90,10
+156541,University of the Cumberlands,KY,private_nonprofit,Southeast,Town,"10,000 - 19,999",304,149,218,58,42,19,81,80,80,80,60,69,20
+156620,Eastern Kentucky University,KY,public,Southeast,Town,"10,000 - 19,999",2048,1051,1456,58,42,10,90,94,94,93,57,75,15
+156745,Georgetown College,KY,private_nonprofit,Southeast,Town,"1,000 - 4,999",173,89,121,57,43,3,97,63,64,62,55,71,11
+157058,Kentucky State University,KY,public,Southeast,Town,"1,000 - 4,999",190,87,141,62,38,23,77,81,83,77,57,66,11
+157076,Kentucky Wesleyan College,KY,private_nonprofit,Southeast,City,"< 1,000",112,66,68,51,49,2,98,62,67,58,49,69,14
+157085,University of Kentucky,KY,public,Southeast,City,"20,000 +",3740,2063,2406,54,46,14,86,96,96,95,56,85,16
+157289,University of Louisville,KY,public,Southeast,City,"20,000 +",2389,1329,1527,53,47,19,81,69,69,70,54,80,14
+157377,Midway University,KY,private_nonprofit,Southeast,Rural,"1,000 - 4,999",150,38,148,79,21,33,67,60,59,62,70,69,17
+157386,Morehead State University,KY,public,Southeast,Town,"5,000 - 9,999",988,460,730,61,39,8,92,78,80,77,61,73,16
+157401,Murray State University,KY,public,Southeast,Town,"5,000 - 9,999",1305,610,952,61,39,14,86,82,83,82,61,79,15
+157818,Transylvania University,KY,private_nonprofit,Southeast,City,"< 1,000",190,86,138,62,38,29,71,90,91,88,60,82,11
+157863,Union College,KY,private_nonprofit,Southeast,Town,"1,000 - 4,999",122,69,81,53,47,16,84,55,57,53,52,63,12
+157951,Western Kentucky University,KY,public,Southeast,City,"10,000 - 19,999",2336,1148,1670,59,41,15,85,97,98,96,60,73,18
+158802,Dillard University,LA,private_nonprofit,Southeast,City,"1,000 - 4,999",167,50,153,75,25,20,80,39,40,36,75,67,13
+159009,Grambling State University,LA,public,Southeast,Town,"5,000 - 9,999",509,233,375,62,38,39,61,97,98,97,62,74,24
+159391,Louisiana State University and Agricultural & Mechanical College,LA,public,Southeast,City,"20,000 +",4036,2231,2524,53,47,12,88,75,75,74,53,83,20
+159416,Louisiana State University-Shreveport,LA,public,Southeast,City,"5,000 - 9,999",380,173,283,62,38,17,83,84,83,86,61,65,27
+159647,Louisiana Tech University,LA,public,Southeast,Town,"10,000 - 19,999",1141,702,635,47,53,10,90,64,63,66,48,80,22
+159656,Loyola University New Orleans,LA,private_nonprofit,Southeast,City,"1,000 - 4,999",444,214,332,61,39,30,70,75,76,73,66,78,12
+159717,McNeese State University,LA,public,Southeast,City,"5,000 - 9,999",891,402,674,63,37,12,88,81,79,83,59,70,20
+159939,University of New Orleans,LA,public,Southeast,City,"5,000 - 9,999",1053,591,657,53,47,13,87,56,52,61,51,68,20
+159966,Nicholls State University,LA,public,Southeast,City,"5,000 - 9,999",774,325,619,66,34,62,38,88,86,89,64,73,20
+159993,University of Louisiana at Monroe,LA,public,Southeast,City,"5,000 - 9,999",900,385,713,65,35,19,81,80,81,79,64,73,18
+160038,Northwestern State University of Louisiana,LA,public,Southeast,Town,"10,000 - 19,999",952,356,798,69,31,23,77,82,82,82,71,70,20
+160612,Southeastern Louisiana University,LA,public,Southeast,City,"10,000 - 19,999",1543,681,1193,64,36,10,90,90,91,89,62,68,20
+160621,Southern University and A & M College,LA,public,Southeast,City,"5,000 - 9,999",613,248,488,66,34,34,66,35,35,36,65,61,21
+160630,Southern University at New Orleans,LA,public,Southeast,City,"1,000 - 4,999",243,70,226,77,23,37,63,60,62,56,72,52,21
+160658,University of Louisiana at Lafayette,LA,public,Southeast,City,"10,000 - 19,999",2204,1054,1580,60,40,11,89,68,67,70,57,76,20
+160755,Tulane University of Louisiana,LA,private_nonprofit,Southeast,City,"10,000 - 19,999",1457,726,1024,58,42,32,68,13,13,13,59,93,8
+160904,Xavier University of Louisiana,LA,private_nonprofit,Southeast,City,"1,000 - 4,999",301,82,250,75,25,27,73,60,62,54,76,70,15
+161004,Bowdoin College,ME,private_nonprofit,New_England,Town,"1,000 - 4,999",407,232,238,51,49,20,80,9,8,10,51,98,9
+161086,Colby College,ME,private_nonprofit,New_England,Town,"1,000 - 4,999",412,221,267,55,45,33,67,10,10,9,54,94,9
+161226,University of Maine at Farmington,ME,public,New_England,Town,"1,000 - 4,999",299,120,246,67,33,18,82,91,92,89,66,73,11
+161235,University of Maine at Fort Kent,ME,public,New_England,Rural,"1,000 - 4,999",144,43,135,75,25,12,88,99,99,99,70,65,15
+161518,Saint Joseph's College of Maine,ME,private_nonprofit,New_England,Rural,"1,000 - 4,999",243,88,211,71,29,0,100,87,87,87,63,82,10
+161554,University of Southern Maine,ME,public,New_England,City,"5,000 - 9,999",978,465,723,61,39,12,88,81,82,79,57,69,13
+161563,Thomas College,ME,private_nonprofit,New_England,Rural,"1,000 - 4,999",123,73,79,52,48,9,91,84,85,82,53,72,24
+161873,University of Baltimore,MD,public,Mid_East,City,"1,000 - 4,999",527,276,378,58,42,22,78,78,77,80,58,87,12
+162283,Coppin State University,MD,public,Mid_East,City,"1,000 - 4,999",331,90,317,78,22,26,74,28,29,25,77,70,13
+162654,Goucher College,MD,private_nonprofit,Mid_East,City,"1,000 - 4,999",250,90,212,70,30,26,74,81,84,76,67,75,11
+162760,Hood College,MD,private_nonprofit,Mid_East,City,"1,000 - 4,999",255,99,204,67,33,19,81,65,68,62,63,74,10
+162928,Johns Hopkins University,MD,private_nonprofit,Mid_East,City,"20,000 +",1389,744,836,53,47,24,76,11,11,11,53,97,6
+163046,Loyola University Maryland,MD,private_nonprofit,Mid_East,City,"5,000 - 9,999",746,364,538,60,40,29,71,80,82,78,58,88,12
+163338,University of Maryland Eastern Shore,MD,public,Mid_East,Town,"1,000 - 4,999",451,213,320,60,40,28,72,65,67,60,55,62,11
+163453,Morgan State University,MD,public,Mid_East,City,"5,000 - 9,999",828,422,564,57,43,27,73,68,68,67,57,71,13
+163462,Mount St. Mary's University,MD,private_nonprofit,Mid_East,Town,"1,000 - 4,999",327,179,219,55,45,11,89,75,74,76,50,79,12
+163578,Notre Dame of Maryland University,MD,private_nonprofit,Mid_East,City,"1,000 - 4,999",226,15,262,94,6,94,6,62,62,0,96,75,7
+164076,Towson University,MD,public,Mid_East,City,"20,000 +",3616,1672,2720,62,38,18,82,76,78,73,59,86,16
+164173,Stevenson University,MD,private_nonprofit,Mid_East,Rural,"1,000 - 4,999",666,246,557,69,31,29,71,81,83,78,64,82,15
+164216,Washington College,MD,private_nonprofit,Mid_East,Town,"1,000 - 4,999",264,127,187,60,40,12,88,92,93,91,60,81,10
+164562,Assumption University,MA,private_nonprofit,New_England,City,"1,000 - 4,999",412,194,303,61,39,15,85,81,86,75,57,84,12
+164720,Becker College,MA,private_nonprofit,New_England,City,"1,000 - 4,999",271,134,170,57,43,6,94,70,75,64,59,78,12
+164739,Bentley University,MA,private_nonprofit,New_England,City,"5,000 - 9,999",852,613,436,42,58,37,63,47,54,42,41,92,11
+164748,Berklee College of Music,MA,private_nonprofit,New_England,City,"5,000 - 9,999",971,631,340,34,66,17,83,51,48,54,41,86,10
+164924,Boston College,MA,private_nonprofit,New_England,City,"10,000 - 19,999",1955,1104,1245,53,47,21,79,27,22,35,53,95,13
+164988,Boston University,MA,private_nonprofit,New_England,City,"20,000 +",3626,1663,2654,61,39,24,76,19,19,19,59,94,10
+165015,Brandeis University,MA,private_nonprofit,New_England,City,"5,000 - 9,999",745,370,504,58,42,24,76,30,32,27,61,93,10
+165334,Clark University,MA,private_nonprofit,New_England,City,"1,000 - 4,999",428,200,312,61,39,17,83,53,57,47,61,86,11
+165802,Fisher College,MA,private_nonprofit,New_England,City,"1,000 - 4,999",162,62,119,66,34,32,68,69,69,70,72,62,14
+165866,Framingham State University,MA,public,New_England,City,"1,000 - 4,999",689,289,551,66,34,11,89,74,79,68,56,74,13
+166027,Harvard University,MA,private_nonprofit,New_England,City,"20,000 +",1566,927,877,49,51,26,74,5,5,5,51,97,6
+166124,College of the Holy Cross,MA,private_nonprofit,New_England,City,"1,000 - 4,999",593,336,370,52,48,35,65,34,33,36,52,93,10
+166638,University of Massachusetts-Boston,MA,public,New_England,City,"10,000 - 19,999",1973,974,1413,59,41,15,85,76,78,74,55,75,16
+166683,Massachusetts Institute of Technology,MA,private_nonprofit,New_England,City,"10,000 - 19,999",1065,593,502,46,54,36,64,7,11,5,47,99,3
+167288,Massachusetts College of Liberal Arts,MA,public,New_England,Town,"1,000 - 4,999",290,133,220,62,38,14,86,82,84,78,62,72,11
+167358,Northeastern University,MA,private_nonprofit,New_England,City,"20,000 +",3265,1828,1997,52,48,17,83,18,18,18,52,99,14
+167899,Springfield College,MA,private_nonprofit,New_England,City,"1,000 - 4,999",407,246,255,51,49,8,92,68,70,66,50,86,11
+168005,Suffolk University,MA,private_nonprofit,New_England,City,"5,000 - 9,999",1014,551,692,56,44,31,69,84,86,80,56,77,15
+168227,Wentworth Institute of Technology,MA,private_nonprofit,New_England,City,"1,000 - 4,999",706,621,162,21,79,9,91,81,82,81,22,83,18
+168254,Western New England University,MA,private_nonprofit,New_England,City,"1,000 - 4,999",504,349,240,41,59,9,91,85,87,84,39,76,13
+168342,Williams College,MA,private_nonprofit,New_England,Town,"1,000 - 4,999",452,258,270,51,49,20,80,13,12,13,50,97,6
+168421,Worcester Polytechnic Institute,MA,private_nonprofit,New_England,City,"5,000 - 9,999",911,622,301,32,68,13,87,49,63,44,40,95,14
+168430,Worcester State University,MA,public,New_England,City,"5,000 - 9,999",837,390,622,61,39,10,90,81,81,79,62,79,17
+168546,Albion College,MI,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",258,142,161,53,47,25,75,69,72,65,54,80,11
+168591,Alma College,MI,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",243,121,167,58,42,0,100,62,65,59,58,77,12
+168740,Andrews University,MI,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",306,153,215,58,42,16,84,67,70,64,54,87,10
+168786,Aquinas College,MI,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",280,130,209,62,38,17,83,69,72,65,57,78,10
+168847,Baker College,MI,private_nonprofit,Great_Lakes,Town,"5,000 - 9,999",844,315,711,68,32,19,81,73,74,71,71,49,7
+169080,Calvin University,MI,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",700,367,462,56,44,12,88,77,77,77,53,85,12
+169248,Central Michigan University,MI,public,Great_Lakes,Town,"10,000 - 19,999",3213,1644,2267,58,42,12,88,70,71,68,59,74,19
+169363,Concordia University-Ann Arbor,MI,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",96,48,58,53,47,10,90,49,56,45,54,64,11
+169716,University of Detroit Mercy,MI,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",604,223,499,69,31,6,94,77,76,79,62,82,11
+169910,Ferris State University,MI,public,Great_Lakes,Town,"10,000 - 19,999",2029,1179,1232,51,49,18,82,87,87,86,53,76,16
+169983,Kettering University,MI,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",337,276,65,19,81,12,88,73,68,75,21,90,14
+170301,Hope College,MI,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",602,272,447,62,38,6,94,86,88,82,62,91,11
+170532,Kalamazoo College,MI,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",264,127,176,58,42,13,87,76,79,72,56,88,13
+170639,Lake Superior State University,MI,public,Great_Lakes,Town,"1,000 - 4,999",355,207,217,51,49,14,86,57,54,62,54,71,14
+170675,Lawrence Technological University,MI,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",331,260,100,28,72,14,86,79,78,80,29,74,11
+170806,Madonna University,MI,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",542,205,461,69,31,31,69,75,75,75,66,76,13
+170976,University of Michigan-Ann Arbor,MI,public,Great_Lakes,City,"20,000 +",6191,3572,3538,50,50,22,78,23,25,21,50,97,11
+171100,Michigan State University,MI,public,Great_Lakes,City,"20,000 +",7288,4033,4556,53,47,13,87,71,73,69,51,91,16
+171128,Michigan Technological University,MI,public,Great_Lakes,Town,"5,000 - 9,999",1054,800,298,27,73,9,91,74,72,75,29,84,12
+171137,University of Michigan-Dearborn,MI,public,Great_Lakes,City,"5,000 - 9,999",1129,646,663,51,49,14,86,62,59,65,46,81,16
+171146,University of Michigan-Flint,MI,public,Great_Lakes,City,"5,000 - 9,999",930,398,726,65,35,9,91,66,70,60,62,74,14
+171456,Northern Michigan University,MI,public,Great_Lakes,Town,"5,000 - 9,999",1034,540,699,56,44,14,86,66,66,65,56,75,20
+171492,Northwood University,MI,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",723,474,426,47,53,25,75,79,77,80,41,80,9
+172264,Siena Heights University,MI,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",660,313,494,61,39,23,77,73,72,74,59,68,12
+172644,Wayne State University,MI,public,Great_Lakes,City,"20,000 +",2618,1330,1811,58,42,16,84,73,72,75,57,79,14
+172699,Western Michigan University,MI,public,Great_Lakes,City,"10,000 - 19,999",3108,1814,1924,51,49,10,90,80,80,79,49,78,16
+173045,Augsburg University,MN,private_nonprofit,Plains,City,"1,000 - 4,999",502,258,349,57,43,15,85,76,80,71,56,72,12
+173124,Bemidji State University,MN,public,Plains,Town,"1,000 - 4,999",784,376,571,60,40,11,89,65,64,66,57,72,20
+173142,Bethany Lutheran College,MN,private_nonprofit,Plains,City,"< 1,000",92,50,59,54,46,50,50,73,71,75,55,71,12
+173258,Carleton College,MN,private_nonprofit,Plains,Town,"1,000 - 4,999",429,235,255,52,48,24,76,19,19,19,51,95,9
+173328,Concordia University-Saint Paul,MN,private_nonprofit,Plains,City,"5,000 - 9,999",474,225,359,61,39,27,73,98,99,97,62,64,18
+173647,Gustavus Adolphus College,MN,private_nonprofit,Plains,Town,"1,000 - 4,999",542,274,368,57,43,14,86,69,72,65,59,88,11
+173902,Macalester College,MN,private_nonprofit,Plains,City,"1,000 - 4,999",419,196,293,60,40,27,73,32,32,32,58,93,10
+173920,Minnesota State University-Mankato,MN,public,Plains,City,"10,000 - 19,999",1979,1084,1300,55,45,11,89,63,64,61,53,77,22
+174020,Metropolitan State University,MN,public,Plains,City,"5,000 - 9,999",1545,796,1091,58,42,14,86,56,58,53,59,77,15
+174066,University of Minnesota-Twin Cities,MN,public,Plains,City,"20,000 +",6615,3629,4036,53,47,15,85,57,59,55,54,93,17
+174075,University of Minnesota-Crookston,MN,public,Plains,Town,"1,000 - 4,999",316,199,193,49,51,0,100,68,72,65,55,72,16
+174233,University of Minnesota-Duluth,MN,public,Plains,City,"10,000 - 19,999",1722,1049,969,48,52,14,86,75,79,72,48,80,17
+174251,University of Minnesota-Morris,MN,public,Plains,Town,"1,000 - 4,999",289,146,192,57,43,9,91,57,56,57,58,79,11
+174437,North Central University,MN,private_nonprofit,Plains,City,"1,000 - 4,999",167,94,114,55,45,50,50,90,92,85,58,80,16
+174783,Saint Cloud State University,MN,public,Plains,City,"10,000 - 19,999",1796,1022,1139,53,47,13,87,90,91,89,54,67,20
+174817,Saint Mary's University of Minnesota,MN,private_nonprofit,Plains,Town,"5,000 - 9,999",382,212,252,54,46,15,85,92,92,92,56,84,18
+174844,St Olaf College,MN,private_nonprofit,Plains,Town,"1,000 - 4,999",624,313,407,57,43,18,82,48,48,47,58,91,12
+174862,Crown College,MN,private_nonprofit,Plains,Rural,"1,000 - 4,999",153,78,111,59,41,25,75,50,55,47,54,64,15
+174899,The College of Saint Scholastica,MN,private_nonprofit,Plains,City,"1,000 - 4,999",681,214,605,74,26,35,65,75,78,70,71,81,14
+174914,University of St Thomas,MN,private_nonprofit,Plains,City,"5,000 - 9,999",1160,718,667,48,52,15,85,81,79,82,47,87,14
+175005,St Catherine University,MN,private_nonprofit,Plains,City,"1,000 - 4,999",480,7,584,99,1,100,0,67,67,0,95,80,12
+175078,Southwest Minnesota State University,MN,public,Plains,Town,"5,000 - 9,999",387,184,291,61,39,13,87,64,64,65,60,67,16
+175272,Winona State University,MN,public,Plains,Town,"5,000 - 9,999",1383,599,1080,64,36,13,87,68,70,63,66,77,19
+175342,Alcorn State University,MS,public,Southeast,Rural,"1,000 - 4,999",351,135,282,68,32,26,74,58,67,44,64,80,16
+175421,Belhaven University,MS,private_nonprofit,Southeast,City,"1,000 - 4,999",411,177,333,65,35,30,70,49,45,54,65,64,8
+175856,Jackson State University,MS,public,Southeast,City,"5,000 - 9,999",881,347,702,67,33,28,72,68,69,64,65,77,14
+175980,Millsaps College,MS,private_nonprofit,Southeast,City,"< 1,000",162,92,95,51,49,3,97,69,69,69,55,75,9
+176017,University of Mississippi,MS,public,Southeast,Town,"20,000 +",3078,1516,2236,59,41,15,85,88,90,86,56,87,16
+176044,Mississippi Valley State University,MS,public,Southeast,Town,"1,000 - 4,999",262,113,202,64,36,32,68,65,67,62,61,61,15
+176080,Mississippi State University,MS,public,Southeast,Town,"20,000 +",2920,1709,1728,50,50,9,91,54,53,55,49,82,17
+176318,Rust College,MS,private_nonprofit,Southeast,Town,"< 1,000",103,38,81,68,32,24,76,50,52,47,60,44,12
+176372,University of Southern Mississippi,MS,public,Southeast,City,"10,000 - 19,999",2009,856,1570,65,35,12,88,97,98,96,63,68,17
+176406,Tougaloo College,MS,private_nonprofit,Southeast,City,"< 1,000",114,40,95,71,29,30,70,71,75,62,65,73,9
+176628,Avila University,MO,private_nonprofit,Plains,City,"1,000 - 4,999",210,86,174,67,33,4,96,41,44,36,63,74,12
+176789,Calvary University,MO,private_nonprofit,Plains,City,"< 1,000",38,21,21,50,50,0,100,78,84,71,56,63,14
+176947,Central Methodist University-College of Liberal Arts and Sciences,MO,private_nonprofit,Plains,Town,"1,000 - 4,999",191,100,129,56,44,9,91,93,96,91,51,69,12
+176965,University of Central Missouri,MO,public,Plains,Town,"5,000 - 9,999",1564,788,1094,58,42,11,89,65,65,65,55,74,17
+177144,Culver-Stockton College,MO,private_nonprofit,Plains,Rural,"1,000 - 4,999",141,80,93,54,46,100,0,52,60,48,47,58,14
+177214,Drury University,MO,private_nonprofit,Plains,City,"1,000 - 4,999",489,215,369,62,38,21,79,64,64,65,58,78,12
+177339,Evangel University,MO,private_nonprofit,Plains,City,"1,000 - 4,999",305,161,212,57,43,4,96,97,97,97,56,80,16
+177542,Hannibal-LaGrange University,MO,private_nonprofit,Plains,Town,"< 1,000",148,67,115,63,37,9,91,61,58,64,60,61,9
+177968,Lindenwood University,MO,private_nonprofit,Plains,City,"5,000 - 9,999",1356,706,946,57,43,30,70,88,90,85,55,64,12
+178341,Missouri Southern State University,MO,public,Plains,City,"5,000 - 9,999",728,340,547,62,38,15,85,94,94,95,61,65,17
+178369,Missouri Valley College,MO,private_nonprofit,Plains,Town,"1,000 - 4,999",176,105,110,51,49,15,85,53,50,57,47,42,14
+178396,University of Missouri-Columbia,MO,public,Plains,City,"20,000 +",4941,2667,3245,55,45,11,89,81,81,80,53,88,17
+178402,University of Missouri-Kansas City,MO,public,Plains,City,"10,000 - 19,999",1480,734,1026,58,42,14,86,61,63,58,58,76,16
+178411,Missouri University of Science and Technology,MO,public,Plains,Town,"5,000 - 9,999",1234,949,322,25,75,12,88,79,74,82,24,82,18
+178615,Truman State University,MO,public,Plains,Town,"1,000 - 4,999",977,455,715,61,39,16,84,63,65,59,59,84,15
+178624,Northwest Missouri State University,MO,public,Plains,Town,"5,000 - 9,999",830,427,580,58,42,32,68,73,73,74,58,76,21
+178697,College of the Ozarks,MO,private_nonprofit,Plains,Town,"1,000 - 4,999",249,130,175,57,43,9,91,10,8,14,55,82,15
+179043,Rockhurst University,MO,private_nonprofit,Plains,City,"1,000 - 4,999",383,159,301,65,35,40,60,64,62,66,58,83,14
+179159,Saint Louis University,MO,private_nonprofit,Plains,City,"10,000 - 19,999",1461,695,1068,61,39,26,74,58,59,58,60,91,9
+179326,Southwest Baptist University,MO,private_nonprofit,Plains,Town,"1,000 - 4,999",294,127,233,65,35,22,78,71,70,72,64,69,12
+179557,Southeast Missouri State University,MO,public,Plains,City,"10,000 - 19,999",1380,672,999,60,40,15,85,86,86,86,59,75,19
+179566,Missouri State University-Springfield,MO,public,Plains,City,"20,000 +",2606,1291,1885,59,41,10,90,88,88,88,59,78,20
+179946,Westminster College,MO,private_nonprofit,Plains,Town,"< 1,000",170,108,93,46,54,12,88,96,96,97,44,77,10
+179964,William Woods University,MO,private_nonprofit,Plains,Town,"1,000 - 4,999",182,57,168,75,25,50,50,64,63,68,72,72,9
+180106,Carroll College,MT,private_nonprofit,Rocky_Mountains,Town,"1,000 - 4,999",244,113,176,61,39,19,81,69,70,67,62,80,12
+180258,University of Providence,MT,private_nonprofit,Rocky_Mountains,City,"1,000 - 4,999",201,66,177,72,28,17,83,55,57,51,67,58,8
+180416,Montana Technological University,MT,public,Rocky_Mountains,Town,"1,000 - 4,999",330,249,104,29,71,11,89,91,89,92,37,79,13
+180461,Montana State University,MT,public,Rocky_Mountains,Town,"10,000 - 19,999",1948,1151,1111,49,51,10,90,82,73,92,46,77,18
+180489,The University of Montana,MT,public,Rocky_Mountains,City,"5,000 - 9,999",1393,757,944,55,45,13,87,94,95,93,56,71,15
+180595,Rocky Mountain College,MT,private_nonprofit,Rocky_Mountains,City,"1,000 - 4,999",148,85,94,53,47,12,88,59,56,63,49,70,10
+180984,Concordia University-Nebraska,NE,private_nonprofit,Plains,Town,"1,000 - 4,999",221,117,150,56,44,5,95,78,88,74,53,82,14
+181002,Creighton University,NE,private_nonprofit,Plains,City,"5,000 - 9,999",825,385,603,61,39,33,67,74,73,75,58,90,11
+181020,Doane University,NE,private_nonprofit,Plains,Town,"1,000 - 4,999",220,122,144,54,46,7,93,71,75,69,51,71,11
+181127,Hastings College,NE,private_nonprofit,Plains,Town,"< 1,000",183,111,110,50,50,25,75,67,64,70,50,66,12
+181215,University of Nebraska at Kearney,NE,public,Plains,Town,"5,000 - 9,999",700,363,499,58,42,9,91,85,86,84,60,77,13
+181394,University of Nebraska at Omaha,NE,public,Plains,City,"10,000 - 19,999",1865,1064,1199,53,47,13,87,83,84,82,54,74,17
+181446,Nebraska Wesleyan University,NE,private_nonprofit,Plains,City,"1,000 - 4,999",349,153,270,64,36,30,70,68,70,65,59,83,11
+181464,University of Nebraska-Lincoln,NE,public,Plains,City,"20,000 +",3304,2021,1909,49,51,11,89,78,78,78,47,81,17
+181738,Union College,NE,private_nonprofit,Plains,City,"< 1,000",123,62,88,59,41,10,90,93,94,91,59,72,9
+182281,University of Nevada-Las Vegas,NV,public,Far_West,City,"20,000 +",3276,1650,2335,59,41,18,82,81,82,78,57,79,20
+182290,University of Nevada-Reno,NV,public,Far_West,City,"20,000 +",2754,1451,1805,56,44,25,75,88,90,86,53,81,18
+182458,Sierra Nevada University,NV,private_nonprofit,Far_West,Town,"< 1,000",90,62,50,45,55,0,100,64,61,67,50,56,9
+182670,Dartmouth College,NH,private_nonprofit,New_England,Town,"5,000 - 9,999",932,541,543,50,50,31,69,8,7,8,49,98,7
+182795,Franklin Pierce University,NH,private_nonprofit,New_England,Rural,"1,000 - 4,999",291,150,209,58,42,16,84,66,70,62,55,68,12
+182980,New England College,NH,private_nonprofit,New_England,Rural,"1,000 - 4,999",180,95,129,57,43,33,67,100,100,100,59,58,15
+183062,Keene State College,NH,public,New_England,Town,"1,000 - 4,999",843,415,581,58,42,14,86,88,90,86,54,76,13
+183071,University of New Hampshire at Manchester,NH,public,New_England,City,"< 1,000",159,89,93,51,49,16,84,91,93,88,52,69,10
+183080,Plymouth State University,NH,public,New_England,Town,"1,000 - 4,999",693,416,433,51,49,10,90,85,87,82,50,67,16
+183211,Rivier University,NH,private_nonprofit,New_England,City,"1,000 - 4,999",246,54,250,82,18,28,72,75,77,67,79,62,15
+185129,New Jersey City University,NJ,public,Mid_East,City,"5,000 - 9,999",1065,472,826,64,36,23,77,95,95,94,58,73,14
+185828,New Jersey Institute of Technology,NJ,public,Mid_East,City,"10,000 - 19,999",1302,1067,314,23,77,12,88,73,74,72,25,88,16
+186131,Princeton University,NJ,private_nonprofit,Mid_East,City,"5,000 - 9,999",1124,650,626,49,51,35,65,6,6,5,50,98,5
+186371,Rutgers University-Camden,NJ,public,Mid_East,City,"5,000 - 9,999",1020,502,743,59,41,8,92,79,79,80,61,85,15
+186380,Rutgers University-New Brunswick,NJ,public,Mid_East,City,"20,000 +",6660,3797,3993,51,49,19,81,61,60,62,50,93,16
+186399,Rutgers University-Newark,NJ,public,Mid_East,City,"10,000 - 19,999",1372,742,924,55,45,16,84,72,73,70,57,83,16
+186432,Saint Peter's University,NJ,private_nonprofit,Mid_East,City,"1,000 - 4,999",391,174,293,63,37,17,83,81,83,78,62,81,12
+187648,Eastern New Mexico University-Main Campus,NM,public,Southwest,Town,"5,000 - 9,999",560,261,427,62,38,26,74,58,60,55,58,63,17
+187967,New Mexico Institute of Mining and Technology,NM,public,Southwest,Town,"1,000 - 4,999",249,179,74,30,70,10,90,80,74,84,33,77,8
+187985,University of New Mexico-Main Campus,NM,public,Southwest,City,"20,000 +",3113,1550,2179,58,42,13,87,94,95,93,56,77,17
+188182,University of the Southwest,NM,private_nonprofit,Southwest,Rural,"< 1,000",58,32,39,57,43,0,100,45,37,55,44,63,17
+189097,Barnard College,NY,private_nonprofit,Mid_East,City,"1,000 - 4,999",533,0,642,100,0,100,0,12,12,0,100,95,9
+189705,Canisius College,NY,private_nonprofit,Mid_East,City,"1,000 - 4,999",528,297,334,53,47,18,82,83,82,84,48,84,11
+190044,Clarkson University,NY,private_nonprofit,Mid_East,Town,"1,000 - 4,999",658,491,201,29,71,13,87,75,72,76,31,88,14
+190099,Colgate University,NY,private_nonprofit,Mid_East,Town,"1,000 - 4,999",604,322,391,55,45,25,75,23,25,20,55,95,9
+190150,Columbia University in the City of New York,NY,private_nonprofit,Mid_East,City,"20,000 +",1847,1096,1026,48,52,28,72,5,5,6,48,99,6
+190415,Cornell University,NY,private_nonprofit,Mid_East,City,"20,000 +",3246,1796,1889,51,49,29,71,11,12,9,54,97,9
+190512,CUNY Bernard M Baruch College,NY,public,Mid_East,City,"10,000 - 19,999",2666,1584,1704,52,48,28,72,43,44,43,47,89,19
+190549,CUNY Brooklyn College,NY,public,Mid_East,City,"10,000 - 19,999",2160,994,1641,62,38,19,81,45,46,43,57,80,16
+190567,CUNY City College,NY,public,Mid_East,City,"10,000 - 19,999",1918,988,1247,56,44,16,84,46,55,37,52,84,14
+190594,CUNY Hunter College,NY,public,Mid_East,City,"20,000 +",2434,902,2059,70,30,20,80,35,34,37,64,81,13
+190600,CUNY John Jay College of Criminal Justice,NY,public,Mid_East,City,"10,000 - 19,999",2200,1139,1599,58,42,22,78,41,43,38,59,80,18
+190637,CUNY Lehman College,NY,public,Mid_East,City,"10,000 - 19,999",1763,621,1544,72,28,22,78,38,40,34,68,83,16
+190646,CUNY Medgar Evers College,NY,public,Mid_East,City,"5,000 - 9,999",466,126,429,77,23,33,67,90,90,90,71,62,18
+190655,CUNY New York City College of Technology,NY,public,Mid_East,City,"10,000 - 19,999",1025,611,588,49,51,16,84,88,88,88,45,68,18
+190664,CUNY Queens College,NY,public,Mid_East,City,"10,000 - 19,999",2524,1213,1889,61,39,16,84,49,50,47,54,82,16
+190691,CUNY York College,NY,public,Mid_East,City,"5,000 - 9,999",893,335,756,69,31,25,75,73,74,72,66,62,19
+190716,D'Youville College,NY,private_nonprofit,Mid_East,City,"1,000 - 4,999",306,93,282,75,25,7,93,88,89,84,75,81,7
+191241,Fordham University,NY,private_nonprofit,Mid_East,City,"10,000 - 19,999",1673,913,1128,55,45,26,74,46,47,45,57,91,13
+191533,Hartwick College,NY,private_nonprofit,Mid_East,Town,"1,000 - 4,999",251,112,185,63,37,16,84,80,82,76,60,74,9
+191630,Hobart William Smith Colleges,NY,private_nonprofit,Mid_East,Town,"1,000 - 4,999",415,222,276,55,45,25,75,66,68,64,52,88,10
+191676,Houghton College,NY,private_nonprofit,Mid_East,Rural,"< 1,000",225,94,178,65,35,2,98,81,83,76,61,79,11
+192703,Manhattan College,NY,private_nonprofit,Mid_East,City,"1,000 - 4,999",664,412,350,46,54,19,81,74,65,83,43,81,13
+192925,Medaille College,NY,private_nonprofit,Mid_East,City,"1,000 - 4,999",219,97,173,64,36,35,65,62,61,66,72,61,12
+193353,Mount Saint Mary College,NY,private_nonprofit,Mid_East,City,"1,000 - 4,999",392,132,342,72,28,40,60,94,95,91,72,80,13
+193654,The New School,NY,private_nonprofit,Mid_East,City,"5,000 - 9,999",1245,391,993,72,28,74,26,57,59,54,75,82,9
+193900,New York University,NY,private_nonprofit,Mid_East,City,"20,000 +",4822,2388,3473,59,41,25,75,16,16,16,58,94,9
+194161,Nyack College,NY,private_nonprofit,Mid_East,City,"1,000 - 4,999",289,140,220,61,39,34,66,98,97,98,55,64,12
+194310,Pace University,NY,private_nonprofit,Mid_East,City,"10,000 - 19,999",1399,652,1057,62,38,22,78,79,80,76,62,78,15
+194824,Rensselaer Polytechnic Institute,NY,private_nonprofit,Mid_East,City,"5,000 - 9,999",1271,904,405,31,69,14,86,47,51,46,32,92,12
+195030,University of Rochester,NY,private_nonprofit,Mid_East,City,"10,000 - 19,999",1460,780,888,53,47,22,78,30,32,27,51,94,10
+195128,Russell Sage College,NY,private_nonprofit,Mid_East,City,"1,000 - 4,999",325,78,316,80,20,25,75,85,86,81,78,72,11
+195164,St Bonaventure University,NY,private_nonprofit,Mid_East,Town,"1,000 - 4,999",321,189,200,51,49,16,84,75,73,77,47,84,12
+195173,St Francis College,NY,private_nonprofit,Mid_East,City,"1,000 - 4,999",395,197,283,59,41,18,82,78,78,78,61,76,16
+195216,St Lawrence University,NY,private_nonprofit,Mid_East,Town,"1,000 - 4,999",464,236,309,57,43,25,75,42,49,36,55,90,11
+195234,The College of Saint Rose,NY,private_nonprofit,Mid_East,City,"1,000 - 4,999",475,175,404,70,30,19,81,87,89,84,66,70,14
+195544,St. Joseph's College-New York,NY,private_nonprofit,Mid_East,City,"5,000 - 9,999",723,256,637,71,29,22,78,71,72,70,65,81,10
+195809,St. John's University-New York,NY,private_nonprofit,Mid_East,City,"20,000 +",1818,990,1218,55,45,20,80,72,74,70,57,82,16
+196015,SUNY College of Technology at Canton,NY,public,Mid_East,Town,"1,000 - 4,999",301,162,206,55,45,13,87,85,83,86,56,70,18
+196033,SUNY College of Agriculture and Technology at Cobleskill,NY,public,Mid_East,Town,"1,000 - 4,999",288,160,192,54,46,10,90,54,58,49,54,77,14
+196060,SUNY at Albany,NY,public,Mid_East,City,"10,000 - 19,999",2550,1477,1574,52,48,15,85,54,53,56,52,80,18
+196121,SUNY Brockport,NY,public,Mid_East,Town,"5,000 - 9,999",1488,751,1074,59,41,11,89,55,56,53,57,74,17
+196130,SUNY Buffalo State,NY,public,Mid_East,City,"5,000 - 9,999",1480,722,1081,60,40,16,84,67,70,63,57,58,14
+196158,SUNY at Fredonia,NY,public,Mid_East,Town,"1,000 - 4,999",874,451,614,58,42,14,86,71,73,69,57,70,14
+196167,SUNY College at Geneseo,NY,public,Mid_East,Town,"1,000 - 4,999",1017,479,724,60,40,5,95,65,66,64,62,85,17
+196185,SUNY Oneonta,NY,public,Mid_East,Town,"5,000 - 9,999",1181,570,861,60,40,14,86,56,60,51,62,80,17
+196194,SUNY College at Oswego,NY,public,Mid_East,Town,"5,000 - 9,999",1374,809,865,52,48,10,90,54,53,56,51,77,17
+196200,SUNY College at Potsdam,NY,public,Mid_East,Town,"1,000 - 4,999",583,275,420,60,40,12,88,68,71,63,62,73,11
+196246,SUNY College at Plattsburgh,NY,public,Mid_East,Town,"5,000 - 9,999",1066,559,738,57,43,8,92,58,58,60,58,75,16
+196413,Syracuse University,NY,private_nonprofit,Mid_East,City,"20,000 +",2833,1472,1901,56,44,30,70,44,43,46,53,92,15
+196592,Touro College,NY,private_nonprofit,Mid_East,City,"10,000 - 19,999",1161,423,979,70,30,59,41,69,71,67,71,84,11
+196866,Union College,NY,private_nonprofit,Mid_East,City,"1,000 - 4,999",456,272,244,47,53,16,84,43,42,43,46,93,10
+197045,Utica College,NY,private_nonprofit,Mid_East,City,"1,000 - 4,999",605,261,483,65,35,20,80,87,87,86,59,71,11
+197197,Wagner College,NY,private_nonprofit,Mid_East,City,"1,000 - 4,999",352,141,290,67,33,13,87,71,73,66,67,80,16
+197230,Wells College,NY,private_nonprofit,Mid_East,Rural,"< 1,000",90,32,74,70,30,7,93,83,84,81,66,71,10
+197708,Yeshiva University,NY,private_nonprofit,Mid_East,City,"5,000 - 9,999",513,298,307,51,49,24,76,55,62,50,46,91,7
+197869,Appalachian State University,NC,public,Southeast,Town,"20,000 +",3008,1610,2058,56,44,8,92,77,81,71,56,88,16
+197911,Barton College,NC,private_nonprofit,Southeast,Town,"1,000 - 4,999",184,65,160,71,29,25,75,45,45,46,59,66,12
+198136,Campbell University,NC,private_nonprofit,Southeast,Town,"5,000 - 9,999",773,437,480,52,48,19,81,78,80,74,52,76,16
+198419,Duke University,NC,private_nonprofit,Southeast,City,"10,000 - 19,999",1596,852,957,53,47,27,73,8,7,8,51,98,6
+198464,East Carolina University,NC,public,Southeast,City,"20,000 +",3762,1810,2693,60,40,9,91,79,80,77,57,82,18
+198507,Elizabeth City State University,NC,public,Southeast,Town,"1,000 - 4,999",294,132,222,62,38,30,70,66,70,58,59,70,16
+198543,Fayetteville State University,NC,public,Southeast,City,"5,000 - 9,999",790,271,695,72,28,19,81,69,71,64,69,74,18
+198561,Gardner-Webb University,NC,private_nonprofit,Southeast,Town,"1,000 - 4,999",465,184,383,67,33,22,78,67,66,68,65,74,13
+198613,Guilford College,NC,private_nonprofit,Southeast,City,"1,000 - 4,999",346,173,242,58,42,32,68,75,76,74,53,66,12
+198695,High Point University,NC,private_nonprofit,Southeast,City,"5,000 - 9,999",719,343,537,61,39,18,82,74,76,70,57,83,15
+198756,Johnson C Smith University,NC,private_nonprofit,Southeast,City,"1,000 - 4,999",203,86,156,65,35,36,64,47,47,47,60,66,13
+198835,Lenoir-Rhyne University,NC,private_nonprofit,Southeast,City,"1,000 - 4,999",244,112,186,63,37,18,82,78,78,77,59,72,12
+198969,Methodist University,NC,private_nonprofit,Southeast,City,"1,000 - 4,999",279,166,171,51,49,26,74,63,72,59,47,58,9
+199069,University of Mount Olive,NC,private_nonprofit,Southeast,Town,"1,000 - 4,999",525,212,442,68,32,21,79,58,57,60,66,62,15
+199102,North Carolina A & T State University,NC,public,Southeast,City,"10,000 - 19,999",1282,640,870,57,43,27,73,58,59,57,58,79,18
+199111,University of North Carolina at Asheville,NC,public,Southeast,City,"1,000 - 4,999",638,318,442,58,42,20,80,84,86,80,58,73,13
+199120,University of North Carolina at Chapel Hill,NC,public,Southeast,City,"20,000 +",3898,1876,2763,60,40,26,74,23,22,23,60,96,13
+199139,University of North Carolina at Charlotte,NC,public,Southeast,City,"20,000 +",4082,2352,2489,51,49,17,83,65,64,66,47,83,19
+199148,University of North Carolina at Greensboro,NC,public,Southeast,City,"10,000 - 19,999",2529,998,2091,68,32,23,77,82,83,81,67,75,16
+199157,North Carolina Central University,NC,public,Southeast,City,"5,000 - 9,999",858,341,707,67,33,21,79,68,70,63,68,76,16
+199193,North Carolina State University at Raleigh,NC,public,Southeast,City,"20,000 +",4987,3023,2616,46,54,13,87,45,48,42,48,94,14
+199209,North Carolina Wesleyan College,NC,private_nonprofit,Southeast,City,"1,000 - 4,999",326,141,257,65,35,32,68,62,69,57,58,67,20
+199218,University of North Carolina Wilmington,NC,public,Southeast,City,"10,000 - 19,999",2661,1176,2047,63,37,16,84,65,67,62,63,86,18
+199281,University of North Carolina at Pembroke,NC,public,Southeast,Town,"5,000 - 9,999",798,349,612,64,36,19,81,85,87,82,61,72,18
+199306,Pfeiffer University,NC,private_nonprofit,Southeast,Rural,"1,000 - 4,999",158,73,119,62,38,11,89,64,65,61,59,59,13
+199412,Queens University of Charlotte,NC,private_nonprofit,Southeast,City,"1,000 - 4,999",322,98,292,75,25,19,81,65,68,60,67,75,10
+199582,Saint Augustine's University,NC,private_nonprofit,Southeast,City,"1,000 - 4,999",143,81,94,53,47,24,76,73,74,72,46,57,11
+199643,Shaw University,NC,private_nonprofit,Southeast,City,"1,000 - 4,999",194,86,153,64,36,27,73,63,66,59,60,57,15
+199847,Wake Forest University,NC,private_nonprofit,Southeast,City,"5,000 - 9,999",956,537,614,53,47,23,77,30,29,31,53,94,10
+199999,Winston-Salem State University,NC,public,Southeast,City,"5,000 - 9,999",963,276,908,77,23,36,64,68,69,63,73,78,15
+200004,Western Carolina University,NC,public,Southeast,Town,"10,000 - 19,999",1644,838,1150,58,42,6,94,69,69,69,55,78,17
+200059,Dickinson State University,ND,public,Plains,Town,"1,000 - 4,999",218,104,162,61,39,12,88,100,100,99,62,68,12
+200156,University of Jamestown,ND,private_nonprofit,Plains,Town,"1,000 - 4,999",139,76,94,55,45,11,89,69,75,66,46,72,10
+200217,University of Mary,ND,private_nonprofit,Plains,Rural,"1,000 - 4,999",363,149,299,67,33,18,82,74,76,69,60,78,13
+200226,Mayville State University,ND,public,Plains,Rural,"1,000 - 4,999",126,54,100,64,36,9,91,70,68,72,64,60,13
+200253,Minot State University,ND,public,Plains,Town,"1,000 - 4,999",449,181,371,67,33,18,82,67,64,70,61,72,11
+200280,University of North Dakota,ND,public,Plains,City,"10,000 - 19,999",1672,1012,981,49,51,8,92,81,83,80,43,78,17
+200332,North Dakota State University-Main Campus,ND,public,Plains,City,"10,000 - 19,999",1940,1198,1080,47,53,10,90,94,94,93,47,79,18
+200572,Valley City State University,ND,public,Plains,Town,"1,000 - 4,999",192,87,150,63,37,5,95,76,76,77,58,73,13
+200800,University of Akron Main Campus,OH,public,Great_Lakes,City,"10,000 - 19,999",2502,1470,1487,50,50,9,91,73,73,73,47,71,18
+201104,Ashland University,OH,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",522,228,413,65,35,2,98,71,72,70,60,75,16
+201371,Bluffton University,OH,private_nonprofit,Great_Lakes,Town,"< 1,000",154,83,104,55,45,6,94,55,59,52,43,60,11
+201441,Bowling Green State University-Main Campus,OH,public,Great_Lakes,Town,"10,000 - 19,999",2390,1200,1709,59,41,16,84,72,72,72,56,77,17
+201645,Case Western Reserve University,OH,private_nonprofit,Great_Lakes,City,"10,000 - 19,999",961,566,482,46,54,14,86,27,28,26,46,93,11
+201654,Cedarville University,OH,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",568,310,370,54,46,9,91,79,77,81,54,85,16
+201690,Central State University,OH,public,Great_Lakes,Rural,"1,000 - 4,999",201,101,141,58,42,14,86,57,60,50,61,46,14
+201885,University of Cincinnati-Main Campus,OH,public,Great_Lakes,City,"20,000 +",4360,2402,2790,54,46,13,87,77,74,79,50,88,17
+202134,Cleveland State University,OH,public,Great_Lakes,City,"10,000 - 19,999",1955,1005,1338,57,43,14,86,94,95,93,54,74,16
+202480,University of Dayton,OH,private_nonprofit,Great_Lakes,City,"10,000 - 19,999",1523,890,888,50,50,10,90,72,73,71,48,89,14
+202514,Defiance College,OH,private_nonprofit,Great_Lakes,Town,"< 1,000",127,71,84,54,46,14,86,50,60,46,45,46,9
+202763,The University of Findlay,OH,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",407,161,334,68,32,11,89,77,77,78,65,76,16
+203085,Heidelberg University,OH,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",180,106,112,51,49,17,83,75,81,71,50,72,14
+203128,Hiram College,OH,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",208,105,145,58,42,9,91,93,95,92,58,68,12
+203775,Malone University,OH,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",308,147,232,62,38,2,98,71,72,69,61,61,11
+203845,Marietta College,OH,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",231,144,115,44,56,16,84,71,71,71,45,79,8
+204024,Miami University-Oxford,OH,public,Great_Lakes,Town,"10,000 - 19,999",3312,1802,2168,55,45,12,88,85,86,85,50,89,13
+204185,University of Mount Union,OH,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",369,211,232,52,48,21,79,77,81,74,49,72,12
+204194,Mount Vernon Nazarene University,OH,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",349,149,278,65,35,7,93,73,71,76,61,79,14
+204264,Muskingum University,OH,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",278,135,199,59,41,15,85,81,85,77,56,72,11
+204501,Oberlin College,OH,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",588,296,400,58,42,32,68,36,37,35,58,91,9
+204617,Ohio Dominican University,OH,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",241,122,173,58,42,12,88,84,85,82,54,61,13
+204635,Ohio Northern University,OH,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",362,227,188,45,55,10,90,70,69,71,46,85,11
+204796,Ohio State University-Main Campus,OH,public,Great_Lakes,City,"20,000 +",8929,5270,5246,50,50,15,85,54,56,52,49,94,19
+204857,Ohio University-Main Campus,OH,public,Great_Lakes,Town,"20,000 +",5182,2156,4163,66,34,36,64,82,83,80,60,82,15
+205957,Franciscan University of Steubenville,OH,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",387,175,297,63,37,10,90,77,75,79,59,88,14
+206048,Tiffin University,OH,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",366,202,209,51,49,11,89,69,69,69,50,65,16
+206084,University of Toledo,OH,public,Great_Lakes,City,"10,000 - 19,999",2386,1374,1431,51,49,17,83,96,96,97,50,76,20
+206491,Wilberforce University,OH,private_nonprofit,Great_Lakes,Rural,"< 1,000",78,34,63,65,35,40,60,39,44,37,61,47,15
+206525,Wittenberg University,OH,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",322,163,219,57,43,13,87,91,92,90,55,70,11
+206589,The College of Wooster,OH,private_nonprofit,Great_Lakes,Town,"1,000 - 4,999",379,195,247,56,44,17,83,55,58,51,54,86,10
+206613,Wright State University-Lake Campus,OH,public,Great_Lakes,Rural,"1,000 - 4,999",86,41,53,56,44,0,100,99,99,100,56,64,15
+206622,Xavier University,OH,private_nonprofit,Great_Lakes,City,"5,000 - 9,999",811,440,551,55,45,18,82,76,75,78,54,83,11
+206695,Youngstown State University,OH,public,Great_Lakes,City,"10,000 - 19,999",1354,732,870,54,46,12,88,67,67,68,54,73,17
+207041,East Central University,OK,public,Southwest,Town,"1,000 - 4,999",551,249,418,63,37,14,86,59,56,64,58,64,18
+207263,Northeastern State University,OK,public,Southwest,Town,"5,000 - 9,999",1187,516,922,64,36,13,87,100,100,100,62,60,18
+207306,Northwestern Oklahoma State University,OK,public,Southwest,Town,"1,000 - 4,999",264,114,206,64,36,16,84,63,63,62,60,57,15
+207324,Oklahoma Christian University,OK,private_nonprofit,Southwest,City,"1,000 - 4,999",300,175,181,51,49,10,90,67,64,71,51,71,13
+207388,Oklahoma State University-Main Campus,OK,public,Southwest,Town,"20,000 +",3632,2131,2168,50,50,16,84,70,69,72,50,83,18
+207403,Oklahoma Baptist University,OK,private_nonprofit,Southwest,Town,"1,000 - 4,999",278,127,214,63,37,22,78,57,59,56,60,68,15
+207458,Oklahoma City University,OK,private_nonprofit,Southwest,City,"1,000 - 4,999",449,170,386,70,30,9,91,75,77,70,67,83,11
+207582,Oral Roberts University,OK,private_nonprofit,Southwest,City,"1,000 - 4,999",438,216,321,60,40,24,76,68,66,73,60,81,16
+207722,University of Science and Arts of Oklahoma,OK,public,Southwest,Town,"< 1,000",142,57,117,67,33,11,89,64,64,65,65,61,12
+207847,Southeastern Oklahoma State University,OK,public,Southwest,Town,"5,000 - 9,999",534,287,340,54,46,21,79,74,74,73,55,62,24
+207865,Southwestern Oklahoma State University,OK,public,Southwest,Town,"1,000 - 4,999",575,260,437,63,37,15,85,91,91,91,61,67,19
+207971,University of Tulsa,OK,private_nonprofit,Southwest,City,"1,000 - 4,999",626,390,319,45,55,13,87,36,31,43,46,87,11
+208646,Eastern Oregon University,OR,public,Far_West,Town,"1,000 - 4,999",514,238,396,62,38,9,91,98,99,97,60,72,17
+208822,George Fox University,OR,private_nonprofit,Far_West,Town,"1,000 - 4,999",507,246,368,60,40,19,81,82,84,81,58,85,14
+209056,Lewis & Clark College,OR,private_nonprofit,Far_West,City,"1,000 - 4,999",390,179,284,61,39,22,78,72,75,67,61,86,11
+209065,Linfield University-McMinnville Campus,OR,private_nonprofit,Far_West,Town,"1,000 - 4,999",261,132,184,58,42,18,82,82,85,77,62,84,11
+209409,Bushnell University,OR,private_nonprofit,Far_West,City,"< 1,000",107,49,82,63,37,50,50,66,65,66,62,70,15
+209506,Oregon Institute of Technology,OR,public,Far_West,Town,"5,000 - 9,999",562,331,307,48,52,17,83,97,98,96,49,76,16
+209542,Oregon State University,OR,public,Far_West,City,"20,000 +",4274,2550,2434,49,51,15,85,82,85,80,47,85,18
+209551,University of Oregon,OR,public,Far_West,City,"20,000 +",3728,2113,2422,53,47,14,86,82,84,79,54,86,17
+209807,Portland State University,OR,public,Far_West,City,"20,000 +",3551,1917,2371,55,45,11,89,96,97,94,54,74,21
+209825,University of Portland,OR,private_nonprofit,Far_West,City,"1,000 - 4,999",756,330,553,63,37,17,83,77,76,79,61,90,11
+209922,Reed College,OR,private_nonprofit,Far_West,City,"1,000 - 4,999",269,140,176,56,44,43,57,39,40,38,53,91,9
+210331,Corban University,OR,private_nonprofit,Far_West,City,"1,000 - 4,999",172,79,134,63,37,0,100,85,84,87,58,81,14
+210401,Willamette University,OR,private_nonprofit,Far_West,City,"1,000 - 4,999",399,194,284,59,41,22,78,78,81,74,58,84,11
+210429,Western Oregon University,OR,public,Far_West,Town,"1,000 - 4,999",821,398,605,60,40,17,83,85,88,78,64,74,13
+210571,Albright College,PA,private_nonprofit,Mid_East,City,"1,000 - 4,999",385,178,288,62,38,26,74,85,87,82,60,69,14
+210669,Allegheny College,PA,private_nonprofit,Mid_East,Town,"1,000 - 4,999",386,192,250,56,44,16,84,62,67,57,56,86,10
+210739,DeSales University,PA,private_nonprofit,Mid_East,Rural,"1,000 - 4,999",454,212,341,62,38,21,79,79,80,77,64,80,13
+210775,Alvernia University,PA,private_nonprofit,Mid_East,City,"1,000 - 4,999",356,121,318,73,27,37,63,64,66,62,70,72,13
+211158,Bloomsburg University of Pennsylvania,PA,public,Mid_East,City,"5,000 - 9,999",1455,728,1046,59,41,18,82,84,82,87,58,74,19
+211291,Bucknell University,PA,private_nonprofit,Mid_East,Town,"1,000 - 4,999",746,405,448,53,47,26,74,34,37,31,51,92,9
+211431,Carlow University,PA,private_nonprofit,Mid_East,City,"1,000 - 4,999",244,28,270,91,9,89,11,92,94,83,83,78,11
+211440,Carnegie Mellon University,PA,private_nonprofit,Mid_East,City,"10,000 - 19,999",1291,797,627,44,56,26,74,15,21,12,49,97,5
+211468,Cedar Crest College,PA,private_nonprofit,Mid_East,City,"1,000 - 4,999",241,25,267,91,9,90,10,61,61,0,92,75,9
+211583,Chestnut Hill College,PA,private_nonprofit,Mid_East,City,"1,000 - 4,999",289,102,254,71,29,21,79,65,66,63,59,68,9
+211644,Clarion University of Pennsylvania,PA,public,Mid_East,Town,"1,000 - 4,999",755,326,590,64,36,13,87,95,95,94,68,75,16
+212009,Dickinson College,PA,private_nonprofit,Mid_East,City,"1,000 - 4,999",465,237,316,57,43,28,72,40,41,38,57,87,9
+212054,Drexel University,PA,private_nonprofit,Mid_East,City,"20,000 +",2824,1578,1669,51,49,15,85,75,75,74,48,89,11
+212106,Duquesne University,PA,private_nonprofit,Mid_East,City,"5,000 - 9,999",1131,508,854,63,37,30,70,74,73,78,64,85,13
+212115,East Stroudsburg University of Pennsylvania,PA,public,Mid_East,City,"5,000 - 9,999",1026,513,730,59,41,10,90,85,88,79,56,67,21
+212160,Edinboro University of Pennsylvania,PA,public,Mid_East,Town,"1,000 - 4,999",765,363,575,61,39,17,83,83,86,79,58,71,15
+212577,Franklin and Marshall College,PA,private_nonprofit,Mid_East,City,"1,000 - 4,999",475,261,304,54,46,13,87,30,33,28,55,90,9
+212601,Gannon University,PA,private_nonprofit,Mid_East,City,"1,000 - 4,999",447,216,316,59,41,5,95,76,80,70,61,82,13
+212674,Gettysburg College,PA,private_nonprofit,Mid_East,City,"1,000 - 4,999",524,280,342,55,45,23,77,48,47,49,52,91,9
+212805,Grove City College,PA,private_nonprofit,Mid_East,Town,"1,000 - 4,999",483,274,284,51,49,7,93,79,85,75,47,90,13
+212984,Holy Family University,PA,private_nonprofit,Mid_East,City,"1,000 - 4,999",372,111,349,76,24,50,50,73,75,68,74,73,12
+213020,Indiana University of Pennsylvania-Main Campus,PA,public,Mid_East,Town,"10,000 - 19,999",1854,938,1329,59,41,13,87,93,95,90,58,72,17
+213251,Juniata College,PA,private_nonprofit,Mid_East,Town,"1,000 - 4,999",291,147,192,57,43,23,77,71,74,66,56,86,11
+213321,King's College,PA,private_nonprofit,Mid_East,City,"1,000 - 4,999",365,222,219,50,50,12,88,81,83,79,47,72,13
+213349,Kutztown University of Pennsylvania,PA,public,Mid_East,Town,"5,000 - 9,999",1392,698,1001,59,41,11,89,90,91,89,56,74,18
+213367,La Salle University,PA,private_nonprofit,Mid_East,City,"1,000 - 4,999",680,305,531,63,37,17,83,78,78,77,63,71,12
+213543,Lehigh University,PA,private_nonprofit,Mid_East,City,"5,000 - 9,999",1093,684,538,44,56,24,76,32,36,29,46,93,9
+213613,Lock Haven University,PA,public,Mid_East,Town,"1,000 - 4,999",659,345,458,57,43,12,88,95,95,95,60,67,14
+213668,Lycoming College,PA,private_nonprofit,Mid_East,City,"1,000 - 4,999",228,119,155,57,43,0,100,62,62,62,52,77,12
+213783,Mansfield University of Pennsylvania,PA,public,Mid_East,Town,"1,000 - 4,999",391,186,286,61,39,15,85,96,97,93,63,73,15
+213826,Marywood University,PA,private_nonprofit,Mid_East,City,"1,000 - 4,999",347,127,300,70,30,27,73,78,78,77,67,86,12
+213987,Mercyhurst University,PA,private_nonprofit,Mid_East,City,"1,000 - 4,999",468,232,339,59,41,11,89,86,89,84,59,79,14
+214157,Moravian College,PA,private_nonprofit,Mid_East,City,"1,000 - 4,999",356,164,264,62,38,13,87,75,76,74,61,82,11
+214166,Mount Aloysius College,PA,private_nonprofit,Mid_East,Town,"1,000 - 4,999",159,60,132,69,31,17,83,95,95,95,67,68,11
+214175,Muhlenberg College,PA,private_nonprofit,Mid_East,City,"1,000 - 4,999",478,228,341,60,40,26,74,66,69,62,61,90,9
+215062,University of Pennsylvania,PA,private_nonprofit,Mid_East,City,"20,000 +",2440,1406,1454,51,49,27,73,8,8,7,55,98,6
+215132,University of the Sciences,PA,private_nonprofit,Mid_East,City,"1,000 - 4,999",294,135,214,62,38,25,75,71,71,72,64,85,11
+215266,University of Pittsburgh-Bradford,PA,public,Mid_East,Town,"1,000 - 4,999",208,111,136,55,45,11,89,73,71,75,57,68,15
+215293,University of Pittsburgh-Pittsburgh Campus,PA,public,Mid_East,City,"20,000 +",3885,2130,2379,53,47,18,82,57,59,54,54,93,14
+215442,Point Park University,PA,private_nonprofit,Mid_East,City,"1,000 - 4,999",538,271,386,59,41,17,83,73,76,68,61,75,11
+215743,Saint Francis University,PA,private_nonprofit,Mid_East,Town,"1,000 - 4,999",304,130,234,64,36,19,81,75,77,71,64,85,14
+215770,Saint Joseph's University,PA,private_nonprofit,Mid_East,City,"5,000 - 9,999",948,527,635,55,45,18,82,75,76,73,54,88,10
+215929,University of Scranton,PA,private_nonprofit,Mid_East,City,"1,000 - 4,999",751,379,524,58,42,8,92,76,73,81,58,88,13
+216010,Shippensburg University of Pennsylvania,PA,public,Mid_East,Town,"5,000 - 9,999",1045,598,667,53,47,14,86,91,92,90,52,75,16
+216038,Slippery Rock University of Pennsylvania,PA,public,Mid_East,Town,"5,000 - 9,999",1440,719,1015,59,41,14,86,71,72,69,56,83,20
+216278,Susquehanna University,PA,private_nonprofit,Mid_East,Town,"1,000 - 4,999",410,211,282,57,43,7,93,72,76,67,56,87,12
+216339,Temple University,PA,public,Mid_East,City,"20,000 +",5093,2883,3290,53,47,18,82,60,61,59,54,89,13
+216357,Thiel College,PA,private_nonprofit,Mid_East,Town,"< 1,000",137,85,78,48,52,27,73,79,81,78,47,63,10
+216366,Thomas Jefferson University,PA,private_nonprofit,Mid_East,City,"5,000 - 9,999",646,142,505,80,20,46,54,66,66,66,73,84,12
+216694,Waynesburg University,PA,private_nonprofit,Mid_East,Town,"1,000 - 4,999",277,126,212,63,37,22,78,93,94,91,59,75,12
+216807,Westminster College,PA,private_nonprofit,Mid_East,Town,"1,000 - 4,999",230,113,161,59,41,13,87,67,70,63,53,78,11
+216931,Wilkes University,PA,private_nonprofit,Mid_East,City,"1,000 - 4,999",433,247,266,52,48,6,94,79,80,77,50,78,12
+217156,Brown University,RI,private_nonprofit,New_England,City,"5,000 - 9,999",1425,770,864,53,47,26,74,7,6,9,53,98,6
+217235,Johnson & Wales University-Providence,RI,private_nonprofit,New_England,City,"5,000 - 9,999",1400,678,1041,61,39,35,65,93,94,90,60,75,19
+217402,Providence College,RI,private_nonprofit,New_England,City,"1,000 - 4,999",769,402,532,57,43,21,79,47,48,46,54,91,12
+217633,Anderson University,SC,private_nonprofit,Southeast,City,"1,000 - 4,999",389,152,329,68,32,24,76,69,68,70,69,80,15
+217688,Charleston Southern University,SC,private_nonprofit,Southeast,City,"1,000 - 4,999",426,187,332,64,36,17,83,50,49,51,64,65,13
+217721,Benedict College,SC,private_nonprofit,Southeast,City,"1,000 - 4,999",266,129,187,59,41,37,63,77,77,77,55,56,20
+217819,College of Charleston,SC,public,Southeast,City,"10,000 - 19,999",1865,782,1452,65,35,25,75,78,82,71,64,81,14
+217864,Citadel Military College of South Carolina,SC,public,Southeast,City,"1,000 - 4,999",502,535,56,9,91,0,100,75,74,75,13,86,12
+217873,Claflin University,SC,private_nonprofit,Southeast,Town,"1,000 - 4,999",275,98,233,70,30,17,83,55,55,55,68,70,13
+217907,Coker University,SC,private_nonprofit,Southeast,Town,"1,000 - 4,999",178,75,145,66,34,19,81,63,63,64,59,62,12
+217934,Columbia College,SC,private_nonprofit,Southeast,City,"1,000 - 4,999",235,50,238,86,14,68,32,97,97,100,84,68,11
+218229,Lander University,SC,public,Southeast,Town,"1,000 - 4,999",394,155,329,68,32,22,78,43,43,44,68,68,17
+218238,Limestone University,SC,private_nonprofit,Southeast,Town,"1,000 - 4,999",453,206,344,62,38,28,72,51,47,55,55,67,13
+218539,Presbyterian College,SC,private_nonprofit,Southeast,Town,"1,000 - 4,999",196,106,126,54,46,3,97,75,77,74,52,76,12
+218663,University of South Carolina-Columbia,SC,public,Southeast,City,"20,000 +",4513,2375,2983,56,44,18,82,69,68,70,54,89,15
+218724,Coastal Carolina University,SC,public,Southeast,City,"10,000 - 19,999",1384,729,940,56,44,16,84,69,70,67,55,68,16
+218733,South Carolina State University,SC,public,Southeast,Town,"1,000 - 4,999",377,192,252,56,44,22,78,66,69,63,53,68,15
+218964,Winthrop University,SC,public,Southeast,City,"5,000 - 9,999",790,291,670,70,30,12,88,69,70,66,69,70,13
+218973,Wofford College,SC,private_nonprofit,Southeast,City,"1,000 - 4,999",341,193,208,52,48,10,90,60,61,59,52,92,11
+219000,Augustana University,SD,private_nonprofit,Plains,City,"1,000 - 4,999",303,128,231,64,36,23,77,67,71,62,63,82,12
+219082,Dakota State University,SD,public,Plains,Town,"1,000 - 4,999",236,158,108,41,59,20,80,77,73,80,38,66,19
+219091,Dakota Wesleyan University,SD,private_nonprofit,Plains,Town,"< 1,000",126,61,92,59,41,25,75,67,73,63,57,65,12
+219198,Mount Marty University,SD,private_nonprofit,Plains,Town,"1,000 - 4,999",98,38,82,68,32,13,87,72,75,68,57,72,13
+219347,South Dakota School of Mines and Technology,SD,public,Plains,City,"1,000 - 4,999",320,254,76,23,77,12,88,77,71,79,24,78,15
+219356,South Dakota State University,SD,public,Plains,Town,"10,000 - 19,999",1607,867,1047,55,45,11,89,90,91,89,53,78,17
+219383,University of Sioux Falls,SD,private_nonprofit,Plains,City,"1,000 - 4,999",235,109,181,62,38,27,73,91,92,89,63,77,17
+219471,University of South Dakota,SD,public,Plains,Town,"5,000 - 9,999",937,423,722,63,37,6,94,86,88,84,63,78,15
+219602,Austin Peay State University,TN,public,Southeast,City,"10,000 - 19,999",1242,568,938,62,38,24,76,95,96,94,58,66,17
+219709,Belmont University,TN,private_nonprofit,Southeast,City,"5,000 - 9,999",1078,501,833,62,38,19,81,84,85,81,65,83,14
+219790,Bryan College-Dayton,TN,private_nonprofit,Southeast,Town,"1,000 - 4,999",218,116,153,57,43,0,100,51,48,56,53,70,12
+219833,Christian Brothers University,TN,private_nonprofit,Southeast,City,"1,000 - 4,999",229,112,150,57,43,26,74,50,49,53,50,75,11
+219949,Cumberland University,TN,private_nonprofit,Southeast,Town,"1,000 - 4,999",238,98,196,66,34,12,88,61,62,60,56,60,16
+219976,Lipscomb University,TN,private_nonprofit,Southeast,City,"1,000 - 4,999",512,242,369,60,40,18,82,63,62,66,60,83,13
+220075,East Tennessee State University,TN,public,Southeast,City,"10,000 - 19,999",1920,936,1398,60,40,13,87,86,85,87,59,72,15
+220181,Fisk University,TN,private_nonprofit,Southeast,City,"< 1,000",78,27,66,71,29,4,96,93,93,93,69,78,12
+220215,Freed-Hardeman University,TN,private_nonprofit,Southeast,Town,"1,000 - 4,999",237,122,166,58,42,9,91,88,85,94,57,83,13
+220516,King University,TN,private_nonprofit,Southeast,City,"1,000 - 4,999",561,213,468,68,32,24,76,62,64,59,65,65,12
+220604,Le Moyne-Owen College,TN,private_nonprofit,Southeast,City,"< 1,000",99,35,85,71,29,37,63,80,80,81,66,57,12
+220613,Lee University,TN,private_nonprofit,Southeast,City,"5,000 - 9,999",640,305,488,61,39,32,68,82,81,83,61,78,15
+220631,Lincoln Memorial University,TN,private_nonprofit,Southeast,Town,"1,000 - 4,999",246,91,211,70,30,0,100,50,48,54,71,77,15
+220701,Martin Methodist College,TN,private_nonprofit,Southeast,Town,"< 1,000",128,55,102,65,35,40,60,99,99,98,60,61,13
+220862,University of Memphis,TN,public,Southeast,City,"20,000 +",2429,1131,1830,62,38,11,89,85,86,83,59,78,15
+220978,Middle Tennessee State University,TN,public,Southeast,City,"20,000 +",3305,1817,2210,55,45,11,89,94,94,93,53,75,17
+221351,Rhodes College,TN,private_nonprofit,Southeast,City,"1,000 - 4,999",378,188,257,58,42,26,74,45,48,40,58,92,10
+221519,The University of the South,TN,private_nonprofit,Southeast,Rural,"1,000 - 4,999",310,169,203,55,45,14,86,67,68,65,51,88,10
+221731,Tennessee Wesleyan University,TN,private_nonprofit,Southeast,Town,"1,000 - 4,999",213,83,180,69,31,3,97,61,61,63,62,70,12
+221740,The University of Tennessee-Chattanooga,TN,public,Southeast,City,"10,000 - 19,999",1525,778,1049,58,42,11,89,82,83,81,56,71,19
+221759,The University of Tennessee-Knoxville,TN,public,Southeast,City,"20,000 +",3873,2236,2380,52,48,7,93,79,78,79,51,87,17
+221768,The University of Tennessee-Martin,TN,public,Southeast,Town,"5,000 - 9,999",961,481,687,59,41,11,89,64,64,65,60,75,15
+221847,Tennessee Technological University,TN,public,Southeast,Town,"10,000 - 19,999",1634,960,938,49,51,11,89,79,77,81,45,77,18
+221892,Trevecca Nazarene University,TN,private_nonprofit,Southeast,City,"1,000 - 4,999",320,157,236,60,40,25,75,62,63,62,61,76,14
+221953,Tusculum University,TN,private_nonprofit,Southeast,Town,"1,000 - 4,999",305,149,227,60,40,71,29,72,76,68,55,62,16
+221971,Union University,TN,private_nonprofit,Southeast,City,"1,000 - 4,999",493,196,401,67,33,20,80,53,53,53,66,84,10
+221999,Vanderbilt University,TN,private_nonprofit,Southeast,City,"10,000 - 19,999",1462,824,870,51,49,20,80,9,8,10,52,97,7
+222178,Abilene Christian University,TX,private_nonprofit,Southwest,City,"5,000 - 9,999",611,309,432,58,42,16,84,61,63,59,60,79,15
+222831,Angelo State University,TX,public,Southwest,City,"10,000 - 19,999",819,421,575,58,42,13,87,77,77,77,59,69,20
+222983,Austin College,TX,private_nonprofit,Southwest,City,"1,000 - 4,999",237,128,153,54,46,15,85,51,53,49,52,78,12
+223232,Baylor University,TX,private_nonprofit,Southwest,City,"10,000 - 19,999",2544,1213,1829,60,40,17,83,45,41,52,60,88,13
+224004,Concordia University Texas,TX,private_nonprofit,Southwest,City,"1,000 - 4,999",255,104,210,66,34,17,83,90,90,92,68,68,14
+224147,Texas A & M University-Corpus Christi,TX,public,Southwest,City,"10,000 - 19,999",1328,595,1000,63,37,16,84,80,79,82,60,60,18
+224226,Dallas Baptist University,TX,private_nonprofit,Southwest,City,"1,000 - 4,999",589,306,421,58,42,12,88,90,90,90,59,72,13
+224323,University of Dallas,TX,private_nonprofit,Southwest,City,"1,000 - 4,999",245,134,157,54,46,8,92,45,45,46,53,85,11
+224545,Texas A&M University-Texarkana,TX,public,Southwest,Rural,"1,000 - 4,999",293,106,250,70,30,22,78,94,93,94,62,59,12
+224554,Texas A & M University-Commerce,TX,public,Southwest,Town,"10,000 - 19,999",1285,548,1029,65,35,15,85,43,43,44,59,63,20
+225201,Hallmark University,TX,private_nonprofit,Southwest,City,"< 1,000",57,39,21,38,62,13,87,79,73,80,32,48,26
+225247,Hardin-Simmons University,TX,private_nonprofit,Southwest,City,"1,000 - 4,999",276,144,190,57,43,23,77,84,84,83,53,67,14
+225432,University of Houston-Downtown,TX,public,Southwest,City,"10,000 - 19,999",2112,917,1668,65,35,14,86,89,90,87,60,73,19
+225502,University of Houston-Victoria,TX,public,Southwest,City,"1,000 - 4,999",538,192,462,71,29,18,82,56,57,53,65,61,18
+225511,University of Houston,TX,public,Southwest,City,"20,000 +",5644,3100,3590,54,46,21,79,65,63,67,50,85,23
+225548,Howard Payne University,TX,private_nonprofit,Southwest,Town,"1,000 - 4,999",146,84,96,53,47,12,88,54,51,57,47,43,10
+225575,Huston-Tillotson University,TX,private_nonprofit,Southwest,City,"1,000 - 4,999",128,60,96,60,40,21,79,63,64,60,63,56,16
+225627,University of the Incarnate Word,TX,private_nonprofit,Southwest,City,"5,000 - 9,999",1032,464,786,63,37,15,85,94,95,92,61,73,11
+226091,Lamar University,TX,public,Southwest,City,"10,000 - 19,999",1283,581,963,62,38,13,87,84,83,85,58,66,18
+226231,LeTourneau University,TX,private_nonprofit,Southwest,City,"1,000 - 4,999",419,241,251,50,50,11,89,45,35,52,45,76,11
+226383,Lubbock Christian University,TX,private_nonprofit,Southwest,City,"1,000 - 4,999",294,128,234,65,35,22,78,91,91,90,60,71,14
+226587,McMurry University,TX,private_nonprofit,Southwest,City,"1,000 - 4,999",165,85,116,58,42,22,78,45,42,50,51,70,10
+226833,Midwestern State University,TX,public,Southwest,City,"5,000 - 9,999",888,401,682,63,37,12,88,79,80,78,62,67,17
+227216,University of North Texas,TX,public,Southwest,City,"20,000 +",5564,3010,3757,56,44,21,79,74,75,72,53,79,26
+227331,Our Lady of the Lake University,TX,private_nonprofit,Southwest,City,"1,000 - 4,999",247,79,222,74,26,29,71,68,68,68,68,63,12
+227368,The University of Texas Rio Grande Valley,TX,public,Southwest,City,"20,000 +",2940,1382,2136,61,39,12,88,80,80,81,57,76,20
+227429,Paul Quinn College,TX,private_nonprofit,Southwest,City,"< 1,000",28,14,20,59,41,0,100,79,76,86,57,57,23
+227526,Prairie View A & M University,TX,public,Southwest,Town,"5,000 - 9,999",912,420,654,61,39,31,69,80,83,74,65,66,18
+227757,Rice University,TX,private_nonprofit,Southwest,City,"5,000 - 9,999",874,504,474,48,52,29,71,9,9,9,48,98,6
+227845,Saint Edward's University,TX,private_nonprofit,Southwest,City,"1,000 - 4,999",745,350,560,62,38,23,77,88,88,88,62,80,14
+227863,University of St Thomas,TX,private_nonprofit,Southwest,City,"1,000 - 4,999",275,108,222,67,33,41,59,87,88,86,62,84,12
+227881,Sam Houston State University,TX,public,Southwest,Town,"20,000 +",2938,1408,2196,61,39,13,87,83,84,82,62,75,21
+228042,Schreiner University,TX,private_nonprofit,Southwest,Town,"1,000 - 4,999",176,82,131,61,39,30,70,93,93,93,56,64,14
+228149,St. Mary's University,TX,private_nonprofit,Southwest,City,"1,000 - 4,999",412,203,281,58,42,17,83,79,78,80,56,74,11
+228343,Southwestern University,TX,private_nonprofit,Southwest,City,"1,000 - 4,999",267,122,195,62,38,23,77,49,52,44,55,86,12
+228431,Stephen F Austin State University,TX,public,Southwest,Town,"10,000 - 19,999",1724,721,1401,66,34,19,81,68,70,64,64,70,18
+228459,Texas State University,TX,public,Southwest,City,"20,000 +",5292,2695,3750,58,42,15,85,81,84,76,58,76,21
+228468,Southwestern Adventist University,TX,private_nonprofit,Southwest,Town,"< 1,000",114,50,88,64,36,9,91,58,58,56,60,68,15
+228501,Sul Ross State University,TX,public,Southwest,Town,"1,000 - 4,999",301,140,229,62,38,8,92,100,100,99,60,52,12
+228529,Tarleton State University,TX,public,Southwest,Town,"10,000 - 19,999",1782,835,1330,61,39,20,80,56,58,53,62,65,22
+228705,Texas A & M University-Kingsville,TX,public,Southwest,Town,"5,000 - 9,999",1077,558,706,55,45,15,85,77,76,78,50,65,17
+228723,Texas A & M University-College Station,TX,public,Southwest,City,"20,000 +",9328,5328,5552,51,49,24,76,58,57,59,47,93,20
+228769,The University of Texas at Arlington,TX,public,Southwest,City,"20,000 +",6048,2549,4773,65,35,16,84,83,82,85,61,75,24
+228778,The University of Texas at Austin,TX,public,Southwest,City,"20,000 +",8399,4538,5222,53,47,17,83,32,36,28,54,96,19
+228787,The University of Texas at Dallas,TX,public,Southwest,City,"20,000 +",2888,1800,1562,47,53,16,84,79,77,80,43,89,25
+228796,The University of Texas at El Paso,TX,public,Southwest,City,"20,000 +",2848,1439,1940,57,43,20,80,100,100,100,54,75,20
+228802,The University of Texas at Tyler,TX,public,Southwest,City,"5,000 - 9,999",1178,568,858,60,40,17,83,83,82,85,57,71,18
+228875,Texas Christian University,TX,private_nonprofit,Southwest,City,"10,000 - 19,999",1647,768,1242,62,38,26,74,47,49,44,58,91,13
+228981,Texas Lutheran University,TX,private_nonprofit,Southwest,Town,"1,000 - 4,999",211,111,143,56,44,13,87,56,56,56,51,73,14
+229018,The University of Texas Permian Basin,TX,public,Southwest,City,"5,000 - 9,999",602,268,453,63,37,19,81,88,90,87,58,63,19
+229027,The University of Texas at San Antonio,TX,public,Southwest,City,"20,000 +",4061,2333,2513,52,48,12,88,77,78,74,50,73,25
+229063,Texas Southern University,TX,public,Southwest,City,"5,000 - 9,999",771,410,509,56,44,26,74,91,93,88,59,53,16
+229115,Texas Tech University,TX,public,Southwest,City,"20,000 +",4688,2890,2690,48,52,14,86,69,69,69,48,87,20
+229160,Texas Wesleyan University,TX,private_nonprofit,Southwest,City,"1,000 - 4,999",262,116,206,64,36,14,86,42,42,43,54,52,15
+229179,Texas Woman's University,TX,public,Southwest,City,"10,000 - 19,999",1662,182,1863,91,9,60,40,93,93,91,87,73,17
+229267,Trinity University,TX,private_nonprofit,Southwest,City,"1,000 - 4,999",455,238,294,55,45,22,78,29,27,31,52,92,9
+229780,Wayland Baptist University,TX,private_nonprofit,Southwest,Town,"1,000 - 4,999",908,576,554,49,51,33,67,97,97,98,51,41,6
+229814,West Texas A & M University,TX,public,Southwest,Town,"10,000 - 19,999",1236,582,923,61,39,8,92,69,70,67,58,68,18
+230038,Brigham Young University-Provo,UT,private_nonprofit,Rocky_Mountains,City,"20,000 +",5650,3394,3262,49,51,9,91,67,70,64,50,90,20
+230047,Brigham Young University-Hawaii,HI,private_nonprofit,Far_West,Town,"1,000 - 4,999",520,277,355,56,44,17,83,57,52,69,62,61,16
+230603,Southern Utah University,UT,public,Rocky_Mountains,Town,"10,000 - 19,999",824,453,543,55,45,15,85,78,79,78,59,74,19
+230728,Utah State University,UT,public,Rocky_Mountains,City,"20,000 +",3168,1762,2062,54,46,10,90,91,91,91,55,74,19
+230764,University of Utah,UT,public,Rocky_Mountains,City,"20,000 +",4321,2701,2456,48,52,11,89,62,61,63,47,89,17
+230807,Westminster College,UT,private_nonprofit,Rocky_Mountains,City,"1,000 - 4,999",426,212,304,59,41,19,81,92,93,89,61,80,9
+230816,Bennington College,VT,private_nonprofit,New_England,Town,"< 1,000",125,53,101,65,35,38,62,61,66,50,65,83,10
+230834,Castleton University,VT,public,New_England,Town,"1,000 - 4,999",299,169,198,54,46,11,89,84,86,81,54,66,16
+230852,Champlain College,VT,private_nonprofit,New_England,City,"1,000 - 4,999",527,369,263,42,58,13,87,85,84,87,40,82,15
+230913,Northern Vermont University,VT,public,New_England,Rural,"1,000 - 4,999",288,130,229,64,36,7,93,78,80,75,59,62,13
+230959,Middlebury College,VT,private_nonprofit,New_England,Town,"1,000 - 4,999",559,318,344,52,48,22,78,15,13,18,53,94,8
+230995,Norwich University,VT,private_nonprofit,New_England,Town,"1,000 - 4,999",474,432,135,25,75,15,85,75,73,76,25,80,15
+231174,University of Vermont,VT,public,New_England,City,"10,000 - 19,999",2048,1030,1407,58,42,13,87,67,70,63,59,87,16
+231420,Averett University,VA,private_nonprofit,Southeast,Town,"< 1,000",132,77,87,53,47,12,88,65,65,65,44,68,17
+231651,Regent University,VA,private_nonprofit,Southeast,City,"10,000 - 19,999",404,185,316,63,37,21,79,86,88,82,61,78,29
+231712,Christopher Newport University,VA,public,Southeast,City,"1,000 - 4,999",930,444,652,59,41,15,85,72,75,68,55,84,14
+232025,Emory & Henry College,VA,private_nonprofit,Southeast,Rural,"1,000 - 4,999",165,96,104,52,48,100,0,73,75,71,51,76,11
+232043,Eastern Mennonite University,VA,private_nonprofit,Southeast,City,"1,000 - 4,999",270,92,239,72,28,10,90,65,65,64,62,85,10
+232089,Ferrum College,VA,private_nonprofit,Southeast,Rural,"< 1,000",171,102,108,51,49,15,85,73,75,71,43,54,13
+232256,Hampden-Sydney College,VA,private_nonprofit,Southeast,Rural,"< 1,000",190,227,0,0,100,0,100,57,67,57,1,79,10
+232265,Hampton University,VA,private_nonprofit,Southeast,City,"1,000 - 4,999",570,224,465,67,33,37,63,36,36,36,66,75,14
+232423,James Madison University,VA,public,Southeast,City,"20,000 +",3543,1677,2612,61,39,21,79,77,80,71,58,89,16
+232557,Liberty University,VA,private_nonprofit,Southeast,City,"20,000 +",6195,3311,4389,57,43,15,85,51,53,48,58,81,17
+232566,Longwood University,VA,public,Southeast,Town,"1,000 - 4,999",732,279,612,69,31,18,82,90,90,89,68,75,13
+232609,University of Lynchburg,VA,private_nonprofit,Southeast,City,"1,000 - 4,999",375,169,285,63,37,18,82,91,89,95,61,75,11
+232672,Mary Baldwin University,VA,private_nonprofit,Southeast,City,"1,000 - 4,999",204,18,233,93,7,50,50,84,86,79,81,64,11
+232706,Marymount University,VA,private_nonprofit,Southeast,City,"1,000 - 4,999",486,170,420,71,29,30,70,81,83,78,65,72,12
+232937,Norfolk State University,VA,public,Southeast,City,"5,000 - 9,999",678,264,545,67,33,34,66,92,93,90,67,74,16
+232982,Old Dominion University,VA,public,Southeast,City,"20,000 +",3200,1588,2232,59,41,14,86,89,91,88,55,80,17
+233374,University of Richmond,VA,private_nonprofit,Southeast,City,"1,000 - 4,999",714,383,478,55,45,26,74,28,28,29,52,94,8
+233611,Southern Virginia University,VA,private_nonprofit,Southeast,Town,"1,000 - 4,999",104,58,68,54,46,10,90,98,99,96,53,81,16
+233897,The University of Virginia's College at Wise,VA,public,Southeast,Town,"1,000 - 4,999",219,129,142,52,48,14,86,59,62,57,60,67,11
+233921,Virginia Polytechnic Institute and State University,VA,public,Southeast,City,"20,000 +",5317,3333,2748,45,55,13,87,70,75,67,43,93,14
+234030,Virginia Commonwealth University,VA,public,Southeast,City,"20,000 +",4080,1940,2929,60,40,17,83,87,88,86,61,83,18
+234085,Virginia Military Institute,VA,public,Southeast,Town,"1,000 - 4,999",323,329,40,11,89,6,94,60,52,61,14,83,11
+234164,Virginia Union University,VA,private_nonprofit,Southeast,City,"1,000 - 4,999",168,84,120,59,41,28,72,63,65,60,52,68,15
+234207,Washington and Lee University,VA,private_nonprofit,Southeast,Town,"1,000 - 4,999",383,228,226,50,50,20,80,19,19,18,50,98,8
+234827,Central Washington University,WA,public,Far_West,Town,"10,000 - 19,999",2086,1138,1376,55,45,19,81,85,86,83,52,71,19
+235097,Eastern Washington University,WA,public,Far_West,Town,"10,000 - 19,999",1936,996,1327,57,43,23,77,96,96,95,55,70,18
+235316,Gonzaga University,WA,private_nonprofit,Far_West,City,"5,000 - 9,999",1007,551,629,53,47,17,83,62,62,62,53,94,11
+236328,University of Puget Sound,WA,private_nonprofit,Far_West,City,"1,000 - 4,999",497,236,352,60,40,18,82,84,87,79,59,81,11
+236452,Saint Martin's University,WA,private_nonprofit,Far_West,City,"1,000 - 4,999",285,156,177,53,47,12,88,96,96,96,52,78,12
+236577,Seattle Pacific University,WA,private_nonprofit,Far_West,City,"1,000 - 4,999",654,249,540,68,32,14,86,91,91,89,66,81,13
+236595,Seattle University,WA,private_nonprofit,Far_West,City,"5,000 - 9,999",1030,489,751,61,39,17,83,78,78,79,60,88,11
+236939,Washington State University,WA,public,Far_West,Town,"20,000 +",4604,2498,2995,54,46,11,89,76,77,75,53,79,16
+236948,University of Washington-Seattle Campus,WA,public,Far_West,City,"20,000 +",6776,3577,4242,54,46,33,67,52,54,50,54,95,20
+237011,Western Washington University,WA,public,Far_West,City,"10,000 - 19,999",2773,1417,1932,58,42,13,87,90,91,89,57,82,19
+237057,Whitman College,WA,private_nonprofit,Far_West,City,"1,000 - 4,999",325,160,217,58,42,25,75,56,57,55,56,89,9
+237118,Alderson Broaddus University,WV,private_nonprofit,Southeast,Town,"< 1,000",108,52,75,60,40,12,88,47,46,48,43,50,15
+237181,Bethany College,WV,private_nonprofit,Southeast,Rural,"< 1,000",100,62,60,49,51,33,67,95,98,93,46,61,10
+237215,Bluefield State College,WV,public,Southeast,Town,"1,000 - 4,999",180,91,122,57,43,8,92,94,95,93,64,56,13
+237312,University of Charleston,WV,private_nonprofit,Southeast,City,"1,000 - 4,999",254,176,135,47,53,7,93,50,49,53,44,65,15
+237330,Concord University,WV,public,Southeast,Town,"1,000 - 4,999",329,157,241,61,39,19,81,82,83,80,59,59,14
+237358,Davis & Elkins College,WV,private_nonprofit,Southeast,Town,"< 1,000",98,50,68,56,44,11,89,40,40,39,59,69,12
+237367,Fairmont State University,WV,public,Southeast,Town,"1,000 - 4,999",527,281,346,55,45,17,83,85,87,82,58,62,15
+237525,Marshall University,WV,public,Southeast,City,"10,000 - 19,999",1297,669,906,57,43,11,89,87,88,86,58,73,18
+237640,Ohio Valley University,WV,private_nonprofit,Southeast,City,"< 1,000",58,34,38,53,47,0,100,69,70,69,45,54,10
+237792,Shepherd University,WV,public,Southeast,Town,"1,000 - 4,999",562,268,414,61,39,17,83,96,96,97,58,71,14
+237950,West Virginia University Institute of Technology,WV,public,Southeast,City,"1,000 - 4,999",134,99,50,33,67,6,94,51,51,51,50,57,14
+237969,West Virginia Wesleyan College,WV,private_nonprofit,Southeast,Town,"1,000 - 4,999",211,103,146,59,41,14,86,64,66,61,55,76,14
+238032,West Virginia University,WV,public,Southeast,City,"20,000 +",3713,2283,2107,48,52,15,85,84,85,83,50,79,20
+238078,Wheeling University,WV,private_nonprofit,Southeast,City,"< 1,000",161,81,114,58,42,23,77,68,69,67,51,46,11
+238333,Beloit College,WI,private_nonprofit,Great_Lakes,City,"< 1,000",250,129,169,57,43,21,79,62,69,56,55,79,11
+238458,Carroll University,WI,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",502,210,400,66,34,11,89,67,72,59,68,83,14
+238661,Edgewood College,WI,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",336,113,298,73,27,34,66,72,75,66,73,79,10
+238980,Lakeland University,WI,private_nonprofit,Great_Lakes,Rural,"1,000 - 4,999",425,210,304,59,41,24,76,78,78,78,57,61,13
+239017,Lawrence University,WI,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",292,157,189,55,45,19,81,62,67,57,54,87,8
+239080,Marian University,WI,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",291,94,265,74,26,9,91,65,67,60,69,68,12
+239105,Marquette University,WI,private_nonprofit,Great_Lakes,City,"10,000 - 19,999",1559,838,981,54,46,27,73,83,83,83,54,90,14
+239628,Ripon College,WI,private_nonprofit,Great_Lakes,Town,"< 1,000",154,86,95,52,48,10,90,70,70,69,54,78,13
+240107,Viterbo University,WI,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",357,108,331,75,25,16,84,77,78,71,73,83,11
+240189,University of Wisconsin-Whitewater,WI,public,Great_Lakes,Town,"10,000 - 19,999",1754,1019,1114,52,48,10,90,79,78,80,49,80,19
+240268,University of Wisconsin-Eau Claire,WI,public,Great_Lakes,City,"10,000 - 19,999",1723,818,1265,61,39,9,91,82,83,79,62,82,22
+240277,University of Wisconsin-Green Bay,WI,public,Great_Lakes,City,"5,000 - 9,999",994,391,831,68,32,12,88,85,86,84,63,72,22
+240329,University of Wisconsin-La Crosse,WI,public,Great_Lakes,City,"10,000 - 19,999",1571,775,1102,59,41,10,90,73,76,69,56,84,18
+240338,Wisconsin Lutheran College,WI,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",170,88,118,57,43,9,91,89,92,86,55,76,12
+240365,University of Wisconsin-Oshkosh,WI,public,Great_Lakes,City,"10,000 - 19,999",1615,786,1182,60,40,19,81,76,77,76,60,74,23
+240392,Herzing University-Madison,WI,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",214,106,153,59,41,11,89,91,93,83,83,30,17
+240417,University of Wisconsin-Stout,WI,public,Great_Lakes,Town,"5,000 - 9,999",1355,818,791,49,51,12,88,91,90,91,43,72,18
+240444,University of Wisconsin-Madison,WI,public,Great_Lakes,City,"20,000 +",5991,3276,3689,53,47,13,87,54,57,51,52,95,17
+240453,University of Wisconsin-Milwaukee,WI,public,Great_Lakes,City,"20,000 +",3201,1834,2015,52,48,20,80,77,76,78,53,76,17
+240462,University of Wisconsin-Platteville,WI,public,Great_Lakes,Town,"5,000 - 9,999",1230,866,528,38,62,5,95,85,83,86,37,79,20
+240471,University of Wisconsin-River Falls,WI,public,Great_Lakes,Town,"5,000 - 9,999",982,456,725,61,39,13,87,79,80,77,64,74,20
+240480,University of Wisconsin-Stevens Point,WI,public,Great_Lakes,Town,"5,000 - 9,999",1464,810,952,54,46,21,79,85,84,86,55,75,20
+240727,University of Wyoming,WY,public,Rocky_Mountains,Town,"10,000 - 19,999",1773,925,1168,56,44,14,86,96,96,96,51,76,15
+241225,Universidad Central de Bayamon,PR,private_nonprofit,Other_US_Jurisdictions,City,"1,000 - 4,999",156,53,140,72,28,10,90,77,80,73,66,78,18
+241410,Pontifical Catholic University of Puerto Rico-Ponce,PR,private_nonprofit,Other_US_Jurisdictions,City,"5,000 - 9,999",609,272,466,63,37,17,83,93,93,93,62,81,26
+241720,Colegio Universitario de San Juan,PR,public,Other_US_Jurisdictions,City,"< 1,000",120,52,95,64,36,18,82,95,95,94,60,45,15
+242617,Inter American University of Puerto Rico-San German,PR,private_nonprofit,Other_US_Jurisdictions,City,"1,000 - 4,999",404,203,268,57,43,10,90,44,40,49,53,80,23
+242635,Inter American University of Puerto Rico-Arecibo,PR,private_nonprofit,Other_US_Jurisdictions,City,"1,000 - 4,999",340,131,276,68,32,12,88,26,22,33,61,74,28
+242653,Inter American University of Puerto Rico-Metro,PR,private_nonprofit,Other_US_Jurisdictions,City,"5,000 - 9,999",731,343,544,61,39,6,94,26,24,29,57,74,21
+242699,Inter American University of Puerto Rico-Guayama,PR,private_nonprofit,Other_US_Jurisdictions,City,"1,000 - 4,999",167,59,138,70,30,13,87,46,42,58,69,78,22
+242705,Inter American University of Puerto Rico-Bayamon,PR,private_nonprofit,Other_US_Jurisdictions,City,"1,000 - 4,999",395,240,215,47,53,13,87,27,23,31,43,76,28
+243115,University of Puerto Rico-Arecibo,PR,public,Other_US_Jurisdictions,City,"1,000 - 4,999",442,181,342,66,34,15,85,50,77,32,60,82,23
+243133,University of Puerto Rico-Bayamon,PR,public,Other_US_Jurisdictions,City,"1,000 - 4,999",416,198,281,59,41,14,86,78,74,82,51,82,21
+243197,University of Puerto Rico-Mayaguez,PR,public,Other_US_Jurisdictions,City,"10,000 - 19,999",1487,780,829,52,48,21,79,80,80,80,46,89,21
+243212,University of Puerto Rico-Ponce,PR,public,Other_US_Jurisdictions,City,"1,000 - 4,999",328,128,257,67,33,12,88,36,34,39,58,75,23
+243221,University of Puerto Rico-Rio Piedras,PR,public,Other_US_Jurisdictions,City,"10,000 - 19,999",1488,614,1182,66,34,23,77,49,50,47,63,84,16
+243443,Universidad del Sagrado Corazon,PR,private_nonprofit,Other_US_Jurisdictions,City,"1,000 - 4,999",599,260,472,65,35,21,79,37,34,41,61,81,23
+243586,Pontifical Catholic University of Puerto Rico-Mayaguez,PR,private_nonprofit,Other_US_Jurisdictions,City,"< 1,000",117,47,96,67,33,14,86,98,99,96,65,79,23
+243665,University of the Virgin Islands,VI,public,Other_US_Jurisdictions,Town,"1,000 - 4,999",180,55,158,74,26,21,79,98,98,99,69,66,12
+243780,Purdue University-Main Campus,IN,public,Great_Lakes,City,"20,000 +",6326,4069,3104,43,57,15,85,60,66,56,43,91,13
+367884,Hodges University,FL,private_nonprofit,Southeast,City,"< 1,000",184,86,139,60,40,22,78,61,61,62,62,48,15
+377564,University of Washington-Tacoma Campus,WA,public,Far_West,City,"5,000 - 9,999",1056,573,704,55,45,15,85,87,89,85,52,80,17
+414878,Trine University-Regional/Non-Traditional Campuses,IN,private_nonprofit,Great_Lakes,City,"1,000 - 4,999",110,43,92,68,32,25,75,24,29,17,58,0,7
+445267,Central Methodist University-College of Graduate and Extended Studies,MO,private_nonprofit,Plains,Town,"1,000 - 4,999",462,99,476,83,17,18,82,100,100,100,68,0,17
+449931,Averett University-Non-Traditional Programs,VA,private_nonprofit,Southeast,Town,"< 1,000",160,79,120,60,40,27,73,24,29,14,58,50,9
+459949,Texas A&M University-San Antonio,TX,public,Southwest,Rural,"5,000 - 9,999",979,443,719,62,38,9,91,44,44,43,61,69,18
+482149,Augusta University,GA,public,Southeast,City,"5,000 - 9,999",883,305,687,69,31,20,80,76,76,77,65,72,16
+482158,Middle Georgia State University,GA,public,Southeast,City,"5,000 - 9,999",638,268,446,63,37,25,75,94,95,94,57,53,19
+482680,University of North Georgia,GA,public,Southeast,Town,"10,000 - 19,999",1440,640,970,60,40,18,82,81,81,82,57,79,18
+482936,Florida Polytechnic University,FL,public,Southeast,Rural,"1,000 - 4,999",185,211,32,14,86,10,90,50,47,51,15,69,15
+483124,Arizona State University Digital Immersion,AZ,public,Southwest,City,"20,000 +",2612,1026,1933,66,34,10,90,64,67,60,61,74,25
+484473,University of Florida-Online,FL,public,Southeast,City,"1,000 - 4,999",366,180,257,56,44,28,72,75,77,71,57,63,67
+484905,University of North Texas at Dallas,TX,public,Southwest,City,"1,000 - 4,999",442,142,374,72,28,15,85,47,48,45,66,70,17
+487524,Husson University,ME,private_nonprofit,New_England,City,"1,000 - 4,999",435,226,293,56,44,13,87,85,88,80,58,73,13
